@@ -6,7 +6,7 @@ public class PlayerScript : MonoBehaviour
 
     //プレイヤーの基本情報；
     private float speed = 3.0f;
-    private float moveup = 3.0f;
+    private float moveup = 5.0f;
     private float Cameraspeed = 100f;
     private bool isJump = false;
 
