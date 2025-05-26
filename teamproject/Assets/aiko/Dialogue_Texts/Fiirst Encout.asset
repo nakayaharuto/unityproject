@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6517f3e03e708b4da9f91f94f9dd0a8, type: 3}
+  m_Name: Fiirst Encout
+  m_EditorClassIdentifier: 
+  speakerName: alts
+  paragraphs:
+  - "\u4FFA\u306F\u30B9\u30EF\u30F3\u3060\u3002"
+  - "\u77E5\u8B58\u306E\u5BFE\u511F\u306F\u77E5\u8B58\u3060\u3002"
+  - "\u30B3\u30C3\u30AF\u30ED\u30FC\u30C1\u3002\u30CF\u30EB\u30E1\u30A2\u30B9\u30E2\u30E9\u3002\u30DF\u30E9\u30FC\u30AF\u3002\u30EC\u30AE\u30FB\u30D6\u30E9\u30C3\u30BF\u30EA\u30A2\u3002\n\u30DD\u30FC\u30BF\u30D6\u30EB\u30C6\u30EC\u30DD\u30FC\u30BF\u30FC\u3002\n\u30A2\u30FC\u30AB\u30F3\u30BD\u30FC"
+  - "\u30A8\u30F3\u30AF\u30EC\u30A4\u30F4"
