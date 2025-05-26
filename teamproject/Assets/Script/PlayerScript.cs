@@ -5,10 +5,11 @@ public class PlayerScript : MonoBehaviour
     Rigidbody rb;
 
     //プレイヤーの基本情報；
-    private float speed = 3.0f;
+    public float MoveSpeed;
     private float moveup = 5.0f;
-    private float Cameraspeed = 100f;
     private bool isJump = false;
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,22 +23,22 @@ public class PlayerScript : MonoBehaviour
         //Wキー(前方移動)
         if(Input.GetKey(KeyCode.W))
         {
-            rb.AddForce(transform.forward * speed);
+            rb.AddForce(transform.forward * MoveSpeed);
         }
         //Sキー(前方移動)
         if (Input.GetKey(KeyCode.S))
         {
-            rb.AddForce(-transform.forward * speed);
+            rb.AddForce(-transform.forward * MoveSpeed);
         }
         //Aキー(前方移動)
         if (Input.GetKey(KeyCode.D))
         {
-            rb.AddForce(transform.right * speed);
+            rb.AddForce(transform.right * MoveSpeed);
         }
         //Dキー(前方移動)
         if (Input.GetKey(KeyCode.A))
         {
-            rb.AddForce(-transform.right * speed);
+            rb.AddForce(-transform.right * MoveSpeed);
         }
         //スペースキーでジャンプ
         if (Input.GetKey(KeyCode.Space) && !isJump)
@@ -46,24 +47,25 @@ public class PlayerScript : MonoBehaviour
             isJump = true;
         }
 
-
+        SpeedControl();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (Input.GetMouseButton(0))
-        {
-            float x = Input.GetAxis("Mouse x") * Cameraspeed;
-            if(Mathf.Abs(x)>0.1f)
-            {
-                transform.RotateAround(transform.position, Vector3.up, x);
-            }
-        }
-        
-
         if(collision.gameObject.CompareTag("Ground"))
         {
             isJump = false;
+        }
+    }
+    private void SpeedControl()
+    {
+        //プレイヤーのスピードを制限
+        Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
+
+        if (flatVel.magnitude > MoveSpeed)
+        {
+            Vector3 limitedVel = flatVel.normalized * MoveSpeed;
+            rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
         }
     }
 }
