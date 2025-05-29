@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //ˆÚ“®‚â‚ç‚È‚ñ‚â‚ç
-    public float MoveSpeed = 4.0f;
+    public float WalkSpeed = 3.0f;
+    public float RanSpeed = 7.0f;
     public float Graviyty = -9.81f;
     public float JumpHeight = 2f;
 
@@ -36,8 +37,12 @@ public class PlayerController : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;
 
         //ˆÚ“®ˆ—
-        controller.Move(move * MoveSpeed * Time.deltaTime);
+        //controller.Move(move * WalkSpeed * Time.deltaTime);
 
+        float dash = Input.GetKey(KeyCode.LeftShift) ? RanSpeed : WalkSpeed;
+
+
+        controller.Move(move *  dash * Time.deltaTime);
         //ƒWƒƒƒ“ƒv
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
