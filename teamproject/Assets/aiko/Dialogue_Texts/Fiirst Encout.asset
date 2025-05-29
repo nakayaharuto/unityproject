@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6517f3e03e708b4da9f91f94f9dd0a8, type: 3}
   m_Name: Fiirst Encout
   m_EditorClassIdentifier: 
-  speakerName: alts
+  speakerName: Noman_Thelife
   paragraphs:
   - "\u4FFA\u306F\u30B9\u30EF\u30F3\u3060\u3002"
   - "\u77E5\u8B58\u306E\u5BFE\u511F\u306F\u77E5\u8B58\u3060\u3002"

@@ -22,7 +22,11 @@ public class Talk_Checker : MonoBehaviour
 
             target.talk_icon.SetActive(true);
 
-            //DialogueManager.instance.isTalkable = true;
+            DialogueManager.instance.istalkable = true;
+            Debug.Log(talk_npc);
+           
+               // DialogueManager.instance.StartDialogue(talk_npc);
+            
         }
 
 
@@ -43,7 +47,7 @@ public class Talk_Checker : MonoBehaviour
                 talk_npc = null;
             }
 
-            //DialogueManager.instance.isTalkable = false;
+            DialogueManager.instance.istalkable = false;
         }
     }
 

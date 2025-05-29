@@ -7,10 +7,12 @@ public class DialogText2 : ScriptableObject
 {
     public string speakerName;
 
-    [TextArea(5, 10)]
-    public string[] paragraphs;
+    [SerializeField,Header("会話文"), TextArea(5, 10)]
+    private string[] paragraphs;
+
+    public string[] Paragraphs => paragraphs;
     //選択肢の表示に使う
-    public DialogueOption[] options;
+    //public DialogueOption[] options;
 }
 
 public class DialogueOption

@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public bool is_playable;
+    public static GameManager instance;
+
     public GameObject mainImage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

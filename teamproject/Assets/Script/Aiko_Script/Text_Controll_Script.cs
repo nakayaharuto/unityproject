@@ -56,11 +56,11 @@ public class Text_Controll_Script : MonoBehaviour
         }
 
         speaker_name_text.text = dialogText.speakerName;
-        if (dialogText.paragraphs.Length>index)
+        if (dialogText.Paragraphs.Length>index)
         {
             if (!isTyping)
             {
-                dialogueCoroutine = StartCoroutine(TypeDialogueText(dialogText.paragraphs[index]));
+                dialogueCoroutine = StartCoroutine(TypeDialogueText(dialogText.Paragraphs[index]));
                 //dialogue_textComponent.text = dialogText.paragraphs[index];
             }
             else
@@ -99,7 +99,7 @@ public class Text_Controll_Script : MonoBehaviour
     {
         StopCoroutine(dialogueCoroutine);
 
-        dialogue_textComponent.text = dialogText.paragraphs[index];
+        dialogue_textComponent.text = dialogText.Paragraphs[index];
         isTyping = false;
         index++;
     }

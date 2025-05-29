@@ -9,6 +9,7 @@ public class PlayerScript : MonoBehaviour
     private float moveup = 5.0f;
     private bool isJump = false;
 
+    private Talk_Checker talk_checker;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -48,6 +49,20 @@ public class PlayerScript : MonoBehaviour
         }
 
         SpeedControl();
+       
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+           
+            if (talk_checker.talk_npc!=null)
+            {                
+                DialogueManager.instance.StartDialogue(talk_checker.talk_npc);
+            }
+            else
+            {
+                Debug.Log("eeeeeeeeeee");
+            }
+
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

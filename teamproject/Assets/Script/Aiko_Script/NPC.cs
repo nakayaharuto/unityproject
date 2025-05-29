@@ -4,8 +4,9 @@ using System.Collections;
 
 public class NPC : MonoBehaviour
 {
-    private DialogText2 dialogue_text;
-
+    [SerializeField]
+    public DialogText2 dialogue_text;
+    [SerializeField]
     public GameObject talk_icon;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,4 +20,7 @@ public class NPC : MonoBehaviour
     {
         
     }
+
+    
+
 }
