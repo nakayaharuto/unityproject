@@ -10,12 +10,23 @@ public class FPSController : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.visible = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //クリック時に、マウスポインタを表示
+        if (Cursor.lockState != CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        if (!Cursor.visible)
+        {
+            Cursor.visible = true;
+        }
+
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
@@ -24,5 +35,7 @@ public class FPSController : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         transform.parent.Rotate(Vector3.up * mouseX);
+
+       
     }
 }
