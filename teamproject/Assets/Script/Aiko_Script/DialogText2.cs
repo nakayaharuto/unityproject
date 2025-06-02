@@ -11,6 +11,9 @@ public class DialogSentence
 
     [SerializeField, Header("会話文"), TextArea]
     public string Content;
+
+    //選択肢の表示に使う
+    public DialogueOption[] Options;
 }
 
 
@@ -26,8 +29,8 @@ public class DialogText2 : ScriptableObject
     public DialogSentence[] Paragraphs=>paragraphs;
     //public DialogSentence[] SpeakerName => speaker_name;
 
-    //選択肢の表示に使う
-    public DialogueOption[] options;
+   
+   
 }
 
 [System.Serializable]
