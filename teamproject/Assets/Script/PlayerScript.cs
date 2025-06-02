@@ -16,6 +16,7 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        talk_checker = GetComponent <Talk_Checker>();
     }
 
     // Update is called once per frame
@@ -54,15 +55,22 @@ public class PlayerScript : MonoBehaviour
         {
            
             if (talk_checker.talk_npc!=null)
-            {                
+            {
                 DialogueManager.instance.StartDialogue(talk_checker.talk_npc);
+                //DialogueManager.instance.DisplaySentence(talk_checker.talk_npc);
             }
             else
             {
                 Debug.Log("eeeeeeeeeee");
             }
 
+           
+
+
         }
+
+        
+
     }
 
     private void OnCollisionEnter(Collision collision)
