@@ -3,18 +3,7 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 
-[System.Serializable]
-public class DialogSentence
-{
-    [SerializeField, Header("キャラ名"), TextArea]
-    public string TalkerName;
 
-    [SerializeField, Header("会話文"), TextArea]
-    public string Content;
-
-    //選択肢の表示に使う
-    public DialogueOption[] Options;
-}
 
 
 [CreateAssetMenu(menuName ="Dialogue/new Dialogue Container")]
@@ -31,6 +20,19 @@ public class DialogText2 : ScriptableObject
 
    
    
+}
+
+[System.Serializable]
+public class DialogSentence
+{
+    [SerializeField, Header("キャラ名"), TextArea]
+    public string TalkerName;
+
+    [SerializeField, Header("会話文"), TextArea]
+    public string Content;
+
+    //選択肢の表示に使う
+    public DialogueOption[] Options;
 }
 
 [System.Serializable]

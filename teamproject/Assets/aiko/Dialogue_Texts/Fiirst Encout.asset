@@ -15,10 +15,17 @@ MonoBehaviour:
   paragraphs:
   - TalkerName: ???
     Content: "\u3088\u304F\u5BDD\u308C\u305F\u304B\u3044"
+    Options:
+    - optionText: aaaa
+      Next_Dialogue: {fileID: 11400000, guid: 8006cd164ab95154c99185575c7ea670, type: 2}
+    - optionText: bbbbb
+      Next_Dialogue: {fileID: 11400000, guid: 42bce033610fd234bb5097f48ea2345a, type: 2}
   - TalkerName: me
     Content: "\u304A\u524D\u306F\u8AB0\u3060"
+    Options: []
   - TalkerName: ???
     Content: "\u50D5\u306F\u30CE\u30FC\u30DE\u30F3\u3060\u3088\u3002"
+    Options: []
   - TalkerName: "\u30CE\u30FC\u30DE\u30F3"
     Content: "\u50D5\u3068\u904A\u307C\u3046\u3088"
-  options: []
+    Options: []
