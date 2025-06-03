@@ -5,7 +5,8 @@ using TMPro;
 public class numbergimmick : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI VerText;
-    int NowNumber = 0;
+    private int NowNumber = 0;
+    
 
     public void OnPressed()
     {
@@ -14,7 +15,11 @@ public class numbergimmick : MonoBehaviour
 
     private void OnMouseDown()
     {
-        NowNumber++;
+        NowNumber++;//âüÇ≥ÇÍÇΩÇÁêîílëùÇ‚Ç∑
+        if (NowNumber > 9)//9à»è„Ç…Ç»Ç¡ÇΩÇÁ0Ç…ñﬂÇ∑
+        {
+            NowNumber = 0;
+        }
         string Number = NowNumber.ToString();
         if (VerText != null)
         {
@@ -22,24 +27,4 @@ public class numbergimmick : MonoBehaviour
         }
         OnPressed();
     }
-
-
-
-
-
-
-
-
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if(collision.gameObject.CompareTag("button"))
-    //    {
-    //        NowNumber++;
-
-    //        string Number = NowNumber.ToString();
-
-    //        VerText.text = Number;
-    //    }
-    //}
 }
