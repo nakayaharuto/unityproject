@@ -14,9 +14,11 @@ public class DialogueManager : MonoBehaviour
     public GameObject[] dialogue_option_box;
     public GameObject dialogue_option_panel;
     private Queue<DialogSentence> sentences;
+    private Queue<DialogueOption> Osentence2;
 
     [SerializeField] private Text npc_text;
     [SerializeField] private Text character_name;
+    [SerializeField] private Text[] optin_text;
     //private bool talk_flag = false;
     //private int index=0;
     //[SerializeField] private DialogText2 dialogText;
@@ -39,6 +41,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         sentences = new Queue<DialogSentence>();
+        //Osentence2 = new Queue<DialogueOption>();
     }
 
     // Update is called once per frame
@@ -60,11 +63,11 @@ public class DialogueManager : MonoBehaviour
             //GameManager.instance.is_playable = false;
             Time.timeScale = 0.0f;
 
-
-
-
+            
 
             sentences.Clear();
+            
+            
 
             foreach (DialogSentence sentence in targetNPC.dialogue_text.Paragraphs)
             {
@@ -99,9 +102,11 @@ public class DialogueManager : MonoBehaviour
         }
 
         Debug.Log(sentences.Count);
-
+       
         DialogSentence sentence = sentences.Dequeue();
         //string sentence2 = sentences2.Dequeue();
+
+        
 
         npc_text.text = sentence.Content;
         character_name.text = sentence.TalkerName;
@@ -115,28 +120,51 @@ public class DialogueManager : MonoBehaviour
         else
         {
             dialogue_option_panel.SetActive(false);
+            dialogue_panel.SetActive(true);
+            for (int i = 0; i < 4; i++)
+            {
+                optin_text[i].text = "";
+                dialogue_option_box[i].SetActive(false);
+            }
         }
     }
-
+    
     IEnumerator DisplayOption(DialogueOption[] options)
     {
-        
+        //DialogSentence sentence= sentences.Dequeue();
+        // DialogueOption ooo = Osentence2.Dequeue();
         //GameManager.instance.ChangeState(GameManager.PlayerState.choosing);
 
+        // DialogSentence sssssentence2;
         for (int i = 0; i < options.Length; i++)
         {
-            dialogue_option_box[i].SetActive(true);
+            Debug.Log(options.Length + "+optionLength");
 
-            SelectOptions select_options = dialogue_option_box[i].GetComponent<SelectOptions>();
+            dialogue_option_box[i].SetActive(true);
+            optin_text[i].text = options[i].optionText;
+
+            
+
+            
+            //SelectOptions select_options = dialogue_option_box[i].GetComponent<SelectOptions>();
 
             Debug.Log(dialogue_option_box[i] + "optionbox");
 
             
 
         }
-        yield return new WaitForSeconds(1f);
-        dialogue_option_panel.SetActive(true);
-        dialogue_panel.SetActive(false);
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            dialogue_panel.SetActive(false);
+
+            yield return new WaitForSecondsRealtime(0.1f);
+            dialogue_option_panel.SetActive(true);
+            
+        }
+
+        
+        //yield return new WaitForSeconds(1f);
     } 
 
     public void EndDialogue()

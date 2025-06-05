@@ -488,6 +488,7 @@ GameObject:
   - component: {fileID: 554881041}
   - component: {fileID: 554881040}
   - component: {fileID: 554881042}
+  - component: {fileID: 554881043}
   m_Layer: 5
   m_Name: dialogue_option1
   m_TagString: Untagged
@@ -511,8 +512,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -280, y: -115.00009}
-  m_SizeDelta: {x: 500, y: 120}
+  m_AnchoredPosition: {x: 0, y: 150}
+  m_SizeDelta: {x: 1000, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &554881040
 MonoBehaviour:
@@ -600,18 +601,32 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 554881038}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 554881043}
+        m_TargetAssemblyTypeName: Choice_Dialogue, Assembly-CSharp
+        m_MethodName: switchon
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &554881043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554881038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7656692ef3faf4d4694d34eecc23d697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swicth_num: 1
+  choice_flag: 0
 --- !u!1 &650120513
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,16 +714,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 650120513}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b845d9e89d074f34784f325417449497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buttons:
   - {fileID: 554881042}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1113552421}
+  - {fileID: 1908053645}
+  - {fileID: 842463579}
   keys: 
 --- !u!1001 &752024527
 PrefabInstance:
@@ -841,13 +856,14 @@ GameObject:
   - component: {fileID: 842463578}
   - component: {fileID: 842463577}
   - component: {fileID: 842463579}
+  - component: {fileID: 842463580}
   m_Layer: 5
   m_Name: dialogue_option4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &842463576
 RectTransform:
   m_ObjectHideFlags: 0
@@ -864,8 +880,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 280, y: 125.00006}
-  m_SizeDelta: {x: 500, y: 120}
+  m_AnchoredPosition: {x: 0, y: -150}
+  m_SizeDelta: {x: 1000, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &842463577
 MonoBehaviour:
@@ -953,18 +969,32 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 842463575}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 842463580}
+        m_TargetAssemblyTypeName: Choice_Dialogue, Assembly-CSharp
+        m_MethodName: switchon
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &842463580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842463575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7656692ef3faf4d4694d34eecc23d697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swicth_num: 4
+  choice_flag: 0
 --- !u!1 &941862069
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,6 +1034,11 @@ MonoBehaviour:
   dialogue_option_panel: {fileID: 650120513}
   npc_text: {fileID: 145781063}
   character_name: {fileID: 1904459919}
+  optin_text:
+  - {fileID: 554881040}
+  - {fileID: 1113552419}
+  - {fileID: 1908053643}
+  - {fileID: 842463577}
 --- !u!4 &941862071
 Transform:
   m_ObjectHideFlags: 0
@@ -1031,6 +1066,7 @@ GameObject:
   - component: {fileID: 1113552420}
   - component: {fileID: 1113552419}
   - component: {fileID: 1113552421}
+  - component: {fileID: 1113552422}
   m_Layer: 5
   m_Name: dialogue_option2
   m_TagString: Untagged
@@ -1054,8 +1090,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 280, y: -115.00012}
-  m_SizeDelta: {x: 500, y: 120}
+  m_AnchoredPosition: {x: 0, y: 50}
+  m_SizeDelta: {x: 1000, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1113552419
 MonoBehaviour:
@@ -1143,18 +1179,32 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1113552417}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1113552422}
+        m_TargetAssemblyTypeName: Choice_Dialogue, Assembly-CSharp
+        m_MethodName: switchon
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1113552422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113552417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7656692ef3faf4d4694d34eecc23d697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swicth_num: 2
+  choice_flag: 0
 --- !u!1 &1153037272
 GameObject:
   m_ObjectHideFlags: 0
@@ -1682,13 +1732,14 @@ GameObject:
   - component: {fileID: 1908053644}
   - component: {fileID: 1908053643}
   - component: {fileID: 1908053645}
+  - component: {fileID: 1908053646}
   m_Layer: 5
   m_Name: dialogue_option3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1908053642
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1705,8 +1756,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -280, y: 125.00006}
-  m_SizeDelta: {x: 500, y: 120}
+  m_AnchoredPosition: {x: 0, y: -50}
+  m_SizeDelta: {x: 1000, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1908053643
 MonoBehaviour:
@@ -1794,18 +1845,32 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1908053641}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1908053646}
+        m_TargetAssemblyTypeName: Choice_Dialogue, Assembly-CSharp
+        m_MethodName: switchon
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1908053646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908053641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7656692ef3faf4d4694d34eecc23d697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swicth_num: 3
+  choice_flag: 0
 --- !u!1 &1911438170 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2900922169208401918, guid: fca2b728dad72834c9538ab3d47e8ec6, type: 3}
