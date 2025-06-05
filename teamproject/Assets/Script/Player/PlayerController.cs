@@ -65,4 +65,18 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+    void InteractWithItem()
+    {
+        Ray ray = new Ray(transform.position + Vector3.up,transform.forward);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, interactRange, itemLayer))
+        {
+            PickupObject pickup = hit.collider.GetComponent<PickupObject>();
+            if (pickup != null)
+            {
+                pickup.OnClickObject();
+            }
+        }
+    }
 }
