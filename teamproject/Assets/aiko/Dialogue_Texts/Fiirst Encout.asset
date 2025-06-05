@@ -12,9 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6517f3e03e708b4da9f91f94f9dd0a8, type: 3}
   m_Name: Fiirst Encout
   m_EditorClassIdentifier: 
-  speakerName: Noman_Thelife
   paragraphs:
-  - "\u4FFA\u306F\u30B9\u30EF\u30F3\u3060\u3002"
-  - "\u77E5\u8B58\u306E\u5BFE\u511F\u306F\u77E5\u8B58\u3060\u3002"
-  - "\u30B3\u30C3\u30AF\u30ED\u30FC\u30C1\u3002\u30CF\u30EB\u30E1\u30A2\u30B9\u30E2\u30E9\u3002\u30DF\u30E9\u30FC\u30AF\u3002\u30EC\u30AE\u30FB\u30D6\u30E9\u30C3\u30BF\u30EA\u30A2\u3002\n\u30DD\u30FC\u30BF\u30D6\u30EB\u30C6\u30EC\u30DD\u30FC\u30BF\u30FC\u3002\n\u30A2\u30FC\u30AB\u30F3\u30BD\u30FC"
-  - "\u30A8\u30F3\u30AF\u30EC\u30A4\u30F4"
+  - TalkerName: ???
+    Content: "\u3088\u304F\u5BDD\u308C\u305F\u304B\u3044"
+    Options:
+    - optionText: aaaa
+      Next_Dialogue: {fileID: 11400000, guid: 8006cd164ab95154c99185575c7ea670, type: 2}
+    - optionText: bbbbb
+      Next_Dialogue: {fileID: 11400000, guid: 42bce033610fd234bb5097f48ea2345a, type: 2}
+  - TalkerName: me
+    Content: "\u304A\u524D\u306F\u8AB0\u3060"
+    Options: []
+  - TalkerName: ???
+    Content: "\u50D5\u306F\u30CE\u30FC\u30DE\u30F3\u3060\u3088\u3002"
+    Options: []
+  - TalkerName: "\u30CE\u30FC\u30DE\u30F3"
+    Content: "\u50D5\u3068\u904A\u307C\u3046\u3088"
+    Options: []

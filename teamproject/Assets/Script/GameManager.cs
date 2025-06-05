@@ -10,6 +10,14 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public GameObject mainImage;
+    public enum PlayerState
+    {
+        normal,
+        talking,
+        choosing,
+        pausing,
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

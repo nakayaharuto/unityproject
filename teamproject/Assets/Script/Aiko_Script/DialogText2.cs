@@ -1,22 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
+
+
+
 
 [CreateAssetMenu(menuName ="Dialogue/new Dialogue Container")]
 public class DialogText2 : ScriptableObject
 {
-    public string speakerName;
+    //[SerializeField, Header("キャラ名"), TextArea]
+   // private DialogSentence[] speaker_name;
 
-    [SerializeField,Header("会話文"), TextArea(5, 10)]
-    private string[] paragraphs;
+    [SerializeField,Header("会話文")]
+    private DialogSentence[] paragraphs;
 
-    public string[] Paragraphs => paragraphs;
-    //選択肢の表示に使う
-    //public DialogueOption[] options;
+    public DialogSentence[] Paragraphs=>paragraphs;
+    //public DialogSentence[] SpeakerName => speaker_name;
+
+   
+   
 }
 
+[System.Serializable]
+public class DialogSentence
+{
+    [SerializeField, Header("キャラ名"), TextArea]
+    public string TalkerName;
+
+    [SerializeField, Header("会話文"), TextArea]
+    public string Content;
+
+    //選択肢の表示に使う
+    public DialogueOption[] Options;
+}
+
+[System.Serializable]
 public class DialogueOption
 {
     public string optionText;
 
+    //選択肢を選んだ場合に表示される会話テキスト
+    public DialogText2 Next_Dialogue;
 }
