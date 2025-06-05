@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Jobs;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -9,6 +10,9 @@ public class PlayerController : MonoBehaviour
     public float RanSpeed = 7.0f;
     public float Graviyty = -9.81f;
     public float JumpHeight = 2f;
+
+    public float interactRange = 2f;
+    public LayerMask itemLayer;
 
     private CharacterController controller;
     private Vector3 velocity;
@@ -53,6 +57,12 @@ public class PlayerController : MonoBehaviour
         //èdóÕ
         velocity.y += Graviyty * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+        //FÉLÅ[ì¸óÕ
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            InteractWithItem();
+        }
 
     }
 }
