@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour
     }
     void InteractWithItem()
     {
+        Debug.DrawRay(transform.position + Vector3.up, transform.forward * interactRange, Color.red, 1.0f);
         Ray ray = new Ray(transform.position + Vector3.up,transform.forward);
         RaycastHit hit;
 
