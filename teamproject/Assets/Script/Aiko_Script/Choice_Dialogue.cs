@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Choice_Dialogue : MonoBehaviour
 {
@@ -15,32 +16,34 @@ public class Choice_Dialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        
     }
 
     public void switchon()
-    {
-        
-        switch(swicth_num)
-        {
-            case 1:
-                next_dialogue = 0;
-                break;
-            case 2:
-                next_dialogue = 1;
-                break;
-            case 3:
-                next_dialogue = 2;
-                break;
-            case 4:
-                next_dialogue = 3;
-                break;
+    { 
+       
+       
+            switch (swicth_num)
+            {
+                case 1:
+                    next_dialogue = 0;
+                    break;
+                case 2:
+                    next_dialogue = 1;
+                    break;
+                case 3:
+                    next_dialogue = 2;
+                    break;
+                case 4:
+                    next_dialogue = 3;
+                    break;
 
-            default:
-                break;
-        }
-        
+                default:
+                    break;
+            }
+    
         Debug.Log("Switch On!!"+next_dialogue);
+        choice_flag = false;
     }
 
     private void OnMouseDown()
