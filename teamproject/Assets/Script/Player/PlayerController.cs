@@ -61,12 +61,14 @@ public class PlayerController : MonoBehaviour
         //FÉLÅ[ì¸óÕ
         if (Input.GetKeyDown(KeyCode.F))
         {
+            Debug.Log("êGÇÍÇƒÇÈ");
             InteractWithItem();
         }
 
     }
     void InteractWithItem()
     {
+        Debug.Log("Ç†ÇΩÇ¡ÇƒÇÈ");
         Debug.DrawRay(transform.position + Vector3.up, transform.forward * interactRange, Color.red, 1.0f);
         Ray ray = new Ray(transform.position + Vector3.up,transform.forward);
         RaycastHit hit;
@@ -77,6 +79,7 @@ public class PlayerController : MonoBehaviour
             if (pickup != null)
             {
                 pickup.OnClickObject();
+                Debug.Log("í Ç¡ÇƒÇÈ");
             }
         }
     }
