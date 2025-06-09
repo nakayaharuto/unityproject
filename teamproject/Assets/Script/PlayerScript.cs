@@ -16,6 +16,7 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        talk_checker = GetComponent<Talk_Checker>();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }

@@ -627,6 +627,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swicth_num: 1
   choice_flag: 0
+  Do:
+    TalkerName: 
+    Content: 
+    Options: []
+  scriptableObject: {fileID: 0}
+  player: {fileID: 1911438170}
 --- !u!1 &650120513
 GameObject:
   m_ObjectHideFlags: 0
@@ -995,6 +1001,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swicth_num: 4
   choice_flag: 0
+  Do:
+    TalkerName: 
+    Content: 
+    Options: []
+  scriptableObject: {fileID: 0}
+  player: {fileID: 1911438170}
 --- !u!1 &941862069
 GameObject:
   m_ObjectHideFlags: 0
@@ -1205,6 +1217,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swicth_num: 2
   choice_flag: 0
+  Do:
+    TalkerName: 
+    Content: 
+    Options: []
+  scriptableObject: {fileID: 0}
+  player: {fileID: 1911438170}
 --- !u!1 &1153037272
 GameObject:
   m_ObjectHideFlags: 0
@@ -1891,6 +1909,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swicth_num: 3
   choice_flag: 0
+  Do:
+    TalkerName: 
+    Content: 
+    Options: []
+  scriptableObject: {fileID: 0}
+  player: {fileID: 1911438170}
 --- !u!1 &1911438170 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2900922169208401918, guid: fca2b728dad72834c9538ab3d47e8ec6, type: 3}

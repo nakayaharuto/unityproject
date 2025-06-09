@@ -14,7 +14,8 @@ public class DialogueManager : MonoBehaviour
     public GameObject[] dialogue_option_box;
     public GameObject dialogue_option_panel;
     private Queue<DialogSentence> sentences;
-    private Queue<DialogueOption> Osentence2;
+    //private Queue<DialogueOption> Osentence2;
+    Choice_Dialogue choice_Dialogue;
 
     [SerializeField] private Text npc_text;
     [SerializeField] private Text character_name;
@@ -42,6 +43,8 @@ public class DialogueManager : MonoBehaviour
     {
         sentences = new Queue<DialogSentence>();
         //Osentence2 = new Queue<DialogueOption>();
+       
+        
     }
 
     // Update is called once per frame
@@ -73,10 +76,7 @@ public class DialogueManager : MonoBehaviour
             {
                 sentences.Enqueue(sentence);
             }
-            //foreach(string sentence2 in targetNPC.dialogue_text.SpeakerName)
-            //{
-            //    sentences2.Enqueue(sentence2);
-            //}
+            
 
             dialogue_panel.SetActive(true);
 
@@ -84,10 +84,7 @@ public class DialogueManager : MonoBehaviour
             DisplaySentence();
             istalkable = false;
         }
-        //else
-        //{
-        //    DisplaySentence();
-        //}
+        
 
 
 
@@ -131,6 +128,8 @@ public class DialogueManager : MonoBehaviour
     
     IEnumerator DisplayOption(DialogueOption[] options)
     {
+        int j =0;
+
         //DialogSentence sentence= sentences.Dequeue();
         // DialogueOption ooo = Osentence2.Dequeue();
         //GameManager.instance.ChangeState(GameManager.PlayerState.choosing);
@@ -150,8 +149,15 @@ public class DialogueManager : MonoBehaviour
 
             Debug.Log(dialogue_option_box[i] + "optionbox");
 
-            
 
+            j = i;
+        }
+        
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            sentences.Clear();
+
+            
         }
 
         if (Input.GetKeyDown(KeyCode.Return))
