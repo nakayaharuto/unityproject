@@ -1,7 +1,14 @@
 using System;
 using UnityEngine;
 
-[Serializable]//Inspector
+/// <summary>
+/// <see cref="ItemDatabaseEntity">ItemDatabaseEntityリンク</see>
+/// </summary>
+
+/// <summary>
+/// <see cref="ItemDatabase">ItemDatabaseリンクへ</see>
+/// </summary>
+[System.Serializable]//Inspector
 public class Item
 {
     public enum Type
@@ -13,12 +20,14 @@ public class Item
         Triangle,
 
     }
-
     //アイテムのタイプ
     public Type type;
 
     //画像
     public Sprite sprite;
+
+    //投げるようプレハブ
+    public GameObject throwprefab;
 
     //コンストラクタ
     public Item(Item item)

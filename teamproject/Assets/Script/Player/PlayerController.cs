@@ -5,14 +5,19 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //移動やらなんやら
+    //移動関係
     public float WalkSpeed = 3.0f;
     public float RanSpeed = 7.0f;
     public float Graviyty = -9.81f;
     public float JumpHeight = 2f;
 
     public float interactRange = 2f;
-    public LayerMask itemLayer;
+    [SerializeField] LayerMask itemLayer = default;
+
+    //投げる処理
+    public Transform throwOrigin;
+    public float throwForce = 10;
+    public Trajectory trajectoryDrawer;
 
     private CharacterController controller;
     private Vector3 velocity;
@@ -21,6 +26,7 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        itemLayer = LayerMask.GetMask("item");
         controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -45,9 +51,9 @@ public class PlayerController : MonoBehaviour
         //移動処理
         //controller.Move(move * WalkSpeed * Time.deltaTime);
 
+        //歩き
         float dash = Input.GetKey(KeyCode.LeftShift) ? RanSpeed : WalkSpeed;
-
-
+        //ダッシュ
         controller.Move(move *  dash * Time.deltaTime);
         //ジャンプ
         if (Input.GetButtonDown("Jump") && isGrounded)
@@ -61,26 +67,78 @@ public class PlayerController : MonoBehaviour
         //Fキー入力
         if (Input.GetKeyDown(KeyCode.F))
         {
-            Debug.Log("触れてる");
             InteractWithItem();
         }
 
+        //左クリック入力
+        if(Input.GetMouseButtonDown(0))
+        {
+            ThrowSelectedItem();
+        }
+
+        //軌道を常に表示
+        DrawTrajectoryPreview();
     }
+
+    //アイテム入手部分
     void InteractWithItem()
     {
-        Debug.Log("あたってる");
-        Debug.DrawRay(transform.position + Vector3.up, transform.forward * interactRange, Color.red, 1.0f);
-        Ray ray = new Ray(transform.position + Vector3.up,transform.forward);
+        Vector3 origin = Camera.main.transform.position;
+        Vector3 direction = Camera.main.transform.forward;
+
+        //Rayの角度の表示
+        Debug.DrawRay(origin , direction * interactRange, Color.red, 1.0f);
+
+        Ray ray = new Ray(origin,direction);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, interactRange, itemLayer))
         {
+            Debug.Log("ヒットしたオブジェクト: {hit.collider.gameObject.name}");
             PickupObject pickup = hit.collider.GetComponent<PickupObject>();
             if (pickup != null)
             {
                 pickup.OnClickObject();
-                Debug.Log("通ってる");
+                Debug.Log("アイテム取得");
             }
         }
+        else
+        {
+            Debug.Log("何も当たっていない");
+        }
     }
+
+    //軌道線
+    void DrawTrajectoryPreview()
+    {
+        Item item = ItemBox.instance.GetSelectedItem();
+        if (item == null || item.throwprefab == null)
+        {
+            trajectoryDrawer.ClearTrajectory();
+            return;
+        }
+
+        Vector3 velocity = Camera.main.transform.forward * throwForce;
+        trajectoryDrawer.DrawTrajectory(throwOrigin.position, velocity);
+    }
+
+    //アイテム投げる
+    void ThrowSelectedItem()
+    {
+        Item item = ItemBox.instance.GetSelectedItem();
+        if (item == null || item.throwprefab == null) return;
+
+        GameObject obj = Instantiate(item.throwprefab, throwOrigin.position, Quaternion.identity);
+        Rigidbody rb = obj.GetComponent<Rigidbody>();
+        if(rb != null)
+        {
+            rb.linearVelocity = Camera.main.transform.forward * throwForce;
+        }
+
+        //選択してるアイテムを使ったら削除
+        ItemBox.instance.UseSelectItem();
+        //軌道を消す
+        trajectoryDrawer.ClearTrajectory();
+    }
+
 }

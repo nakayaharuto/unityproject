@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// <see cref="Slot">Slotリンク</see>
+/// </summary>
 public class PickupObject : MonoBehaviour
 {
     //取得するアイテムの種類を設定

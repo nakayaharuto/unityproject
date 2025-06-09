@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// <see cref="ItemBox">ItemBoxリンク</see>
+/// </summary>
+
 public class ItemDatabase : MonoBehaviour
 {
     //アクセスし放題
