@@ -28,8 +28,10 @@ public class Choice_Dialogue : MonoBehaviour
        
     }
 
-    public void switchon()
+    public void switchon(DialogueOption[] options)
     {
+      
+
         talk_checker = player.GetComponent<Talk_Checker>();
 
         switch (swicth_num)
@@ -55,18 +57,19 @@ public class Choice_Dialogue : MonoBehaviour
         Debug.Log(talk_checker.talk_npc + "aaaaaaaa");
         choice_flag = false;
 
-        Do = talk_checker.talk_npc.GetComponent<DialogSentence>();
-       // scriptableObject = talk_checker.talk_npc.GetComponent<DialogText2>();
-        talk_checker.talk_npc.dialogue_text = Do.Options[next_dialogue].Next_Dialogue;
+        // Do = talk_checker.talk_npc.GetComponent<DialogSentence>();
+        // scriptableObject = talk_checker.talk_npc.GetComponent<DialogText2>();
+        //talk_checker.talk_npc.dialogue_text = options[next_dialogue].Next_Dialogue;
+        Debug.Log("c3po");
       // Do.Options[next_dialogue].Next_Dialogue = talk_checker.talk_npc.dialogue_text ;
 
 
         //scriptableObject = Do.Next_Dialogue;
 
-#if UNITY_EDITOR
-        EditorUtility.SetDirty(talk_checker.talk_npc.dialogue_text); // scriptableObjectÇÕèëÇ´ä∑Ç¶ÇΩScriptableObject
-        AssetDatabase.SaveAssets();
-#endif
+//#if UNITY_EDITOR
+//        EditorUtility.SetDirty(talk_checker.talk_npc.dialogue_text); // scriptableObjectÇÕèëÇ´ä∑Ç¶ÇΩScriptableObject
+//        AssetDatabase.SaveAssets();
+//#endif
     }
 
     private void OnMouseDown()

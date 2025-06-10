@@ -4,6 +4,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEditor.Rendering.PostProcessing;
 using UnityEditor.Rendering;
+using Unity.VisualScripting;
 
 
 public class DialogueManager : MonoBehaviour
@@ -14,9 +15,11 @@ public class DialogueManager : MonoBehaviour
     public GameObject[] dialogue_option_box;
     public GameObject dialogue_option_panel;
     private Queue<DialogSentence> sentences;
-    //private Queue<DialogueOption> Osentence2;
+    //private Queue<DialogueOption>[] Osentence2;
+    private Talk_Checker talk_checker;
+    private NPC npc;
+    private DialogSentence sentence1;
     Choice_Dialogue choice_Dialogue;
-
     [SerializeField] private Text npc_text;
     [SerializeField] private Text character_name;
     [SerializeField] private Text[] optin_text;
@@ -72,7 +75,7 @@ public class DialogueManager : MonoBehaviour
             
             
 
-            foreach (DialogSentence sentence in targetNPC.dialogue_text.Paragraphs)
+            foreach(DialogSentence sentence in targetNPC.dialogue_text.Paragraphs)
             {
                 sentences.Enqueue(sentence);
             }
@@ -113,6 +116,7 @@ public class DialogueManager : MonoBehaviour
         {
             StartCoroutine(DisplayOption(sentence.Options));
             //DisplayOption(sentence.Options);
+           
         }
         else
         {
@@ -141,9 +145,8 @@ public class DialogueManager : MonoBehaviour
 
             dialogue_option_box[i].SetActive(true);
             optin_text[i].text = options[i].optionText;
-
             
-
+          
             
             //SelectOptions select_options = dialogue_option_box[i].GetComponent<SelectOptions>();
 
@@ -157,13 +160,14 @@ public class DialogueManager : MonoBehaviour
         {
             sentences.Clear();
 
-            
+            //choice_Dialogue.switchon(options);
+            Debug.Log("ccccc");
         }
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
             dialogue_panel.SetActive(false);
-
+           
             yield return new WaitForSecondsRealtime(0.1f);
             dialogue_option_panel.SetActive(true);
             
@@ -180,6 +184,22 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("end");
         dialogue_panel.SetActive(false);
         istalkable = true;
+    }
+
+    public void ChoiceOption()
+    {
+        talk_checker = GameObject.Find("Player").GetComponent<Talk_Checker>();
+        //sentence1 = talk_checker.talk_npc.dialogue_text.GetComponent<DialogText2>().GetComponent<DialogSentence>();
+        //sentence1 = sentences.Dequeue().Options[0].Next_Dialogue;
+
+        //Debug.Log(sentence1.Options[0].optionText);
+        Debug.Log(sentence1);
+
+        talk_checker.talk_npc.dialogue_text = sentence1.Options[0].Next_Dialogue;
+        dialogue_option_panel.SetActive(false);
+        StartDialogue(talk_checker.talk_npc);
+        //npc.dialogue_text = null;
+        Debug.Log(talk_checker.talk_npc);
     }
 
 }
