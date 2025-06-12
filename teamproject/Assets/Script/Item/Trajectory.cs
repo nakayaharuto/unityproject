@@ -4,12 +4,13 @@ using System.Collections.Generic;
 public class Trajectory : MonoBehaviour
 {
     public LineRenderer lineRenderer;
-    public int resolution = 30;
+    private int resolution = 50;
     public float simulationTime = 2.0f;
-    public float timeStep = 0.1f;
+    public float timeStep = 0.05f;
     public LayerMask hitMask;
     public void DrawTrajectory(Vector3 startPos, Vector3 velocity)
     {
+        Debug.Log("軌道表示開始: 位置=" + startPos + " 速度=" + velocity);
         List<Vector3> points = new List<Vector3>();
         Vector3 currentPos = startPos;
         Vector3 currentVelocity = velocity;

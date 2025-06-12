@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //ˆÚ“®ŠÖŒW
+    //ç§»å‹•é–¢ä¿‚
     public float WalkSpeed = 3.0f;
     public float RanSpeed = 7.0f;
     public float Graviyty = -9.81f;
@@ -14,9 +14,9 @@ public class PlayerController : MonoBehaviour
     public float interactRange = 2f;
     [SerializeField] LayerMask itemLayer = default;
 
-    //“Š‚°‚éˆ—
+    //æŠ•ã’ã‚‹å‡¦ç†
     public Transform throwOrigin;
-    public float throwForce = 10;
+    public float throwForce = 10f;
     public Trajectory trajectoryDrawer;
 
     private CharacterController controller;
@@ -26,8 +26,8 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        itemLayer = LayerMask.GetMask("item");//itemƒŒƒCƒ„[‚ğ‚Æ‚é
-        //ƒ}ƒEƒXƒ|ƒCƒ“ƒ^‚ğ•\¦
+        itemLayer = LayerMask.GetMask("item");//itemãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’ã¨ã‚‹
+        //ãƒã‚¦ã‚¹ãƒã‚¤ãƒ³ã‚¿ã‚’è¡¨ç¤º
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         
@@ -35,16 +35,16 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        controller = GetComponent<CharacterController>();//ƒLƒƒƒ‰ƒNƒ^ƒRƒ“ƒgƒ[ƒ‰‚ğæ“¾
+        controller = GetComponent<CharacterController>();//ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã‚’å–å¾—
 
         if (SaveSystem.HasSaveData())
         {
-            controller.enabled = false; // ˆê“I‚É–³Œø‰»
-            //•Û‘¶‚µ‚½ˆÊ’u‚ğ•œŒ³
+            controller.enabled = false; // ä¸€æ™‚çš„ã«ç„¡åŠ¹åŒ–
+            //ä¿å­˜ã—ãŸä½ç½®ã‚’å¾©å…ƒ
             Vector3 savedPosition = SaveSystem.LoadPlayerPosition();
             transform.position = savedPosition;
             Debug.Log("Position restored to: " + savedPosition);
-            controller.enabled = true; // —LŒø‰»
+            controller.enabled = true; // æœ‰åŠ¹åŒ–
         }
 
     }
@@ -52,58 +52,69 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //’n–Ê”»’è
+        //åœ°é¢åˆ¤å®š
         isGrounded = controller.isGrounded;
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
 
-        //ˆÚ“®“ü—Í
+        //ç§»å‹•å…¥åŠ›
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        //ˆÚ“®ˆ—
+        //ç§»å‹•å‡¦ç†
         //controller.Move(move * WalkSpeed * Time.deltaTime);
 
-        //•à‚«
+        //æ­©ã
         float dash = Input.GetKey(KeyCode.LeftShift) ? RanSpeed : WalkSpeed;
-        //ƒ_ƒbƒVƒ…
+        //ãƒ€ãƒƒã‚·ãƒ¥
         controller.Move(move *  dash * Time.deltaTime);
-        //ƒWƒƒƒ“ƒv
+        //ã‚¸ãƒ£ãƒ³ãƒ—
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(JumpHeight * -2f * Graviyty);
         }
-        //d—Í
+        //é‡åŠ›
         velocity.y += Graviyty * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        //FƒL[“ü—Í
+        //Fã‚­ãƒ¼å…¥åŠ›
         if (Input.GetKeyDown(KeyCode.F))
         {
             InteractWithItem();
         }
 
-        //¶ƒNƒŠƒbƒN“ü—Í
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButton(0))
+        {
+            Item item = ItemBox.instance.GetSelectedItem();
+            if (item != null)
+            {
+                Vector3 start = throwOrigin.position;
+                Vector3 velocity = Camera.main.transform.forward * throwForce;
+                trajectoryDrawer.DrawTrajectory(start, velocity);
+            }
+        }
+
+        //å·¦ã‚¯ãƒªãƒƒã‚¯å…¥åŠ›
+        if(Input.GetMouseButtonUp(0))
         {
             ThrowSelectedItem();
         }
 
-        //‹O“¹‚ğí‚É•\¦
+        //è»Œé“ã‚’å¸¸ã«è¡¨ç¤º
         DrawTrajectoryPreview();
     }
 
-    //ƒAƒCƒeƒ€“üè•”•ª
+    //ã‚¢ã‚¤ãƒ†ãƒ å…¥æ‰‹éƒ¨åˆ†
     void InteractWithItem()
     {
         Vector3 origin = Camera.main.transform.position;
         Vector3 direction = Camera.main.transform.forward;
 
-        //Ray‚ÌŠp“x‚Ì•\¦
+        //Rayã®è§’åº¦ã®è¡¨ç¤º
         Debug.DrawRay(origin , direction * interactRange, Color.red, 1.0f);
 
         Ray ray = new Ray(origin,direction);
@@ -111,26 +122,26 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, interactRange, itemLayer))
         {
-            Debug.Log("ƒqƒbƒg‚µ‚½ƒIƒuƒWƒFƒNƒg: {hit.collider.gameObject.name}");
+            Debug.Log("ãƒ’ãƒƒãƒˆã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ: {hit.collider.gameObject.name}");
             PickupObject pickup = hit.collider.GetComponent<PickupObject>();
             if (pickup != null)
             {
                 pickup.OnClickObject();
-                Debug.Log("ƒAƒCƒeƒ€æ“¾");
+                Debug.Log("ã‚¢ã‚¤ãƒ†ãƒ å–å¾—");
             }
         }
         else
         {
-            Debug.Log("‰½‚à“–‚½‚Á‚Ä‚¢‚È‚¢");
+            Debug.Log("ä½•ã‚‚å½“ãŸã£ã¦ã„ãªã„");
         }
     }
 
-    //‹O“¹ü
+    //è»Œé“ç·š
     void DrawTrajectoryPreview()
     {
         Item item = ItemBox.instance.GetSelectedItem();
         if (item == null || item.throwprefab == null)
-        {
+        { 
             trajectoryDrawer.ClearTrajectory();
             return;
         }
@@ -139,7 +150,7 @@ public class PlayerController : MonoBehaviour
         trajectoryDrawer.DrawTrajectory(throwOrigin.position, velocity);
     }
 
-    //ƒAƒCƒeƒ€“Š‚°‚é
+    //ã‚¢ã‚¤ãƒ†ãƒ æŠ•ã’ã‚‹
     void ThrowSelectedItem()
     {
         Item item = ItemBox.instance.GetSelectedItem();
@@ -147,14 +158,20 @@ public class PlayerController : MonoBehaviour
 
         GameObject obj = Instantiate(item.throwprefab, throwOrigin.position, Quaternion.identity);
         Rigidbody rb = obj.GetComponent<Rigidbody>();
-        if(rb != null)
+        Debug.Log("HIT");
+        if (rb != null)
         {
-            rb.linearVelocity = Camera.main.transform.forward * throwForce;
+            Debug.Log("ãƒã‚¤");
+            rb.velocity = Camera.main.transform.forward * throwForce;
+        }
+        else
+        {
+            Debug.LogWarning("Rigidbody ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ï¼");
         }
 
-        //‘I‘ğ‚µ‚Ä‚éƒAƒCƒeƒ€‚ğg‚Á‚½‚çíœ
+        //é¸æŠã—ã¦ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ã‚’ä½¿ã£ãŸã‚‰å‰Šé™¤
         ItemBox.instance.UseSelectItem();
-        //‹O“¹‚ğÁ‚·
+        //è»Œé“ã‚’æ¶ˆã™
         trajectoryDrawer.ClearTrajectory();
     }
 

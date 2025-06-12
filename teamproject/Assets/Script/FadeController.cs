@@ -1,13 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 public class FadeController : MonoBehaviour
 {
-    public GameObject FadeImage;
-
+    public Image FadeImage;
     public float FadeDuration = 1.0f;
-    public float FadeTimer = 0.0f;
-    private bool IsFadeingIn = true;
-    private bool IsFadeingOut = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -15,13 +12,37 @@ public class FadeController : MonoBehaviour
         if(FadeImage == null)
         {
             Debug.Log("ê›íËÇ≥ÇÍÇƒÇ‹ÇπÇÒ");
-            return;
+            this.enabled = false;
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public IEnumerator FadeOut()
     {
-        
+        float timer = 0f;
+        Color color = FadeImage.color;
+        while(timer < FadeDuration)
+        {
+            timer += Time.deltaTime;
+            color.a = Mathf.Lerp(0f,1f, timer / FadeDuration);
+            FadeImage.color = color;
+            yield return null;
+        }
+        color.a = 1f;
+        FadeImage.color = color;
+    }
+
+    public IEnumerator FadeIn()
+    {
+        float timer = 0f;
+        Color color = FadeImage.color;
+        while (timer < FadeDuration)
+        {
+            timer += Time.deltaTime;
+            color.a = Mathf.Lerp(1f, 0f, timer / FadeDuration);
+            FadeImage.color = color;
+            yield return null;
+        }
+        color.a = 0f;
+        FadeImage.color = color;
     }
 }
