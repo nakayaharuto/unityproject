@@ -1,43 +1,40 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 
 public class SwitchScript : MonoBehaviour
 {
-    float bottomY = -0.1f;
-    float speed = 0.5f;
-    private Animator animator;
-
-    bool active;
-
+    public SwitchDoorScript SwitchDoorScript;
+    private bool isNear;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        animator = transform.parent.GetComponent<Animator>();
+        isNear = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (active && transform.position.y > bottomY)
+        if(isNear)
         {
-            transform.position -= Vector3.up * speed * Time.deltaTime;
-            animator.SetBool("open", !animator.GetBool("open"));
-            enabled = false;
+            SwitchDoorScript.isOpen = true;
+        }
+        else
+        {
+            SwitchDoorScript.isOpen = false;
+        }
+    }
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.tag == "Player"||col.tag=="box")
+        {
+            isNear = true;
+        }
+    }
+    void OnTriggerExit(Collider col)
+    {
+        if (col.tag == "Player"||col.tag=="box")
+        {
+            isNear = false;
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(!active&&other.CompareTag("box"))
-        {
-            active = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        active=false;
-    }
 }

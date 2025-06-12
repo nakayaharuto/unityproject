@@ -31,6 +31,7 @@ public class PasswordDoorScript : MonoBehaviour
         if(inputField.text=="1234")
         {
             animator.SetBool("open",!animator.GetBool("open"));
+            fieldObject.SetActive(false);
         }
     }
     void OnTriggerEnter(Collider col)
