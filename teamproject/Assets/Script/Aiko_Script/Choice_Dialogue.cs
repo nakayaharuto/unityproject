@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Choice_Dialogue : MonoBehaviour
 {
+    
     int next_dialogue = 0;
     public int swicth_num;
     public bool choice_flag=false;
@@ -18,10 +19,14 @@ public class Choice_Dialogue : MonoBehaviour
     void Start()
     {
         
-        
+
+
+    }
+    void OnButtonClick()
+    {
+        // ボタンがクリックされた時の処理
        
     }
-
     // Update is called once per frame
     void Update()
     {

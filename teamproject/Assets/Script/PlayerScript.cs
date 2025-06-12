@@ -21,6 +21,13 @@ public class PlayerScript : MonoBehaviour
         Cursor.visible = true;
     }
 
+   public enum playerstate
+    {
+        normal,
+        talk,
+        choose,
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -58,7 +65,7 @@ public class PlayerScript : MonoBehaviour
            
             if (talk_checker.talk_npc!=null)
             {                
-                DialogueManager.instance.StartDialogue(talk_checker.talk_npc);
+                DialogueManager.instance.StartDialogue(talk_checker.talk_npc.dialogue_text);
             }
             else
             {
@@ -66,6 +73,12 @@ public class PlayerScript : MonoBehaviour
             }
 
         }
+
+        //if(Time.timeScale==0.0f)
+        //{
+        //    choose();
+        //}
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -86,4 +99,39 @@ public class PlayerScript : MonoBehaviour
             rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
         }
     }
+
+    //private void choose()
+    //{
+    //    //Vector3 origin = new Vector3(0, 0, 0); // 原点
+    //    //Vector3 direction = new Vector3(1, 0, 0); // X軸方向を表すベクトル
+    //    //Ray ray = new Ray(origin, direction); // Rayを生成
+
+    //    if (Input.GetMouseButtonDown(0))
+    //    {
+
+    //        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+    //        RaycastHit hit ;
+
+    //        if (Physics.Raycast(ray, out hit))
+    //        {
+
+
+
+    //            if (hit.collider != null && hit.collider.gameObject.CompareTag("Finish"))
+    //            {
+    //                DialogueOption myoption = hit.collider.gameObject.GetComponent<DialogueOption>();
+
+    //                DialogueManager.instance.StartDialogue(myoption.Next_Dialogue);
+
+    //                Debug.Log("asdf");
+    //            }
+    //            else
+    //            {
+    //                Debug.Log("null");
+    //            }
+    //        }
+    //    }
+    //}
+
 }

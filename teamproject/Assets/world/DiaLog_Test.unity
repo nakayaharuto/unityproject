@@ -489,9 +489,11 @@ GameObject:
   - component: {fileID: 554881040}
   - component: {fileID: 554881042}
   - component: {fileID: 554881043}
+  - component: {fileID: 554881044}
+  - component: {fileID: 554881045}
   m_Layer: 5
   m_Name: dialogue_option1
-  m_TagString: Untagged
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -633,6 +635,68 @@ MonoBehaviour:
     Options: []
   scriptableObject: {fileID: 0}
   player: {fileID: 1911438170}
+--- !u!61 &554881044
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554881038}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1000, y: 120}
+  m_EdgeRadius: 0
+--- !u!114 &554881045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554881038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66bd8c5e9d23b6b4883c9708426b2651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueOption:
+    optionText: 
+    Next_Dialogue: {fileID: 0}
+  optionText: {fileID: 554881040}
 --- !u!1 &650120513
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,6 +927,7 @@ GameObject:
   - component: {fileID: 842463577}
   - component: {fileID: 842463579}
   - component: {fileID: 842463580}
+  - component: {fileID: 842463581}
   m_Layer: 5
   m_Name: dialogue_option4
   m_TagString: Untagged
@@ -974,19 +1039,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 842463577}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 941862070}
-        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-        m_MethodName: ChoiceOption
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &842463580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1007,6 +1060,22 @@ MonoBehaviour:
     Options: []
   scriptableObject: {fileID: 0}
   player: {fileID: 1911438170}
+--- !u!114 &842463581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842463575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66bd8c5e9d23b6b4883c9708426b2651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueOption:
+    optionText: 
+    Next_Dialogue: {fileID: 11400000, guid: 02661f30087f71c48b6756cb1beaeebc, type: 2}
+  optionText: {fileID: 842463577}
 --- !u!1 &941862069
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,9 +1148,11 @@ GameObject:
   - component: {fileID: 1113552419}
   - component: {fileID: 1113552421}
   - component: {fileID: 1113552422}
+  - component: {fileID: 1113552423}
+  - component: {fileID: 1113552424}
   m_Layer: 5
   m_Name: dialogue_option2
-  m_TagString: Untagged
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1223,6 +1294,43 @@ MonoBehaviour:
     Options: []
   scriptableObject: {fileID: 0}
   player: {fileID: 1911438170}
+--- !u!65 &1113552423
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113552417}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1000, y: 120, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1113552424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113552417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66bd8c5e9d23b6b4883c9708426b2651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueOption:
+    optionText: 
+    Next_Dialogue: {fileID: 11400000, guid: 42bce033610fd234bb5097f48ea2345a, type: 2}
+  optionText: {fileID: 1113552419}
 --- !u!1 &1153037272
 GameObject:
   m_ObjectHideFlags: 0
@@ -1354,6 +1462,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c772adfad5378e478d7bea24801afaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1649513171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203662277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56666c5a40171f54783dd416a44f42bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 0
 --- !u!1 &1818305498
 GameObject:
   m_ObjectHideFlags: 0
@@ -1700,6 +1824,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 826646526088624040, guid: fca2b728dad72834c9538ab3d47e8ec6, type: 3}
+      propertyPath: m_TagString
+      value: MainCamera
+      objectReference: {fileID: 0}
     - target: {fileID: 2900922169208401918, guid: fca2b728dad72834c9538ab3d47e8ec6, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1757,6 +1885,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 826646526088624040, guid: fca2b728dad72834c9538ab3d47e8ec6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1649513166}
+    - targetCorrespondingSourceObject: {fileID: 826646526088624040, guid: fca2b728dad72834c9538ab3d47e8ec6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1649513171}
   m_SourcePrefab: {fileID: 100100000, guid: fca2b728dad72834c9538ab3d47e8ec6, type: 3}
 --- !u!1 &1908053641
 GameObject:
@@ -1771,6 +1902,7 @@ GameObject:
   - component: {fileID: 1908053643}
   - component: {fileID: 1908053645}
   - component: {fileID: 1908053646}
+  - component: {fileID: 1908053647}
   m_Layer: 5
   m_Name: dialogue_option3
   m_TagString: Untagged
@@ -1915,6 +2047,22 @@ MonoBehaviour:
     Options: []
   scriptableObject: {fileID: 0}
   player: {fileID: 1911438170}
+--- !u!114 &1908053647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908053641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66bd8c5e9d23b6b4883c9708426b2651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueOption:
+    optionText: 
+    Next_Dialogue: {fileID: 11400000, guid: 8006cd164ab95154c99185575c7ea670, type: 2}
+  optionText: {fileID: 1908053643}
 --- !u!1 &1911438170 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2900922169208401918, guid: fca2b728dad72834c9538ab3d47e8ec6, type: 3}
