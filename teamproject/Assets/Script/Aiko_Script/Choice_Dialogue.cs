@@ -33,57 +33,68 @@ public class Choice_Dialogue : MonoBehaviour
        
     }
 
-    public void switchon(DialogueOption[] options)
+     void OnMouseEnter()
     {
+        this.GetComponent<Text>().color =  Color.red;
+        Debug.Log(this.name);
+    }
+     void OnMouseExit()
+    {
+        this.GetComponent<Text>().color = new Color(0,0,0);
+        Debug.Log("b");
+    }
+
+//    public void switchon(DialogueOption[] options)
+//    {
       
 
-        talk_checker = player.GetComponent<Talk_Checker>();
+//        talk_checker = player.GetComponent<Talk_Checker>();
 
-        switch (swicth_num)
-            {
-                case 1:
-                    next_dialogue = 0;
-                    break;
-                case 2:
-                    next_dialogue = 1;
-                    break;
-                case 3:
-                    next_dialogue = 2;
-                    break;
-                case 4:
-                    next_dialogue = 3;
-                    break;
+//        switch (swicth_num)
+//            {
+//                case 1:
+//                    next_dialogue = 0;
+//                    break;
+//                case 2:
+//                    next_dialogue = 1;
+//                    break;
+//                case 3:
+//                    next_dialogue = 2;
+//                    break;
+//                case 4:
+//                    next_dialogue = 3;
+//                    break;
 
-                default:
-                    break;
-            }
+//                default:
+//                    break;
+//            }
     
-        Debug.Log("Switch On!!"+next_dialogue);
-        Debug.Log(talk_checker.talk_npc + "aaaaaaaa");
-        choice_flag = false;
+//        Debug.Log("Switch On!!"+next_dialogue);
+//        Debug.Log(talk_checker.talk_npc + "aaaaaaaa");
+//        choice_flag = false;
 
-        // Do = talk_checker.talk_npc.GetComponent<DialogSentence>();
-        // scriptableObject = talk_checker.talk_npc.GetComponent<DialogText2>();
-        //talk_checker.talk_npc.dialogue_text = options[next_dialogue].Next_Dialogue;
-        Debug.Log("c3po");
-      // Do.Options[next_dialogue].Next_Dialogue = talk_checker.talk_npc.dialogue_text ;
+//        // Do = talk_checker.talk_npc.GetComponent<DialogSentence>();
+//        // scriptableObject = talk_checker.talk_npc.GetComponent<DialogText2>();
+//        //talk_checker.talk_npc.dialogue_text = options[next_dialogue].Next_Dialogue;
+//        Debug.Log("c3po");
+//      // Do.Options[next_dialogue].Next_Dialogue = talk_checker.talk_npc.dialogue_text ;
 
 
-        //scriptableObject = Do.Next_Dialogue;
+//        //scriptableObject = Do.Next_Dialogue;
 
-//#if UNITY_EDITOR
-//        EditorUtility.SetDirty(talk_checker.talk_npc.dialogue_text); // scriptableObjectÇÕèëÇ´ä∑Ç¶ÇΩScriptableObject
-//        AssetDatabase.SaveAssets();
-//#endif
-    }
+////#if UNITY_EDITOR
+////        EditorUtility.SetDirty(talk_checker.talk_npc.dialogue_text); // scriptableObjectÇÕèëÇ´ä∑Ç¶ÇΩScriptableObject
+////        AssetDatabase.SaveAssets();
+////#endif
+//    }
 
-    private void OnMouseDown()
-    {
-        choice_flag = true;
-    }
+//    private void OnMouseDown()
+//    {
+//        choice_flag = true;
+//    }
 
-    private void OnMouseUp()
-    {
-        choice_flag = false;
-    }
+//    private void OnMouseUp()
+//    {
+//        choice_flag = false;
+//    }
 }

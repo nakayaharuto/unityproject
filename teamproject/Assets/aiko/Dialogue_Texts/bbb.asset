@@ -15,9 +15,7 @@ MonoBehaviour:
   paragraphs:
   - TalkerName: bbb
     Content: bbb
-    Options:
-    - optionText: aaaaaaaaaa
-      Next_Dialogue: {fileID: 11400000, guid: 8006cd164ab95154c99185575c7ea670, type: 2}
+    Options: []
   - TalkerName: bbb
     Content: bbb
     Options:

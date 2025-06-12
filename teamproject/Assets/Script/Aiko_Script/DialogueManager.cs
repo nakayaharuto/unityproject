@@ -18,10 +18,11 @@ public class DialogueManager : MonoBehaviour
     public GameObject dialogue_option_panel;
     private Queue<DialogSentence> sentences;
     //private Queue<DialogueOption>[] Osentence2;
-    private Talk_Checker talk_checker;
+    private Talk_Checker talk_checker ;
     private NPC npc;
     private DialogSentence sentence1;
     private DialogueOption[] op1;
+    private DialogText2 dialogText2;
     Choice_Dialogue choice_Dialogue;
     [SerializeField] private Text npc_text;
     [SerializeField] private Text character_name;
@@ -206,11 +207,13 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
+        talk_checker = GameObject.Find("Player").GetComponent<Talk_Checker>();
         //GameManager.instance.is_playable = true;
         Time.timeScale = 1.0f;
         Debug.Log("end");
         dialogue_panel.SetActive(false);
         dialogue_option_panel.SetActive(false);
+        //talk_checker.talk_npc.dialogue_text=dialogText2.EndText;
         istalkable = true;
     }
 

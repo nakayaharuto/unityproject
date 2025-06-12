@@ -16,9 +16,10 @@ using UnityEngine;
         private DialogSentence[] paragraphs;
 
         public DialogSentence[] Paragraphs => paragraphs;
-        //public DialogSentence[] SpeakerName => speaker_name;
+    //public DialogSentence[] SpeakerName => speaker_name;
 
 
+    public DialogText2 EndText;
 
     }
 
@@ -33,6 +34,9 @@ using UnityEngine;
 
         //選択肢の表示に使う
         public DialogueOption[] Options;
+
+        
+
     }
 
 
@@ -44,3 +48,9 @@ using UnityEngine;
         //選択肢を選んだ場合に表示される会話テキスト
         public DialogText2 Next_Dialogue;
     }
+
+//[System.Serializable]
+//public class EndDialogue
+//{
+//    public DialogText2 EndText;
+//}

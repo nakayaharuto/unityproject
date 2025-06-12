@@ -10,10 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6517f3e03e708b4da9f91f94f9dd0a8, type: 3}
-  m_Name: aaa
+  m_Name: second encount
   m_EditorClassIdentifier: 
   paragraphs:
-  - TalkerName: aa
-    Content: aaa
+  - TalkerName: noman
+    Content: "\u4F55\u3057\u306B\u6765\u305F\u306E\uFF1F"
     Options: []
-  EndText: {fileID: 11400000, guid: 57534b81349554341a8ac359c6fb042b, type: 2}
+  - TalkerName: noman
+    Content: "\u4F55\u3057\u306B\u6765\u305F\u306E\uFF1F"
+    Options:
+    - optionText: "\u904A\u3073\u306B\u304D\u305F\u3002"
+      Next_Dialogue: {fileID: 11400000, guid: 42bce033610fd234bb5097f48ea2345a, type: 2}
