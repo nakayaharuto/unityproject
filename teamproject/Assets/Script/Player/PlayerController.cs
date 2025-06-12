@@ -26,10 +26,27 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        itemLayer = LayerMask.GetMask("item");
-        controller = GetComponent<CharacterController>();
+        itemLayer = LayerMask.GetMask("item");//itemレイヤーをとる
+        //マウスポインタを表示
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        
+    }
+
+    void Awake()
+    {
+        controller = GetComponent<CharacterController>();//キャラクタコントローラを取得
+
+        if (SaveSystem.HasSaveData())
+        {
+            controller.enabled = false; // 一時的に無効化
+            //保存した位置を復元
+            Vector3 savedPosition = SaveSystem.LoadPlayerPosition();
+            transform.position = savedPosition;
+            Debug.Log("Position restored to: " + savedPosition);
+            controller.enabled = true; // 有効化
+        }
+
     }
 
     // Update is called once per frame
