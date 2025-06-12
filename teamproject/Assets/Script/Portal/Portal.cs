@@ -13,7 +13,6 @@ public class Portal : MonoBehaviour
                 
                 //ワープの瞬間コントローラー無効化
                 controller.enabled = false;
-                Debug.Log("...");
                 other.transform.position = LevelPotal.position + LevelPotal.forward * 2.0f;
                 controller.enabled = true;
             }
