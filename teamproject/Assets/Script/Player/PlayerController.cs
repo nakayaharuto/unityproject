@@ -162,7 +162,7 @@ public class PlayerController : MonoBehaviour
         if (rb != null)
         {
             Debug.Log("ポイ");
-            rb.velocity = Camera.main.transform.forward * throwForce;
+            rb.linearVelocity = Camera.main.transform.forward * throwForce;
         }
         else
         {
