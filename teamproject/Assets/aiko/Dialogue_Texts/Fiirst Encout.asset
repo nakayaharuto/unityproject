@@ -40,3 +40,5 @@ MonoBehaviour:
   - TalkerName: "\u30CE\u30FC\u30DE\u30F3"
     Content: "\u50D5\u3068\u904A\u307C\u3046\u3088"
     Options: []
+  endText:
+    End_Text: {fileID: 11400000, guid: 42bce033610fd234bb5097f48ea2345a, type: 2}

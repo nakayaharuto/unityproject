@@ -23,10 +23,14 @@ public class DialogueManager : MonoBehaviour
     private DialogSentence sentence1;
     private DialogueOption[] op1;
     private DialogText2 dialogText2;
-    Choice_Dialogue choice_Dialogue;
+    Choice_Dialogue choiceDialogue;
+    private DialogueOptionBox option_Box;
     [SerializeField] private Text npc_text;
     [SerializeField] private Text character_name;
     [SerializeField] private Text[] optin_text;
+    //[SerializeField] public EndText endText;
+
+   // [SerializeField] public DialogText2 text2;
     //private bool talk_flag = false;
     //private int index=0;
     //[SerializeField] private DialogText2 dialogText;
@@ -80,10 +84,11 @@ public class DialogueManager : MonoBehaviour
             
 
             sentences.Clear();
-            
+
             
 
-            foreach(DialogSentence sentence in dialogue_data.Paragraphs)
+
+                foreach (DialogSentence sentence in dialogue_data.Paragraphs)
             {
                 sentences.Enqueue(sentence);
             }
@@ -104,8 +109,10 @@ public class DialogueManager : MonoBehaviour
     public void DisplaySentence()
     {
 
-        if (sentences.Count == 0)
+        if (sentences.Count <= 0)
         {
+            TestDia(talk_checker.talk_npc.dialogue_text);
+           
             EndDialogue();
             return;
         }
@@ -213,8 +220,24 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("end");
         dialogue_panel.SetActive(false);
         dialogue_option_panel.SetActive(false);
-        //talk_checker.talk_npc.dialogue_text=dialogText2.EndText;
+        //talk_checker.talk_npc.dialogue_text=dialogText2.endText.End_Text;
         istalkable = true;
+    }
+
+    public void LoopText(EndText end)
+    {
+        talk_checker = GameObject.Find("Player").GetComponent<Talk_Checker>();
+        Debug.Log("qqqq");
+        talk_checker.talk_npc.dialogue_text = end.End_Text;
+
+    }
+
+    public void TestDia(DialogText2 text2)
+    {
+        Debug.Log("eee");
+        EndText end= text2.Endtext;
+
+        LoopText(end);
     }
 
     //public void ChoiceOption(DialogueOption[] options)
@@ -223,14 +246,14 @@ public class DialogueManager : MonoBehaviour
     //    //sentence1 = talk_checker.talk_npc.dialogue_text.GetComponent<DialogText2>().GetComponent<DialogSentence>();
     //    //sentence1 = sentences.Dequeue().Options[0].Next_Dialogue;
 
-        
+
 
 
     //    //Debug.Log(sentence1.Options[0].optionText);
     //    Debug.Log(sentence1);
-       
+
     //    talk_checker.talk_npc.dialogue_text = options[0].Next_Dialogue;
-        
+
 
     //    dialogue_option_panel.SetActive(false);
     //    //StartDialogue(talk_checker.talk_npc);
@@ -238,6 +261,6 @@ public class DialogueManager : MonoBehaviour
     //    Debug.Log(talk_checker.talk_npc);
     //}
 
-   // public Button myButton;
+    // public Button myButton;
 
 }

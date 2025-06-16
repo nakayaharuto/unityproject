@@ -16,4 +16,5 @@ MonoBehaviour:
   - TalkerName: aa
     Content: aaa
     Options: []
-  EndText: {fileID: 11400000, guid: 57534b81349554341a8ac359c6fb042b, type: 2}
+  endtext:
+    End_Text: {fileID: 11400000, guid: 57534b81349554341a8ac359c6fb042b, type: 2}

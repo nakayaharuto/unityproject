@@ -18,8 +18,11 @@ using UnityEngine;
         public DialogSentence[] Paragraphs => paragraphs;
     //public DialogSentence[] SpeakerName => speaker_name;
 
+    //public DialogText2 end_text;
 
-    public DialogText2 EndText;
+    [SerializeField] private EndText endtext;
+
+    public EndText Endtext=>endtext;
 
     }
 
@@ -48,6 +51,12 @@ using UnityEngine;
         //選択肢を選んだ場合に表示される会話テキスト
         public DialogText2 Next_Dialogue;
     }
+
+[System.Serializable]
+public class EndText
+{
+    public DialogText2 End_Text;
+}
 
 //[System.Serializable]
 //public class EndDialogue

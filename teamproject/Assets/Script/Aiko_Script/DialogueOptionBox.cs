@@ -13,6 +13,8 @@ public class DialogueOptionBox : MonoBehaviour,IPointerClickHandler
     [SerializeField]
     public Text optionText;
 
+    
+
     public void OnPointerClick(PointerEventData eventData)
     {
         talk_checker = GameObject.Find("Player").GetComponent<Talk_Checker>();
@@ -22,6 +24,9 @@ public class DialogueOptionBox : MonoBehaviour,IPointerClickHandler
         Debug.Log("bisyagatuku");
 
     }
+
+    
+
 
     public void UpdateUI()
     {

@@ -10,16 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6517f3e03e708b4da9f91f94f9dd0a8, type: 3}
-  m_Name: bbb
+  m_Name: nnnn
   m_EditorClassIdentifier: 
   paragraphs:
-  - TalkerName: bbb
-    Content: bbb
+  - TalkerName: noman
+    Content: "\u305D\u3063\u304B\u3001\u304C\u3093\u3070\u3063\u3066\u306D\u3002"
     Options: []
-  - TalkerName: bbb
-    Content: bbb
-    Options:
-    - optionText: aaaaaaaaaa
-      Next_Dialogue: {fileID: 11400000, guid: 8006cd164ab95154c99185575c7ea670, type: 2}
   endtext:
-    End_Text: {fileID: 11400000, guid: 8006cd164ab95154c99185575c7ea670, type: 2}
+    End_Text: {fileID: 11400000, guid: 02661f30087f71c48b6756cb1beaeebc, type: 2}

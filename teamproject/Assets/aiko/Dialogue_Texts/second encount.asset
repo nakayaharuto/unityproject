@@ -21,3 +21,12 @@ MonoBehaviour:
     Options:
     - optionText: "\u904A\u3073\u306B\u304D\u305F\u3002"
       Next_Dialogue: {fileID: 11400000, guid: 42bce033610fd234bb5097f48ea2345a, type: 2}
+    - optionText: "\u4FFA\u306E\u52DD\u624B\u3060\u3002"
+      Next_Dialogue: {fileID: 11400000, guid: b6a52f6d022e70943a362db56e2d024b, type: 2}
+  - TalkerName: noman
+    Content: "\u305D\u3063\u304B\u3001\u304C\u3093\u3070\u3063\u3066\u306D\u3002"
+    Options:
+    - optionText: "\u904A\u3073\u306B\u304D\u305F\u3002"
+      Next_Dialogue: {fileID: 11400000, guid: 42bce033610fd234bb5097f48ea2345a, type: 2}
+  endtext:
+    End_Text: {fileID: 11400000, guid: 02661f30087f71c48b6756cb1beaeebc, type: 2}
