@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Jobs;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -15,9 +16,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask itemLayer = default;
 
     //投げる処理
-    public Transform throwOrigin;
+    public Transform throwOrigin;//軌道
     public float throwForce = 10f;
     public Trajectory trajectoryDrawer;
+
+    public Transform HandHoldPoint;
+    private GameObject heldItem;
+    private Item currentDisplayedItem = null;
 
     private CharacterController controller;
     private Vector3 velocity;
@@ -81,32 +86,53 @@ public class PlayerController : MonoBehaviour
         velocity.y += Graviyty * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
+        UpdateHeldItemDisplay();
+
         //Fキー入力
         if (Input.GetKeyDown(KeyCode.F))
         {
             InteractWithItem();
         }
 
-        if(Input.GetMouseButton(0))
+        if(Input.GetMouseButtonDown(0))
         {
-            Item item = ItemBox.instance.GetSelectedItem();
-            if (item != null)
-            {
-                Vector3 start = throwOrigin.position;
-                Vector3 velocity = Camera.main.transform.forward * throwForce;
-                trajectoryDrawer.DrawTrajectory(start, velocity);
-            }
+            ThrowHeldItem();
         }
 
-        //左クリック入力
-        if(Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonDown(1)) // 右クリック
         {
-            ThrowSelectedItem();
+            PlaceHeldItem();
         }
 
         //軌道を常に表示
         DrawTrajectoryPreview();
     }
+
+    //表示
+    void UpdateHeldItemDisplay()
+    {
+        Item selectedItem = ItemBox.instance.GetSelectedItem();
+        if(selectedItem != currentDisplayedItem)
+        {
+            currentDisplayedItem = selectedItem;
+
+            //古いobj削除
+            if (heldItem != null)
+            {
+                Destroy(heldItem);
+            }
+
+            //新しいItemあるなら表示
+            if (selectedItem != null && selectedItem.throwprefab != null)
+            {
+                heldItem = Instantiate(selectedItem.throwprefab, HandHoldPoint.position,HandHoldPoint.rotation,HandHoldPoint);
+                Rigidbody rb = heldItem.GetComponent<Rigidbody>();
+                if(rb != null)
+                    rb.isKinematic = true;
+            }
+        }
+    }
+
 
     //アイテム入手部分
     void InteractWithItem()
@@ -115,7 +141,7 @@ public class PlayerController : MonoBehaviour
         Vector3 direction = Camera.main.transform.forward;
 
         //Rayの角度の表示
-        Debug.DrawRay(origin , direction * interactRange, Color.red, 1.0f);
+        Debug.DrawRay(origin , direction * interactRange, Color.red, 2.0f);
 
         Ray ray = new Ray(origin,direction);
         RaycastHit hit;
@@ -130,10 +156,56 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("アイテム取得");
             }
         }
+        else if(Physics.Raycast(ray, out hit, interactRange, itemLayer))
+        {
+            Debug.Log("ヒットしたオブジェクト: {hit.collider.gameObject.name}");
+            SetObjj setobj = hit.collider.GetComponent<SetObjj>();
+            if (setobj != null)
+            {
+                setobj.OnClickThis();
+                Debug.Log("アイテム設置");
+            }
+        }
         else
         {
             Debug.Log("何も当たっていない");
         }
+    }
+
+    //投げる
+    void ThrowHeldItem()
+    {
+        if (heldItem == null || currentDisplayedItem == null) return;
+
+        GameObject thrown = Instantiate(currentDisplayedItem.throwprefab,throwOrigin.position,throwOrigin.rotation);
+        Rigidbody rb = thrown.GetComponent<Rigidbody>();
+        if(rb != null)
+        {
+            rb.linearVelocity = Camera.main.transform.forward * throwForce;
+        }
+        //スロットから削除
+        ItemBox.instance.UseSelectItem();
+        currentDisplayedItem = null;
+        Destroy(heldItem);
+        heldItem = null;
+
+        UpdateHeldItemDisplay();
+    }
+
+    //置く
+    void PlaceHeldItem()
+    {
+        if (heldItem == null || currentDisplayedItem == null) return;
+
+        Instantiate(currentDisplayedItem.throwprefab, HandHoldPoint.position, HandHoldPoint.rotation);
+
+        // スロットから削除＆表示更新
+        ItemBox.instance.UseSelectItem();
+        currentDisplayedItem = null;
+        Destroy(heldItem);
+        heldItem = null;
+
+        UpdateHeldItemDisplay();
     }
 
     //軌道線
@@ -148,31 +220,6 @@ public class PlayerController : MonoBehaviour
 
         Vector3 velocity = Camera.main.transform.forward * throwForce;
         trajectoryDrawer.DrawTrajectory(throwOrigin.position, velocity);
-    }
-
-    //アイテム投げる
-    void ThrowSelectedItem()
-    {
-        Item item = ItemBox.instance.GetSelectedItem();
-        if (item == null || item.throwprefab == null) return;
-
-        GameObject obj = Instantiate(item.throwprefab, throwOrigin.position, Quaternion.identity);
-        Rigidbody rb = obj.GetComponent<Rigidbody>();
-        Debug.Log("HIT");
-        if (rb != null)
-        {
-            Debug.Log("ポイ");
-            rb.linearVelocity = Camera.main.transform.forward * throwForce;
-        }
-        else
-        {
-            Debug.LogWarning("Rigidbody が見つかりません！");
-        }
-
-        //選択してるアイテムを使ったら削除
-        ItemBox.instance.UseSelectItem();
-        //軌道を消す
-        trajectoryDrawer.ClearTrajectory();
     }
 
 }

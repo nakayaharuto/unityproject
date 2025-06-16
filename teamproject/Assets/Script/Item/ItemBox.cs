@@ -49,6 +49,17 @@ public class ItemBox : MonoBehaviour
         selectSlot = slots[position]; // 選択状態として保存
     }
 
+    public bool TryuseItem(Item.Type useItem)
+    {
+        Item selecteditem = GetSelectedItem();
+
+        if(selecteditem == null && selecteditem.type == useItem)
+        {
+            UseSelectItem();
+            return true;
+        }
+        return false;
+    }
 
     void SelectPreviousSlot()
     {
@@ -115,6 +126,7 @@ public class ItemBox : MonoBehaviour
         {
             selectSlot.RemoveItem();//スロットから削除
             selectSlot = null;//選択状態も解除
+
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 /// <summary>
 /// <see cref="ItemDatabaseEntity">ItemDatabaseEntityリンク</see>
@@ -26,7 +27,7 @@ public class Item
     //画像
     public Sprite sprite;
 
-    //投げるようプレハブ
+    //投げるプレハブ
     public GameObject throwprefab;
 
     //コンストラクタ
@@ -34,5 +35,6 @@ public class Item
     {
         this.type = item.type;
         this.sprite = item.sprite;
+        this.throwprefab = item.throwprefab;
     }
 }

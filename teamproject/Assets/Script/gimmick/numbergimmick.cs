@@ -4,14 +4,9 @@ using UnityEngine;
 using TMPro;
 public class numbergimmick : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI VerText;
+    [SerializeField] private TextMeshProUGUI VerText;
     private int NowNumber = 0;
-    
-
-    public void OnPressed()
-    {
-        Debug.Log("osaremasita ");
-    }
+    public int CurrentNumber => NowNumber;//ŠO‚©‚çŽæ“¾
 
     private void OnMouseDown()
     {
@@ -20,11 +15,10 @@ public class numbergimmick : MonoBehaviour
         {
             NowNumber = 0;
         }
-        string Number = NowNumber.ToString();
+        //string Number = NowNumber.ToString();
         if (VerText != null)
         {
-            VerText.text = Number;
+            VerText.text = NowNumber.ToString();
         }
-        OnPressed();
     }
 }
