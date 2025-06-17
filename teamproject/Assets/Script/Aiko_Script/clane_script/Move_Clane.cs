@@ -13,7 +13,7 @@ public class Move_Clane : MonoBehaviour
     void Update()
     {
         float posY = StartPos.y + Mathf.Sin(Time.time) * 4;
-        transform.position = new Vector3(transform.position.x, posY, transform.position.z);
+        //transform.position = new Vector3(transform.position.x, posY, transform.position.z);
     }
 
     private void OnTriggerEnter(Collider other)
