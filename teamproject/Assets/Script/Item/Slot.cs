@@ -22,6 +22,7 @@ public class Slot : MonoBehaviour
     {
         this.item = item;
         image.sprite = item.sprite;//アイテムの画像をセット
+        image.enabled = true;//画像を再度表示
     }
 
     //アイテムをスロットから削除
@@ -53,5 +54,4 @@ public class Slot : MonoBehaviour
     {
         backPanel.SetActive(false);
     }
-
 }
