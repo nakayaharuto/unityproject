@@ -60,7 +60,7 @@ public class ItemBox : MonoBehaviour
         }
         return false;
     }
-
+    //スロットの枠をスクロールで選択する
     void SelectPreviousSlot()
     {
         if (slots.Length == 0) return;
@@ -80,6 +80,7 @@ public class ItemBox : MonoBehaviour
         } while (attempts < slots.Length);
     }
 
+    //スロットの枠をスクロールで選択する
     void SelectNextSlot()
     {
         if (slots.Length == 0) return;
@@ -100,7 +101,7 @@ public class ItemBox : MonoBehaviour
         }while (attempts < slots.Length);
     }
     //アイテムを受け取る処理
-    public void SetItem(Item item)
+    public bool SetItem(Item item)
     {
         for (int i = 0; i < slots.Length; i++)
         {
@@ -110,9 +111,10 @@ public class ItemBox : MonoBehaviour
                 slot.Set(item);
 
                 if (SelectIndex == -1) SelectIndex = i;//初回に選択インデックスを決める
-                break;
+                return true;
             }
         }
+        return false;
     }
 
     public Item GetSelectedItem()

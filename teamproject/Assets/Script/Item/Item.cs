@@ -16,10 +16,23 @@ public class Item
     {
         //アイテムを追加していく場合はここ
         kyecade_red,
-        Cube,
-        Sphere,
-        Triangle,
-
+        kyecade_yellow,
+        kyecade_bule,
+        white_Cube,
+        white_Traiangl,
+        white_Sphere,
+        red_Cube,
+        red_Sphere,
+        red_Triangle,
+        green_Triangle,
+        green_Sphere,
+        green_Cube,
+        blue_Cube,
+        blue_Sphere,
+        blue_Traiangl,
+        yellor_cube,
+        yellor_Sphere,
+        yellor_Traiangl,
     }
     //アイテムのタイプ
     public Type type;

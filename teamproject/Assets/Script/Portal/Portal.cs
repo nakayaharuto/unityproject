@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class Portal : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Portal : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             StartCoroutine(TeleportWithFade(other));
+           
         }
     }
 
@@ -19,18 +21,19 @@ public class Portal : MonoBehaviour
         if (controller == null || fadecontroller == null)
             yield break;
 
-        //フェードアウト
-        yield return StartCoroutine(fadecontroller.FadeOut());
-
-        //ワープ処理
         //ワープの瞬間コントローラー無効化
         controller.enabled = false;
+        //フェードアウト
+        yield return StartCoroutine(fadecontroller.FadeOut());
+        
+        //ワープ処理
         player.transform.position = LevelPortal.position + LevelPortal.forward * 2.0f;
         player.transform.rotation = LevelPortal.rotation;
-        controller.enabled = true;
 
+        controller.enabled = true;
         //フェードイン
         yield return StartCoroutine(fadecontroller.FadeIn());
+       
     }
 
 }
