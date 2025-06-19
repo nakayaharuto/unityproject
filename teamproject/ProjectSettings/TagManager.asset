@@ -7,6 +7,11 @@ TagManager:
   - Ground
   - button
   - box
+  - red
+  - blue
+  - yellow
+  - green
+  - flask
   layers:
   - Default
   - TransparentFX

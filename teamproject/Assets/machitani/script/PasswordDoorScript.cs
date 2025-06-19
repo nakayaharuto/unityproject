@@ -8,10 +8,12 @@ public class PasswordDoorScript : MonoBehaviour
     private Animator animator;
     public InputField inputField;
     public GameObject fieldObject;
+    //public GameObject text;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+       //text.SetActive(false);
         fieldObject.SetActive(false);
         isNear = false;
         animator=transform.parent.GetComponent<Animator>(); 
@@ -33,6 +35,8 @@ public class PasswordDoorScript : MonoBehaviour
             animator.SetBool("open",!animator.GetBool("open"));
             fieldObject.SetActive(false);
         }
+        
+
     }
     void OnTriggerEnter(Collider col)
     {
