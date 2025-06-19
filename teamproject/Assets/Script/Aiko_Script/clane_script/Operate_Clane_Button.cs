@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Operate_Clane_Button : MonoBehaviour
 {
-    [Header("0:右、1:左、2:前、3:後ろ、4:下")]
+    [Header("0:右、1:左、2:前、3:後ろ、4:下、5:投下")]
     public int dilection_num;
     public int move_limit_x;
     public int move_limit_y;
@@ -11,12 +11,16 @@ public class Operate_Clane_Button : MonoBehaviour
     public bool button_flag = false;
     public int button_num=-1;
 
+    public Move_Clane MC;
+    //[SerializeField] private bool hit = false;
+
     public GameObject[] buttons;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        MC = Crane.GetComponent<Move_Clane>();
+        this.GetComponent<Renderer>().material.color = Color.white;
     }
 
 
@@ -57,14 +61,56 @@ public class Operate_Clane_Button : MonoBehaviour
                     }
                     break;
                 case 4:
-                    if (Crane.transform.position.y >= 0)
+                    if (MC.hit == false)
                     {
                         Crane.transform.Translate(0, -Time.deltaTime, 0);
+                        this.GetComponent<BoxCollider>().enabled = false;
+                        buttons[4].GetComponent<BoxCollider>().enabled = false;
                         //Crane.transform.position = new Vector3(transform.position.x, transform.position.y, Mathf.Sin(Time.time) * 4);
                     }
+                    else
+                    {
+                        if (Crane.transform.position.y <= move_limit_y)
+                        {
+                            Crane.transform.Translate(0, Time.deltaTime, 0);
+                            this.GetComponent<BoxCollider>().enabled = false;
+                            buttons[4].GetComponent<BoxCollider>().enabled = false;
+                        }
+                        else
+                        {
+                            MC.hit = false;
+                            this.button_flag = false;
+                            this.button_num = -1;
+                            this.GetComponent<Renderer>().material.color = Color.white;
+                            this.GetComponent<BoxCollider>().enabled = true;
+                            buttons[4].GetComponent<BoxCollider>().enabled = true;
+                        }
+
+                    }
+
+                        break;
+                case 5:
+                    if (MC.item_hit==true)
+                    {
+                        MC.item_hit = false;
+                        MC.get_item.transform.position = new Vector3(Crane.transform.position.x, Crane.transform.position.y-0.5f, Crane.transform.position.z);
+                        MC.get_item.GetComponent<Collider>().enabled = true;
+                        MC.get_item.GetComponent<Rigidbody>().useGravity = true;
+
+                    }
+                    else
+                    {
+                        this.button_flag = false;
+                        this.button_num = -1;
+                        this.GetComponent<Renderer>().material.color = Color.white;
+                    }
+
                     break;
 
+
                 default: 
+
+
                     break;
             }
 
@@ -81,19 +127,26 @@ public class Operate_Clane_Button : MonoBehaviour
 
     //}
 
+   
+
     private void OnMouseDown()
     {
+        
+
         for (int i = 0; i < 4; i++)
         {
            
                 Operate_Clane_Button OCB = buttons[i].GetComponent<Operate_Clane_Button>();
                 OCB.button_flag = false;
-                if (OCB.button_num==1)
+            OCB.GetComponent<Renderer>().material.color = Color.white;
+            OCB.GetComponent<BoxCollider>().enabled = true;
+            if (OCB.button_num==1)
                 {
                     OCB.button_num = -OCB.button_num;
-                }
                
-                Debug.Log(OCB.name);
+                }
+           
+            Debug.Log(OCB.name);
            
         }
 
@@ -101,9 +154,11 @@ public class Operate_Clane_Button : MonoBehaviour
         {
             case -1:
                 button_flag = true;
+                this.GetComponent<Renderer>().material.color = Color.red;
                 break;
             case 1:
                 button_flag = false;
+                this.GetComponent<Renderer>().material.color = Color.white;
                 break;
         }
         Debug.Log(button_flag);
