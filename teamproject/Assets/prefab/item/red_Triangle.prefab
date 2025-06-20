@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: e41aa63e7bf62644f8fb3e309616b0c4, type: 2}
     - target: {fileID: 919132149155446097, guid: 7898cb605ec6cf24986f283b759bedb4, type: 3}
       propertyPath: m_Name
-      value: Triangle (2)
+      value: red_Triangle
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7898cb605ec6cf24986f283b759bedb4, type: 3}
       propertyPath: m_Layer
@@ -85,6 +85,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7898cb605ec6cf24986f283b759bedb4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8679360973998730294}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7898cb605ec6cf24986f283b759bedb4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6419138327026594283}
   m_SourcePrefab: {fileID: 100100000, guid: 7898cb605ec6cf24986f283b759bedb4, type: 3}
 --- !u!1 &4936735762575277432 stripped
 GameObject:
@@ -153,3 +156,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 8
+--- !u!95 &-6419138327026594283
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4936735762575277432}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 28c8faa20dd3c574886fbaa615acd875, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

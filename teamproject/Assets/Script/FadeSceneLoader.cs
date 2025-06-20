@@ -8,7 +8,7 @@ public class FadeSceneLoader : MonoBehaviour
 {
     public Image fadePanel;     //フェード用のUIパネル
     public float fadeDuration;  //フェードの完了
-
+    public string Scene;        //ワールド移動
     private void Start()
     {
         //最初は透明で非公開
@@ -44,6 +44,6 @@ public class FadeSceneLoader : MonoBehaviour
         }
 
         fadePanel.color = endColor;     //フェード完了したら設定
-        SceneManager.LoadScene("");     //シーンをロードして移行
+        SceneManager.LoadScene("Scene");     //シーンをロードして移行
     }
 }

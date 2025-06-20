@@ -1,12 +1,10 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 public class FadeController : MonoBehaviour
 {
     public Image FadeImage;
     public float FadeDuration = 1.0f;
-
-   
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
