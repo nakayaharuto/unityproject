@@ -4,9 +4,12 @@ public class Operate_Clane_Button : MonoBehaviour
 {
     [Header("0:右、1:左、2:前、3:後ろ、4:下、5:投下")]
     public int dilection_num;
-    public int move_limit_x;
-    public int move_limit_y;
-    public int move_limit_z;
+    [Header("x軸、1は左の-へ、2は右の+へ")]
+    public float move_limit_x;
+    [Header("y軸")]
+    public float move_limit_y;
+    [Header("z軸、3は前の+へ、4は後ろの-へ")]
+    public float move_limit_z;
     public GameObject Crane;
     public bool button_flag = false;
     public int button_num=-1;
@@ -20,7 +23,7 @@ public class Operate_Clane_Button : MonoBehaviour
     void Start()
     {
         MC = Crane.GetComponent<Move_Clane>();
-        this.GetComponent<Renderer>().material.color = Color.white;
+        this.GetComponent<Renderer>().material.color = Color.green;
     }
 
 
@@ -33,39 +36,70 @@ public class Operate_Clane_Button : MonoBehaviour
             switch(dilection_num)
             {
                 case 0://右
-                    if (Crane.transform.position.x >= -100)
-                    {
-                        Crane.transform.Translate(-Time.deltaTime, 0, 0);
-                        //Crane.transform.position = new Vector3(transform.position.x, transform.position.y, Mathf.Sin(Time.time) * 4);
-                    }
-                    break;
-                case 1://左
-                    if (Crane.transform.position.x <= 100)
+                    if (Crane.transform.position.x <= move_limit_x)
                     {
                         Crane.transform.Translate(Time.deltaTime, 0, 0);
                         //Crane.transform.position = new Vector3(transform.position.x, transform.position.y, Mathf.Sin(Time.time) * 4);
                     }
+                    else
+                    {
+                        this.button_flag = false;
+                        this.button_num = -1;
+                        this.GetComponent<Renderer>().material.color = Color.green;
+                    }
+                    break;
+                case 1://左
+                    if (Crane.transform.position.x >= move_limit_x)
+                    {
+                        Crane.transform.Translate(-Time.deltaTime, 0, 0);
+                        //Crane.transform.position = new Vector3(transform.position.x, transform.position.y, Mathf.Sin(Time.time) * 4);
+                    }
+                    else
+                    {
+                        this.button_flag = false;
+                        this.button_num = -1;
+                        this.GetComponent<Renderer>().material.color = Color.green;
+                    }
                     break;
                 case 2://前
-                    if (Crane.transform.position.z <= 100)
+                    if (Crane.transform.position.z <= move_limit_z)
                     {
                         Crane.transform.Translate(0, 0, Time.deltaTime);
                         //Crane.transform.position = new Vector3(transform.position.x, transform.position.y, Mathf.Sin(Time.time) * 4);
                     }
+                    else
+                    {
+                        this.button_flag = false;
+                        this.button_num = -1;
+                        this.GetComponent<Renderer>().material.color = Color.green;
+                    }
                     break;
                 case 3://後ろ
-                    if (Crane.transform.position.z >= -100)
+                    if (Crane.transform.position.z >= move_limit_z)
                     {
                         Crane.transform.Translate(0, 0, -Time.deltaTime);
                         //Crane.transform.position = new Vector3(transform.position.x, transform.position.y, Mathf.Sin(Time.time) * 4);
                     }
+                    else
+                    {
+                        this.button_flag = false;
+                        this.button_num = -1;
+                        this.GetComponent<Renderer>().material.color = Color.green;
+                    }
                     break;
-                case 4:
+                case 4://下
                     if (MC.hit == false)
                     {
                         Crane.transform.Translate(0, -Time.deltaTime, 0);
                         this.GetComponent<BoxCollider>().enabled = false;
-                        buttons[4].GetComponent<BoxCollider>().enabled = false;
+
+                        for (int i = 0; i < 5; i++)
+                        {
+                            buttons[i].GetComponent<BoxCollider>().enabled = false;
+                            buttons[i].GetComponent<Renderer>().material.color = Color.grey;
+                        }
+
+                        //buttons[4].GetComponent<BoxCollider>().enabled = false;
                         //Crane.transform.position = new Vector3(transform.position.x, transform.position.y, Mathf.Sin(Time.time) * 4);
                     }
                     else
@@ -74,22 +108,27 @@ public class Operate_Clane_Button : MonoBehaviour
                         {
                             Crane.transform.Translate(0, Time.deltaTime, 0);
                             this.GetComponent<BoxCollider>().enabled = false;
-                            buttons[4].GetComponent<BoxCollider>().enabled = false;
+                           
+                           
                         }
                         else
                         {
                             MC.hit = false;
                             this.button_flag = false;
                             this.button_num = -1;
-                            this.GetComponent<Renderer>().material.color = Color.white;
+                            this.GetComponent<Renderer>().material.color = Color.green;
                             this.GetComponent<BoxCollider>().enabled = true;
-                            buttons[4].GetComponent<BoxCollider>().enabled = true;
+                            for (int i = 0; i < 5; i++)
+                            {
+                                buttons[i].GetComponent<BoxCollider>().enabled = true;
+                                buttons[i].GetComponent<Renderer>().material.color = Color.green;
+                            }
                         }
 
                     }
 
                         break;
-                case 5:
+                case 5://投下
                     if (MC.item_hit==true)
                     {
                         MC.item_hit = false;
@@ -102,7 +141,7 @@ public class Operate_Clane_Button : MonoBehaviour
                     {
                         this.button_flag = false;
                         this.button_num = -1;
-                        this.GetComponent<Renderer>().material.color = Color.white;
+                        this.GetComponent<Renderer>().material.color = Color.green;
                     }
 
                     break;
@@ -138,7 +177,7 @@ public class Operate_Clane_Button : MonoBehaviour
            
                 Operate_Clane_Button OCB = buttons[i].GetComponent<Operate_Clane_Button>();
                 OCB.button_flag = false;
-            OCB.GetComponent<Renderer>().material.color = Color.white;
+            OCB.GetComponent<Renderer>().material.color = Color.green;
             OCB.GetComponent<BoxCollider>().enabled = true;
             if (OCB.button_num==1)
                 {
@@ -158,7 +197,7 @@ public class Operate_Clane_Button : MonoBehaviour
                 break;
             case 1:
                 button_flag = false;
-                this.GetComponent<Renderer>().material.color = Color.white;
+                this.GetComponent<Renderer>().material.color = Color.green;
                 break;
         }
         Debug.Log(button_flag);

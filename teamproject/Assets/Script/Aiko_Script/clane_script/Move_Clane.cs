@@ -51,7 +51,7 @@ public class Move_Clane : MonoBehaviour
             Debug.Log("“–‚½‚Á‚Ä‚Ë[‚æ");
         }
 
-        if (other.gameObject.CompareTag("Ground") /*|| other.gameObject.CompareTag("Ground")*/)
+        if (other.gameObject.CompareTag("Ground")|| other.gameObject.CompareTag("Player"))
         {
             hit = true;
         }
