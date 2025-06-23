@@ -14,7 +14,7 @@ public class Talk_Checker : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.CompareTag("Respawn"))
+        if (collision.CompareTag("NPC"))
         {
             NPC target = collision.gameObject.GetComponent<NPC>();
 
@@ -34,7 +34,7 @@ public class Talk_Checker : MonoBehaviour
 
     private void OnTriggerExit(Collider collision)
     {
-        if (collision.CompareTag("Respawn"))
+        if (collision.CompareTag("NPC"))
         {
             NPC target = collision.gameObject.GetComponent<NPC>();
 

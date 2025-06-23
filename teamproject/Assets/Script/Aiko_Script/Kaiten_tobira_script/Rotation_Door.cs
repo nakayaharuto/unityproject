@@ -6,7 +6,7 @@ public class Rotation_Door : MonoBehaviour
     public bool switch_flag = false;
     private int switch_on_off=0;
     public float limit_rotate;
-
+    private float first_rot;
 
 
 
@@ -14,14 +14,15 @@ public class Rotation_Door : MonoBehaviour
     void Start()
     {
         this.GetComponent<Renderer>().material.color = Color.green;
+        first_rot = RotateDoor.transform.rotation.y;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (switch_on_off==-1)
+        if (switch_on_off==-1)//off
         {
-            if (RotateDoor.transform.rotation.y<=limit_rotate/3)
+            if (RotateDoor.transform.rotation.y<=first_rot)
             {
                 RotateDoor.transform.Rotate(0f, /*limit_rotate * Time.deltaTime*/0.1f, 0f);
                 this.GetComponent<BoxCollider>().enabled = false;
@@ -37,7 +38,7 @@ public class Rotation_Door : MonoBehaviour
                 this.GetComponent<Renderer>().material.color = Color.green;
             }
         }
-        else if (switch_on_off==1)
+        else if (switch_on_off==1)//on
         {
             if (RotateDoor.transform.rotation.y >= -limit_rotate)
             {
