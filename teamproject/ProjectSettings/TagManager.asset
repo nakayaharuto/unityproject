@@ -12,6 +12,9 @@ TagManager:
   - yellow
   - green
   - flask
+  - NPC
+  - Crane
+  - Card Key
   layers:
   - Default
   - TransparentFX
