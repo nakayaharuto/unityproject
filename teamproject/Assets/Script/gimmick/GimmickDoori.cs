@@ -28,7 +28,7 @@ public class GimmickDoori : MonoBehaviour
 
     private void OpenDoor()
     {
-        Debug.Log("‹ó‚«‚Ü‚µ‚½B");
+        //Debug.Log("‹ó‚«‚Ü‚µ‚½B");
     }
     
 }

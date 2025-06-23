@@ -53,7 +53,7 @@ public class ItemBox : MonoBehaviour
     {
         Item selecteditem = GetSelectedItem();
 
-        if(selecteditem == null && selecteditem.type == useItem)
+        if(selecteditem != null && selecteditem.type == useItem)
         {
             UseSelectItem();
             return true;

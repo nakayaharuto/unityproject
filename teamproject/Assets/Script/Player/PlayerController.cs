@@ -91,12 +91,13 @@ public class PlayerController : MonoBehaviour
         //Fキー入力
         if (Input.GetKeyDown(KeyCode.F))
         {
-            InteractWithItem();
+            KeyCardDoor();
         }
 
         if(Input.GetMouseButtonDown(0))
         {
             ThrowHeldItem();
+            InteractWithItem();
         }
 
         if (Input.GetMouseButtonDown(1)) // 右クリック
@@ -175,6 +176,7 @@ public class PlayerController : MonoBehaviour
     //投げる
     void ThrowHeldItem()
     {
+        //持ってるitemがnullか表示itemがnullなら処理中断
         if (heldItem == null || currentDisplayedItem == null) return;
 
         GameObject thrown = Instantiate(currentDisplayedItem.throwprefab,throwOrigin.position,throwOrigin.rotation);
@@ -205,6 +207,17 @@ public class PlayerController : MonoBehaviour
         Destroy(heldItem);
         heldItem = null;
 
+        UpdateHeldItemDisplay();
+    }
+
+    //cardでドアを開く
+    void KeyCardDoor()
+    {
+        if (heldItem == null || currentDisplayedItem == null) return;
+
+        key.instance.KeyDoor();
+        key.instance.SetheldItem(heldItem);
+       
         UpdateHeldItemDisplay();
     }
 
