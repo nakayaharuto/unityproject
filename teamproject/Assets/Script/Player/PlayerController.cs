@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     {
         itemLayer = LayerMask.GetMask("item");//itemレイヤーをとる
         //マウスポインタを表示
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = true;
         
     }
@@ -92,6 +92,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             KeyCardDoor();
+        }
+
+        //Escキー入力でオプションへ
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            option();
         }
 
         if(Input.GetMouseButtonDown(0))
@@ -233,6 +239,12 @@ public class PlayerController : MonoBehaviour
 
         Vector3 velocity = Camera.main.transform.forward * throwForce;
         trajectoryDrawer.DrawTrajectory(throwOrigin.position, velocity);
+    }
+
+    //オプションを表示
+    void option()
+    {
+        OptController.instance.GameOption();
     }
 
 }

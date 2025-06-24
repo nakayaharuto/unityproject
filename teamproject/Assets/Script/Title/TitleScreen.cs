@@ -1,27 +1,31 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Threading;
 
 public class TitleScreen : MonoBehaviour
 {
+    public string Scene;        //ワールド移動
+
     public void OnNewGame()
     {
         PlayerPrefs.DeleteKey("PositionX");
         PlayerPrefs.DeleteKey("PositionY");
         PlayerPrefs.DeleteKey("PositionZ");
 
-        SceneManager.LoadScene("level3");
+        SceneManager.LoadScene(Scene);
     }
 
     public void OnContine()
     {
         //続きから
-        SceneManager.LoadScene("level3");
+        SceneManager.LoadScene(Scene);
     }
 
     public void OnOption()
     {
-        //オプション
-        Debug.Log("Option Screen open");
+        OptController.instance.OptEnble();
     }
 
 }
