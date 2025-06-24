@@ -57,6 +57,7 @@ public class Move_Clane : MonoBehaviour
         }
         else
         {
+            hit = true;
             Debug.Log("“–‚½‚Á‚Ä‚Ë[‚æ");
         }
     }

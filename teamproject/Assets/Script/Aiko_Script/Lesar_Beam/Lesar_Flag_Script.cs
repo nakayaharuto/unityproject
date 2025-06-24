@@ -16,14 +16,35 @@ public class Lesar_Flag_Script : MonoBehaviour
         
     }
 
-    public void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("aaaa");
-        Lesar_Flag = false;
+        //Lesar_Flag = false;
         if (collision.gameObject.CompareTag("Crane"))
         {
             Lesar_Flag = false;
             Debug.Log("bbbb");
+        }
+        else
+        {
+            Debug.Log("cccc");
+           // Lesar_Flag = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("dddd");
+        //Lesar_Flag = false;
+        if (other.gameObject.CompareTag("Crane"))
+        {
+            Lesar_Flag = false;
+            Debug.Log("eeee");
+        }
+        else
+        {
+            Debug.Log("ffff");
+           Lesar_Flag = false;
         }
     }
 
