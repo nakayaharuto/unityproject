@@ -179,7 +179,21 @@ public class DialogueManager : MonoBehaviour
             Debug.Log(dialogue_option_box[i] + "optionbox");
 
 
-            j = i;
+            
+        }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            if (j<4)
+            {
+                j++;
+                dialogue_option_box[j].GetComponent<Text>().color = Color.red;
+                Debug.Log("asdf");
+            }
+            else
+            {
+                j = 0;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Return))
