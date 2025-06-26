@@ -94,6 +94,11 @@ public class PlayerController : MonoBehaviour
 
             if (talk_checker.talk_npc != null)
             {
+                //マウスポインタを表示
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                
+
                 DialogueManager.instance.StartDialogue(talk_checker.talk_npc.dialogue_text);
                 Debug.Log("i suppose you");
             }
@@ -104,11 +109,13 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        UpdateHeldItemDisplay();
+        
+         UpdateHeldItemDisplay();
 
         //Fキー入力
         if (Input.GetKeyDown(KeyCode.F))
         {
+            InteractWithItem();
             KeyCardDoor();
         }
 
@@ -120,13 +127,14 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetMouseButtonDown(0))
         {
-            ThrowHeldItem();
-            InteractWithItem();
+            
+            
         }
 
         if (Input.GetMouseButtonDown(1)) // 右クリック
         {
             PlaceHeldItem();
+            ThrowHeldItem();
         }
 
         //軌道を常に表示

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DialogueOptionBox : MonoBehaviour,IPointerClickHandler
+public class DialogueOptionBox : MonoBehaviour//,IPointerClickHandler
 {
     private Talk_Checker talk_checker;
 
@@ -13,19 +13,31 @@ public class DialogueOptionBox : MonoBehaviour,IPointerClickHandler
     [SerializeField]
     public Text optionText;
 
-    
-
-    public void OnPointerClick(PointerEventData eventData)
+    public void Test()
     {
         talk_checker = GameObject.Find("Player").GetComponent<Talk_Checker>();
         talk_checker.talk_npc.dialogue_text = dialogueOption.Next_Dialogue;
         DialogueManager.instance.EndDialogue();
         DialogueManager.instance.StartDialogue(dialogueOption.Next_Dialogue);
         Debug.Log("bisyagatuku");
-
     }
 
-    
+    //public void OnPointerClick(PointerEventData eventData)
+    //{
+      
+    //    talk_checker = GameObject.Find("Player").GetComponent<Talk_Checker>();
+    //    talk_checker.talk_npc.dialogue_text = dialogueOption.Next_Dialogue;
+    //    DialogueManager.instance.EndDialogue();
+    //    DialogueManager.instance.StartDialogue(dialogueOption.Next_Dialogue);
+    //    Debug.Log("bisyagatuku");
+
+    //}
+
+    private void OnMouseDown()
+    {
+        Test();
+        Debug.Log("bisyagatuku");
+    }
 
 
     public void UpdateUI()
