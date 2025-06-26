@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ColorbuttonDoorScript : MonoBehaviour
 {
+    public SwitchDoorScript SwitchDoorScript;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -11,6 +12,9 @@ public class ColorbuttonDoorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if()
+        {
+            SwitchDoorScript.isOpen = true;
+        }
     }
 }
