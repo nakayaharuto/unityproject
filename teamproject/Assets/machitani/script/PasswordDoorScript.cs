@@ -30,7 +30,7 @@ public class PasswordDoorScript : MonoBehaviour
 
     public void InputPass()
     {
-        if(inputField.text=="1234")
+        if(inputField.text=="123")
         {
             animator.SetBool("open",!animator.GetBool("open"));
             fieldObject.SetActive(false);
