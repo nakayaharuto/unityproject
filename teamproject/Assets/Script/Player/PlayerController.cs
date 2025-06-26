@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 velocity;
     private bool isGrounded;
 
+    private Talk_Checker talk_checker;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -35,7 +37,8 @@ public class PlayerController : MonoBehaviour
         //マウスポインタを表示
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = true;
-        
+        talk_checker = GetComponent<Talk_Checker>();
+
     }
 
     void Awake()
@@ -86,6 +89,21 @@ public class PlayerController : MonoBehaviour
         velocity.y += Graviyty * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+
+            if (talk_checker.talk_npc != null)
+            {
+                DialogueManager.instance.StartDialogue(talk_checker.talk_npc.dialogue_text);
+                Debug.Log("i suppose you");
+            }
+            else
+            {
+                Debug.Log("eeeeeeeeeee");
+            }
+
+        }
+
         UpdateHeldItemDisplay();
 
         //Fキー入力
@@ -113,6 +131,9 @@ public class PlayerController : MonoBehaviour
 
         //軌道を常に表示
         DrawTrajectoryPreview();
+
+        
+
     }
 
     //表示
