@@ -14,10 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/world/level1.unity
     guid: 7e650fd12dee77344a470e45dd536283
-  - enabled: 1
+  - enabled: 0
     path: Assets/world/DiaLog_Test.unity
     guid: f21fa9f1544b7a3418fcadfc07c70361
-  - enabled: 1
+  - enabled: 0
     path: Assets/world/level3.unity
     guid: 9bbb099f47faa0b45a1ef602ba530ece
   m_configObjects:
