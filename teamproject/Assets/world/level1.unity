@@ -1056,7 +1056,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9150597809499253185, guid: 82efbd6f209a6ab4c8e561fcd37a4810, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.4552546
+      value: -5.486
       objectReference: {fileID: 0}
     - target: {fileID: 9150597809499253185, guid: 82efbd6f209a6ab4c8e561fcd37a4810, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1959,6 +1959,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2584479155668188111, guid: 1facb00fc6b330b4590ed152a3aadcd3, type: 3}
   m_PrefabInstance: {fileID: 1308692715}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &429059147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429059137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e46bbf134623ac48b44b4aaf42c8678, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SwitchDoorScript: {fileID: 1633955664}
 --- !u!1 &440131201 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9028627854349766800, guid: 24c728c68968f6447b856666f27564a5, type: 3}
@@ -4664,7 +4677,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8875449794350432198, guid: b581fdbd127292d44ab21c4b16d91d05, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.1
+      value: 10.15
       objectReference: {fileID: 0}
     - target: {fileID: 8875449794350432198, guid: b581fdbd127292d44ab21c4b16d91d05, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5292,11 +5305,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2584479155668188111, guid: 1facb00fc6b330b4590ed152a3aadcd3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.440894
+      value: -5.492
       objectReference: {fileID: 0}
     - target: {fileID: 2584479155668188111, guid: 1facb00fc6b330b4590ed152a3aadcd3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.1278753
+      value: 3.063
       objectReference: {fileID: 0}
     - target: {fileID: 2584479155668188111, guid: 1facb00fc6b330b4590ed152a3aadcd3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5352,6 +5365,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2924589560471003509, guid: 1facb00fc6b330b4590ed152a3aadcd3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 429059138}
+    - targetCorrespondingSourceObject: {fileID: 2924589560471003509, guid: 1facb00fc6b330b4590ed152a3aadcd3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 429059147}
   m_SourcePrefab: {fileID: 100100000, guid: 1facb00fc6b330b4590ed152a3aadcd3, type: 3}
 --- !u!1 &1325576079
 GameObject:
@@ -5823,11 +5839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6afb4736b2bb43d4c9103164dc08def7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SwitchDoorScript: {fileID: 1633955664}
-  Judge1: {fileID: 1929112758}
-  Judge2: {fileID: 1727527922}
-  Judge3: {fileID: 1796783504}
-  Judge4: {fileID: 1655589482}
+  SwitchDoorScript: {fileID: 0}
 --- !u!4 &1375783043
 Transform:
   m_ObjectHideFlags: 0
@@ -6491,11 +6503,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2584751084142187468, guid: 61c67c3c4a5f20f4b9b0d61fea197d67, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.480755
+      value: -5.466
       objectReference: {fileID: 0}
     - target: {fileID: 2584751084142187468, guid: 61c67c3c4a5f20f4b9b0d61fea197d67, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.3088756
+      value: 1.355
       objectReference: {fileID: 0}
     - target: {fileID: 2584751084142187468, guid: 61c67c3c4a5f20f4b9b0d61fea197d67, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6887,7 +6899,7 @@ GameObject:
   - component: {fileID: 1655589484}
   - component: {fileID: 1655589488}
   m_Layer: 0
-  m_Name: Cube (8)
+  m_Name: green
   m_TagString: green
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7121,7 +7133,7 @@ GameObject:
   - component: {fileID: 1727527924}
   - component: {fileID: 1727527928}
   m_Layer: 0
-  m_Name: Cube (6)
+  m_Name: blue
   m_TagString: blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7460,6 +7472,7 @@ GameObject:
   - component: {fileID: 1785084529}
   - component: {fileID: 1785084528}
   - component: {fileID: 1785084532}
+  - component: {fileID: 1785084533}
   m_Layer: 0
   m_Name: desk
   m_TagString: Untagged
@@ -7583,6 +7596,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1785084533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785084526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6afb4736b2bb43d4c9103164dc08def7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SwitchDoorScript: {fileID: 0}
 --- !u!1 &1789924350
 GameObject:
   m_ObjectHideFlags: 0
@@ -7690,7 +7716,7 @@ GameObject:
   - component: {fileID: 1796783506}
   - component: {fileID: 1796783510}
   m_Layer: 0
-  m_Name: Cube (7)
+  m_Name: yellow
   m_TagString: yellow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8727,7 +8753,7 @@ GameObject:
   - component: {fileID: 1929112760}
   - component: {fileID: 1929112764}
   m_Layer: 0
-  m_Name: Cube (5)
+  m_Name: cube
   m_TagString: red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8752,8 +8778,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.93253505, z: 0.9999998}
+  m_Center: {x: 0, y: -0.033732705, z: 0}
 --- !u!23 &1929112761
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8816,7 +8842,7 @@ Transform:
   m_GameObject: {fileID: 1929112758}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.1907806, y: 3.369, z: 0.34}
+  m_LocalPosition: {x: -1.1907806, y: 3.351, z: 0.336}
   m_LocalScale: {x: 0.43803, y: 0.032096, z: 0.3938172}
   m_ConstrainProportionsScale: 0
   m_Children: []
