@@ -38,7 +38,7 @@ using UnityEngine;
         //‘I‘ðŽˆ‚Ì•\Ž¦‚ÉŽg‚¤
         public DialogueOption[] Options;
 
-        
+        //public bool SkipFlag;
 
     }
 

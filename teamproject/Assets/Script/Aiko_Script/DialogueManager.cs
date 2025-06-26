@@ -28,6 +28,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Text npc_text;
     [SerializeField] private Text character_name;
     [SerializeField] private Text[] optin_text;
+    public int last_talk_flag=0;
     //[SerializeField] public EndText endText;
 
    // [SerializeField] public DialogText2 text2;
@@ -65,10 +66,24 @@ public class DialogueManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         //Debug.Log("a");
-        if (Input.GetKeyDown(KeyCode.Return) && !dialogue_option_box[0].activeSelf)
+        if (Input.GetKeyDown(KeyCode.Return) && !dialogue_option_box[0].activeSelf&&sentences.Count>0)
         {
             DisplaySentence();
+            
+        }
+       
+         if (Input.GetKeyDown(KeyCode.Return) && !dialogue_option_box[0].activeSelf && sentences.Count == 0)
+        {
+            last_talk_flag++;
+            
+
+        }
+        if (Input.GetKeyDown(KeyCode.Return) && !dialogue_option_box[0].activeSelf && sentences.Count == 0&&last_talk_flag >= 2)
+        {
+            DisplaySentence();
+            last_talk_flag= 0;
         }
     }
 
@@ -176,25 +191,13 @@ public class DialogueManager : MonoBehaviour
             
             //SelectOptions select_options = dialogue_option_box[i].GetComponent<SelectOptions>();
 
-            Debug.Log(dialogue_option_box[i] + "optionbox");
+            Debug.Log(options[i] + "optionbox");
 
 
             
         }
-
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            if (j<4)
-            {
-                j++;
-                dialogue_option_box[j].GetComponent<Text>().color = Color.red;
-                Debug.Log("asdf");
-            }
-            else
-            {
-                j = 0;
-            }
-        }
+        //dialogue_option_box[0].GetComponent<Text>().color = Color.red;
+        
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
@@ -228,7 +231,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
-        talk_checker = GameObject.Find("Player").GetComponent<Talk_Checker>();
+        talk_checker = GameObject.FindGameObjectWithTag("Player").GetComponent<Talk_Checker>();
         //GameManager.instance.is_playable = true;
         Time.timeScale = 1.0f;
         Debug.Log("end");
@@ -240,7 +243,7 @@ public class DialogueManager : MonoBehaviour
 
     public void LoopText(EndText end)
     {
-        talk_checker = GameObject.Find("Player").GetComponent<Talk_Checker>();
+        talk_checker = GameObject.FindGameObjectWithTag("Player").GetComponent<Talk_Checker>();
         Debug.Log("qqqq");
         talk_checker.talk_npc.dialogue_text = end.End_Text;
 
