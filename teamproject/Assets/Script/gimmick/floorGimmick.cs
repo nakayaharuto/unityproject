@@ -1,40 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Hierarchy;
 using UnityEngine;
 
 public class floorGimmick : MonoBehaviour
 {
     public GameObject floor;
-    public float RotationSpeed = 90f;
-    public float StopInterval = 2f;
-    public float StopDuration = 1f;
+    public bool flag=false;
+   
+    [SerializeField] private int rotate_count=4;
 
-    private bool isRotation = true;
-    private Coroutine RotateCoroutine;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public void Start()
+    private void OnMouseDown()
     {
-        StartCoroutine(RotationAndStop());
-    }
+        flag = true;
 
-    IEnumerator RotationAndStop()
-    {
-        isRotation = true;
-        float elapsedTime = 0f;
-
-        while (elapsedTime < StopInterval)
+        if (rotate_count>0)
         {
-            if (isRotation)
-            {
-                transform.Rotate(Vector3.up * RotationSpeed * Time.deltaTime);
-            }
-            elapsedTime += Time.deltaTime;
-            yield return null;
+            rotate_count--;
+        }
+        else
+        {
+            rotate_count = 4;
         }
 
-        //’âŽ~’†
-        isRotation = false;
-        yield return new WaitForSeconds(StopDuration);
+        
+
     }
+
+    public void Rotation_Floor()
+    {
+        if (floor.transform.rotation.eulerAngles.y>-rotate_count*90f&&flag==true)
+        {
+            floor.transform.Rotate(0f, 0.1f, 0f);
+        }
+        else
+        {
+            flag=false; 
+        }
+
+
+    }
+
+    public void Update()
+    {
+        Debug.Log(floor.transform.rotation.eulerAngles.y);
+
+        Rotation_Floor();
+
+
+
+    }
+
+
 }
