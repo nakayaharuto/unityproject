@@ -8,6 +8,7 @@ public class Lesar_Script : MonoBehaviour
     public Lesar_Flag_Script LFS;
 
     public bool Fire_Flag = false;
+    [SerializeField] private int rot_num; 
 
 
 
@@ -28,7 +29,7 @@ public class Lesar_Script : MonoBehaviour
             Lesar_Ray.transform.localScale = new Vector3(0.5f, 0.5f, Lesar_Distance);
            // Lesar_Ray.transform.position=new Vector3(this.transform.position.x, this.transform.position.y, ((this.transform.position.z) - Lesar_Distance*0.3f) - 0.7f);
         }
-        else if (Fire_Flag==false)
+        else if (LFS.Lesar_Enable == false && Fire_Flag==false)
         {
             Lesar_Distance = 0f;
             Lesar_Ray.transform.localScale = new Vector3(0.5f, 0.5f, Lesar_Distance);
@@ -38,25 +39,22 @@ public class Lesar_Script : MonoBehaviour
         
     }
 
-    public void OnMouseDown()
+    private void OnMouseDown()
     {
-        if (Fire_Flag==true)
+        if (rot_num<3)
         {
-            Fire_Flag = false;
-
-            foreach (GameObject LS in GameObject.FindGameObjectsWithTag("Crane"))
-            {
-                Debug.Log(LS.name);
-                LS.GetComponent<Lesar_Script>().Fire_Flag = false;
-                LS.GetComponent<Lesar_Script>().LFS.Lesar_Enable = false;
-            }
-
+            rot_num++;
         }
         else
         {
-            Fire_Flag = true;
-            LFS.Lesar_Flag = true;
+            rot_num = 0;
         }
+
+        this.gameObject.transform.eulerAngles =new Vector3(0f,90f*rot_num,0f);
+
+        Lesar_Distance = 0f;
+
+        LFS.Lesar_Flag = true;
 
         Debug.Log(Fire_Flag);
 

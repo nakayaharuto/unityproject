@@ -3,7 +3,7 @@ using UnityEngine;
 public class Lesar_On_Off : MonoBehaviour
 {
     public bool button_flag=false;
-    public int switch_on_off=0;
+    //public int switch_on_off=0;
     public GameObject first_lesar_machine;
    
     public Lesar_Script LS;
@@ -12,30 +12,34 @@ public class Lesar_On_Off : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        LS = first_lesar_machine.GetComponent<Lesar_Script>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        LS = first_lesar_machine.GetComponent<Lesar_Script>();
+        
     }
 
     private void OnMouseDown()
     {
-        switch(switch_on_off)
+        if (button_flag==false)
         {
-            case 0:
-                button_flag= true;
-                switch_on_off = 1;
-               // LS.Fire_Flag = true;
-                break;
-            case 1:
-                button_flag = false;
-                switch_on_off = 0;
-                //LS.Fire_Flag= false;
-                break;
+            button_flag = true;
+            LS.Fire_Flag=true;
+        }
+        else
+        {
+            foreach (GameObject LS in GameObject.FindGameObjectsWithTag("Crane"))
+            {
+                Debug.Log(LS.name);
+                LS.GetComponent<Lesar_Script>().Fire_Flag = false;
+                LS.GetComponent<Lesar_Script>().LFS.Lesar_Enable = false;
+            }
 
+            LS.Fire_Flag = false;
+            LS.LFS.Lesar_Flag = true;
+            button_flag =false;
         }
 
     }

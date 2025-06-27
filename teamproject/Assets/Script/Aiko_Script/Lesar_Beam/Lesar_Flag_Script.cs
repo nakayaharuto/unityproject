@@ -51,4 +51,13 @@ public class Lesar_Flag_Script : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Crane"))
+        {
+            other.gameObject.GetComponentInChildren<Lesar_Flag_Script>().Lesar_Enable = false;
+        }
+
+        }
+
 }
