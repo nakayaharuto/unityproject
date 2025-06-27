@@ -9,6 +9,8 @@ public class Lesar_Script : MonoBehaviour
 
     public bool Fire_Flag = false;
 
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,21 +22,45 @@ public class Lesar_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (LFS.Lesar_Flag==true&&Fire_Flag==true)
+        if (LFS.Lesar_Flag==true&&Fire_Flag==true||LFS.Lesar_Flag==true&&LFS.Lesar_Enable==true)
         {
-            Lesar_Distance+=10f;
+            Lesar_Distance+=3f;
             Lesar_Ray.transform.localScale = new Vector3(0.5f, 0.5f, Lesar_Distance);
            // Lesar_Ray.transform.position=new Vector3(this.transform.position.x, this.transform.position.y, ((this.transform.position.z) - Lesar_Distance*0.3f) - 0.7f);
         }
-        else
+        else if (Fire_Flag==false)
         {
-           
+            Lesar_Distance = 0f;
+            Lesar_Ray.transform.localScale = new Vector3(0.5f, 0.5f, Lesar_Distance);
         }
 
 
         
     }
 
-   
+    public void OnMouseDown()
+    {
+        if (Fire_Flag==true)
+        {
+            Fire_Flag = false;
+
+            foreach (GameObject LS in GameObject.FindGameObjectsWithTag("Crane"))
+            {
+                Debug.Log(LS.name);
+                LS.GetComponent<Lesar_Script>().Fire_Flag = false;
+                LS.GetComponent<Lesar_Script>().LFS.Lesar_Enable = false;
+            }
+
+        }
+        else
+        {
+            Fire_Flag = true;
+            LFS.Lesar_Flag = true;
+        }
+
+        Debug.Log(Fire_Flag);
+
+    }
+
 
 }
