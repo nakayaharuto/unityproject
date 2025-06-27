@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour
         //Fキー入力
         if (Input.GetKeyDown(KeyCode.F))
         {
-            InteractWithItem();
+            
             KeyCardDoor();
         }
 
@@ -127,14 +127,13 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetMouseButtonDown(0))
         {
-            
-            
+            InteractWithItem();
+            ThrowHeldItem();
         }
 
         if (Input.GetMouseButtonDown(1)) // 右クリック
         {
             PlaceHeldItem();
-            ThrowHeldItem();
         }
 
         //軌道を常に表示
@@ -273,7 +272,8 @@ public class PlayerController : MonoBehaviour
     //オプションを表示
     void option()
     {
-        OptController.instance.GameOption();
+        Debug.Log("option");
+        //OptController.instance.GameOption();
     }
 
 }

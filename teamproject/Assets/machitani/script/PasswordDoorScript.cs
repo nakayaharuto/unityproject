@@ -25,6 +25,9 @@ public class PasswordDoorScript : MonoBehaviour
        if(Input.GetKeyDown("f")&&isNear)
         {
             fieldObject.SetActive(true);
+            //マウスポインタを表示
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 
@@ -34,6 +37,9 @@ public class PasswordDoorScript : MonoBehaviour
         {
             animator.SetBool("open",!animator.GetBool("open"));
             fieldObject.SetActive(false);
+            //マウスポインタを表示
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = true;
         }
         
 
