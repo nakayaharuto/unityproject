@@ -132,7 +132,7 @@ public class Operate_Clane_Button : MonoBehaviour
                     if (MC.item_hit==true)
                     {
                         MC.item_hit = false;
-                        MC.get_item.transform.position = new Vector3(Crane.transform.position.x, Crane.transform.position.y-0.5f, Crane.transform.position.z);
+                        MC.get_item.transform.position = new Vector3(Crane.transform.position.x, Crane.transform.position.y-0.7f, Crane.transform.position.z);
                         MC.get_item.GetComponent<Collider>().enabled = true;
                         MC.get_item.GetComponent<Rigidbody>().useGravity = true;
 
