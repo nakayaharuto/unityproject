@@ -18,7 +18,7 @@ public class Move_Clane : MonoBehaviour
     {
         if (item_hit==true)
         {
-            get_item.transform.position = new Vector3(this.transform.position.x, this.transform.position.y-0.5f, this.transform.position.z);
+            get_item.transform.position = new Vector3(this.transform.position.x, this.transform.position.y-1.0f, this.transform.position.z);
         }
        
  
