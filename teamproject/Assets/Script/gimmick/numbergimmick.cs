@@ -15,6 +15,14 @@ public class numbergimmick : MonoBehaviour
     public Vector3 SpawnAreaMax;    //範囲の最大値
     private int SpawnCount = 9;
 
+    //それぞれのテキスト
+    public TextMeshProUGUI redText;
+    public TextMeshProUGUI blueText;
+    public TextMeshProUGUI greenText;
+    public bool IsCorrect = false;
+
+    public SwitchDoorScript SwitchDoorScript;
+
     private void Start()
     {
         SpawnCount = Random.Range(1, SpawnCount);   //出現される最小と最大
@@ -65,6 +73,28 @@ public class numbergimmick : MonoBehaviour
         {
             VerText.text = NowNumber.ToString();
         }
+        if(NowNumber==CorrectNumber)
+        {
+            SwitchDoorScript.isOpen = true;
+        }
+        // テキスト一致チェック
+        CheckAllTextsEqual();
+    }
+    private void CheckAllTextsEqual()
+    {
+        // null チェックも入れておくと安心
+        if (redText == null || blueText == null || greenText == null) return;
 
+        string redValue = redText.text;
+        string blueValue = blueText.text;
+        string greenValue = greenText.text;
+
+        // 全部一致していたら true
+        IsCorrect = (redValue == blueValue) && (blueValue == greenValue);
+
+        if(IsCorrect)
+        {
+            SwitchDoorScript.isOpen = true;
+        }
     }
 }
