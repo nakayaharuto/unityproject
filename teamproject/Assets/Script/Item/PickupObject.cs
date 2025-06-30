@@ -8,7 +8,7 @@ public class PickupObject : MonoBehaviour
     //取得するアイテムの種類を設定
     public Item.Type type = default;
 
-    //アイテムをFキーで入手
+    //アイテムを左クリックで入手
     public void OnClickObject()
     {
         //アイテムデータベース空アイテム情報を取得
@@ -19,6 +19,7 @@ public class PickupObject : MonoBehaviour
             ItemBox.instance.SetItem(item);
         }
 
+        Destroy(gameObject);
         gameObject.SetActive(false);
     }
 }

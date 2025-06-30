@@ -128,10 +128,16 @@ public class PlayerController : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             InteractWithItem();
-            ThrowHeldItem();
+            
         }
 
         if (Input.GetMouseButtonDown(1)) // 右クリック
+        {
+            ThrowHeldItem();
+            
+        }
+        
+        if(Input.GetKeyDown(KeyCode.G))
         {
             PlaceHeldItem();
         }

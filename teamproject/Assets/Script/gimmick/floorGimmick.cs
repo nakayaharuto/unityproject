@@ -44,7 +44,7 @@ public class floorGimmick : MonoBehaviour
 
     public void Update()
     {
-        Debug.Log(floor.transform.rotation.eulerAngles.y);
+        //Debug.Log(floor.transform.rotation.eulerAngles.y);
 
         Rotation_Floor();
 

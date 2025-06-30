@@ -25,7 +25,7 @@ public class TitleScreen : MonoBehaviour
 
     public void OnOption()
     {
-        OptController.instance.OptEnble();
+        //OptController.instance.OptEnble();
     }
 
 }
