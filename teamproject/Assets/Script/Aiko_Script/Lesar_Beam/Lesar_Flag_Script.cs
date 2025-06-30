@@ -4,6 +4,7 @@ public class Lesar_Flag_Script : MonoBehaviour
 {
     public bool Lesar_Flag = true;
     public bool Lesar_Enable = true;
+    public GameObject ColLesar;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,6 +34,8 @@ public class Lesar_Flag_Script : MonoBehaviour
         }
     }
 
+    
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("dddd");
@@ -43,21 +46,30 @@ public class Lesar_Flag_Script : MonoBehaviour
             Debug.Log("eeee");
             other.gameObject.GetComponentInChildren<Lesar_Flag_Script>().Lesar_Flag = true;
             other.gameObject.GetComponentInChildren<Lesar_Flag_Script>().Lesar_Enable = true;
+            ColLesar = other.gameObject;
         }
         else
         {
             Debug.Log("ffff");
            Lesar_Flag = false;
         }
+
+        
+
     }
 
     private void OnTriggerExit(Collider other)
     {
+       
+
         if (other.gameObject.CompareTag("Crane"))
         {
             other.gameObject.GetComponentInChildren<Lesar_Flag_Script>().Lesar_Enable = false;
+            //other.gameObject.GetComponentInChildren<Lesar_Flag_Script>().Lesar_Flag = false;
+           
         }
 
-        }
+      
+    }
 
 }
