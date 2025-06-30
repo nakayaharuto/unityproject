@@ -272,8 +272,8 @@ public class PlayerController : MonoBehaviour
     //オプションを表示
     void option()
     {
-        //Debug.Log("option");
-        OptController.instance.GameOption();
+        Debug.Log("option");
+        //OptController.instance.GameOption();
     }
 
 }
