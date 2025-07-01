@@ -8,7 +8,7 @@ public class ShapeRotate : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        random_num = Random.Range(1, 4);
+        random_num = Random.Range(1, 5);
         Debug.Log(this.name+random_num);
     }
 
