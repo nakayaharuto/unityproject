@@ -3,7 +3,7 @@ using UnityEngine;
 public class NumCheckiAnswer : MonoBehaviour
 {
     public GameObject[] rotate_objects;
-    ShapeRotate SR;
+   public ShapeRotate SR;
     public int true_flag=0;
     [SerializeField] private GameObject open_the_door;
     private bool CorrectFlag = false;
