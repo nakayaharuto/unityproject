@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float RanSpeed = 7.0f;
     public float Graviyty = -9.81f;
     public float JumpHeight = 2f;
+    public float Push = 2f;
 
     public float interactRange = 2f;
     [SerializeField] LayerMask itemLayer = default;
@@ -260,6 +261,23 @@ public class PlayerController : MonoBehaviour
        
         UpdateHeldItemDisplay();
     }
+
+    public void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        //押されるオブジェクトがrigidbodyを持っていたら
+        Rigidbody rb = hit.collider.attachedRigidbody;
+
+        if (rb != null && !rb.isKinematic)
+        {
+            //押す計算
+            Vector3 PushDirection = new Vector3(hit.moveDirection.x, 0,hit.moveDirection.z);
+
+            //力を加える
+            rb.AddForce(PushDirection * Push, ForceMode.Impulse);
+        }
+    }
+
+
 
     //軌道線
     void DrawTrajectoryPreview()

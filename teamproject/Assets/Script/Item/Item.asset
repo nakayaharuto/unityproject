@@ -67,3 +67,15 @@ MonoBehaviour:
   - type: 17
     sprite: {fileID: -1137471907, guid: 290d18826fa3dfa42aed0c64df3df180, type: 3}
     throwprefab: {fileID: 2541086938471127892, guid: 60b0c70d44f92664c8926ffccfb43f4d, type: 3}
+  - type: 18
+    sprite: {fileID: 322241770, guid: 1d23c8949c853df46ba7af7b5e605da2, type: 3}
+    throwprefab: {fileID: 8081513253247054900, guid: 813d532d69c27ab4ea9078cd3a283959, type: 3}
+  - type: 19
+    sprite: {fileID: -707947495, guid: 03b37a584f551aa4c917f2f0925099ee, type: 3}
+    throwprefab: {fileID: 2080923569103883664, guid: 48338b80f0244f147a5d68aa109a07e9, type: 3}
+  - type: 20
+    sprite: {fileID: -1692229468, guid: 10dba605a04a94a4e9cabaa344a3bf5b, type: 3}
+    throwprefab: {fileID: 5016594853873165831, guid: 284d5eecd6fcd5945b60f4f5b61aef5f, type: 3}
+  - type: 21
+    sprite: {fileID: -1147857579, guid: 2b1f0d5675ecab24ab48edcac3eb37e4, type: 3}
+    throwprefab: {fileID: 8443913451444257316, guid: 03c2445035c610b448e42d9cbdbfe892, type: 3}

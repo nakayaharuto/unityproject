@@ -30,9 +30,13 @@ public class Item
         blue_Cube,
         blue_Sphere,
         blue_Traiangl,
-        yellor_cube,
-        yellor_Sphere,
-        yellor_Traiangl,
+        yellow_cube,
+        yellow_Sphere,
+        yellow_Traiangl,
+        red_vitro,
+        bule_vitro,
+        yellow_vitro,
+        green_vitro,
     }
     //アイテムのタイプ
     public Type type;
