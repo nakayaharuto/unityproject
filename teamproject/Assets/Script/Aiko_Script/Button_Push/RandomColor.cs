@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RandomColor : MonoBehaviour
 {
-    [SerializeField] private int[] rand_color_num;
+    [SerializeField] public int[] rand_color_num;
     [SerializeField] public GameObject[] color_objects;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
