@@ -120,12 +120,6 @@ public class PlayerController : MonoBehaviour
             KeyCardDoor();
         }
 
-        //Escキー入力でオプションへ
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            option();
-        }
-
         if(Input.GetMouseButtonDown(0))
         {
             InteractWithItem();
@@ -293,11 +287,5 @@ public class PlayerController : MonoBehaviour
         trajectoryDrawer.DrawTrajectory(throwOrigin.position, velocity);
     }
 
-    //オプションを表示
-    void option()
-    {
-        Debug.Log("option");
-        //OptController.instance.GameOption();
-    }
 
 }

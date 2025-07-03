@@ -1273,7 +1273,7 @@ Transform:
   m_GameObject: {fileID: 854860911}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 58.244, y: 22.146675, z: -0.8870659}
+  m_LocalPosition: {x: 58.244, y: 22.34, z: -0.8870659}
   m_LocalScale: {x: 0.9622067, y: 1.4100177, z: 0.9622067}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9268,8 +9268,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cce7489e26c89549bfe8627058e04fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemuCanvas: {fileID: 0}
   MainCanvas: {fileID: 0}
-  SubCanvas: {fileID: 0}
+  volumepanel: {fileID: 0}
+  panel: {fileID: 0}
+  Backpanel: {fileID: 0}
+  Scene: 
+  animator: {fileID: 0}
 --- !u!65 &2032503171
 BoxCollider:
   m_ObjectHideFlags: 0

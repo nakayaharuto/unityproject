@@ -6,7 +6,8 @@ using System.Threading;
 
 public class TitleScreen : MonoBehaviour
 {
-    public string Scene;        //ワールド移動
+    public string Scene; //ワールド移動
+    public Canvas OptionCanvas;
 
     public void OnNewGame()
     {
@@ -25,7 +26,7 @@ public class TitleScreen : MonoBehaviour
 
     public void OnOption()
     {
-        //OptController.instance.OptEnble();
+        OptionCanvas.gameObject.SetActive(true);
     }
 
 }
