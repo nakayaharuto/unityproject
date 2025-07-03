@@ -1,14 +1,15 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShapeRotate : MonoBehaviour
 {
     [SerializeField] public int random_num;
     public int rot_num=0;
-
+    public Text text;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        random_num = Random.Range(1, 5);
+        random_num = Random.Range(1, 10);
         Debug.Log(this.name+random_num);
     }
 
@@ -20,7 +21,7 @@ public class ShapeRotate : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (rot_num < 3)
+        if (rot_num < 9)
         {
             rot_num++;
         }
@@ -28,7 +29,9 @@ public class ShapeRotate : MonoBehaviour
         {
             rot_num = 0;
         }
-        this.gameObject.transform.eulerAngles = new Vector3(90f * -rot_num, 0f, 0f);
+        //this.gameObject.transform.eulerAngles = new Vector3(90f * -rot_num, 0f, 0f);
+        text.text = ""+rot_num;
+    
     }
 
 }

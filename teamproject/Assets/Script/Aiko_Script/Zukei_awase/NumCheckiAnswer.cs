@@ -29,7 +29,7 @@ public class NumCheckiAnswer : MonoBehaviour
             for (int i = 0; i < rotate_objects.Length; i++)
             {
                 SR = rotate_objects[i].GetComponent<ShapeRotate>();
-                if (SR.random_num == SR.rot_num + 1)
+                if (SR.random_num == SR.rot_num)
                 {
                     true_flag++;
                 }

@@ -5,6 +5,8 @@ public class Lesar_Flag_Script : MonoBehaviour
     public bool Lesar_Flag = true;
     public bool Lesar_Enable = true;
     public GameObject ColLesar;
+    [SerializeField] float lesar_pos;
+    [SerializeField] float lesar_pos2;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -48,6 +50,15 @@ public class Lesar_Flag_Script : MonoBehaviour
             other.gameObject.GetComponentInChildren<Lesar_Flag_Script>().Lesar_Enable = true;
             ColLesar = other.gameObject;
         }
+        else if (other.gameObject.CompareTag("Respawn"))
+        {
+            Lesar_Flag = false;
+            Lesar_Enable = false;
+            //this.GetComponentInParent<Lesar_Script>().Lesar_Distance = 0f;
+            //lesar_pos = this.GetComponentInParent<Lesar_Script>().Lesar_Distance;
+           
+           
+        }
         else
         {
             Debug.Log("ffff");
@@ -58,18 +69,48 @@ public class Lesar_Flag_Script : MonoBehaviour
 
     }
 
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("Respawn"))
+    //    {
+    //        //lesar_pos = this.GetComponentInParent<Lesar_Script>().Lesar_Distance;
+    //        Lesar_Flag = false;
+
+    //        //Lesar_Enable = false;
+    //        this.GetComponentInParent<Lesar_Script>().Lesar_Distance = lesar_pos2/10;
+    //        //Lesar_Enable = true;
+    //        Debug.Log("qwertyuio"+ this.GetComponentInParent<Lesar_Script>().Lesar_Distance);
+    //        Debug.Log(lesar_pos+"lesapos");
+    //        Debug.Log(lesar_pos2 + "pos2");
+
+    //    }
+    //}
+
     private void OnTriggerExit(Collider other)
     {
-       
 
+        
         if (other.gameObject.CompareTag("Crane"))
         {
             other.gameObject.GetComponentInChildren<Lesar_Flag_Script>().Lesar_Enable = false;
             //other.gameObject.GetComponentInChildren<Lesar_Flag_Script>().Lesar_Flag = false;
            
         }
+        else if (other.gameObject.CompareTag("Respawn"))
+        {
+            //lesar_pos2 = lesar_pos;
+            Lesar_Flag = true;
+            Lesar_Enable = true;
+            
+            //this.GetComponentInParent<Lesar_Script>().Lesar_Distance = lesar_pos;
+        }
+        else if (other.gameObject.CompareTag("Player"))
+        {
+            Lesar_Flag = true;
+            Lesar_Enable = true;
+        }
 
-      
+
     }
 
 }
