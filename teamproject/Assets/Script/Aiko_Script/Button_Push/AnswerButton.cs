@@ -8,11 +8,14 @@ public class AnswerButton : MonoBehaviour
     public GameObject[] color_buttons;
    public Cbutton_push[] CP;
     public HintMonitor HM;
-    [SerializeField] private int order_answer_num=0;
+    [SerializeField] public int order_answer_num=0;
     public int[] answer_num;
     RandomColor RC;
     public int[] true_num;
-    public int test_num;
+    public int[] click_button;
+    public int[] button_color_num;
+    [SerializeField] private int answer_count=0;
+    public bool[] push_flag;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -47,6 +50,42 @@ public class AnswerButton : MonoBehaviour
             CP[i]=color_buttons[i].GetComponent<Cbutton_push>();
             CP[i].push_num = 0;
             CP[i].push_text.text = "" + CP[i].push_num;
+            CP[i].pm2 = 0;
+        }
+
+        for (int i = 0; i < order_answer_num; i++)
+        {
+            if (true_num[i] == button_color_num[i] && push_flag[i]==true)
+            {
+                
+                answer_count++;
+            }
+            button_color_num[i] = 0;
+            push_flag[i] = false;
+        }
+        
+        if (answer_count==order_answer_num)
+        {
+            true_flag = true;
+            this.GetComponent<BoxCollider>().enabled = false;
+        }
+
+        answer_count = 0;
+
+        if (true_flag==true)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                CP[i] = color_buttons[i].GetComponent<Cbutton_push>();
+                CP[i].GetComponent<Renderer>().material.color = Color.green;
+                
+            }
+
+            Debug.Log("yes");
+        }
+        else
+        {
+            Debug.Log ("no");
         }
 
     }
@@ -80,10 +119,27 @@ public class AnswerButton : MonoBehaviour
 
         }
 
+        //while(test_num!= order_answer_num)
+        //{
+        //    Debug.Log(RC.rand_color_num[answer_num[test_num]] + "axolotl" + test_num);
+        //    Debug.Log("order_answer_num" + order_answer_num);
+        //    true_num[test_num] = test_num;
+
+        //    test_num++;
+        //}
+
+        true_num= new int[order_answer_num];
+        click_button= new int[order_answer_num];
+        button_color_num = new int[order_answer_num];
+        push_flag = new bool[order_answer_num];
+
         for (int i = 0; i < order_answer_num; i++)
         {
-            //true_num[i] = RC.rand_color_num[RC.color_objects[answer_num[i]];
-            Debug.Log(RC.rand_color_num[answer_num[i]]);
+            true_num[i] = 0;
+            Debug.Log(RC.rand_color_num[answer_num[i]] + "axolotl" + i);
+            Debug.Log("order_answer_num" + order_answer_num);
+            true_num[i] = RC.rand_color_num[answer_num[i]];
+
 
         }
 

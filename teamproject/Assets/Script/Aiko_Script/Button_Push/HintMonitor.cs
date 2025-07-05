@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class HintMonitor : MonoBehaviour
 {
-    [SerializeField] public int hint_text_num;
+    [SerializeField] public int hint_text_num=0;
     public Text Htext;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
