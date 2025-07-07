@@ -10,7 +10,6 @@ public class Trajectory : MonoBehaviour
     public LayerMask hitMask;
     public void DrawTrajectory(Vector3 startPos, Vector3 velocity)
     {
-        Debug.Log("軌道表示開始: 位置=" + startPos + " 速度=" + velocity);
         List<Vector3> points = new List<Vector3>();
         Vector3 currentPos = startPos;
         Vector3 currentVelocity = velocity;

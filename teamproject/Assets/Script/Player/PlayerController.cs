@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     private GameObject heldItem;
     private Item currentDisplayedItem = null;
 
+    [SerializeField] private SameObjGimmick gimmick;
+    [SerializeField] private key keyCardDoor;
     private CharacterController controller;
     private Vector3 velocity;
     private bool isGrounded;
@@ -116,8 +118,18 @@ public class PlayerController : MonoBehaviour
         //Fキー入力
         if (Input.GetKeyDown(KeyCode.F))
         {
-            
-            KeyCardDoor();
+            //フレームのチェック
+            if(this != null)
+            {
+                FrameCheck();
+            }
+           
+            //カードキーかどうか
+            if(keyCardDoor != null)
+            {
+                KeyCardDoor();
+            }
+           
         }
 
         if(Input.GetMouseButtonDown(0))
@@ -248,13 +260,61 @@ public class PlayerController : MonoBehaviour
     //cardでドアを開く
     void KeyCardDoor()
     {
-        if (heldItem == null || currentDisplayedItem == null) return;
+        if (heldItem == null || currentDisplayedItem == null)
+        {
+            return;
+        }
+        else 
+        {
+            key.instance.KeyDoor();
+            key.instance.SetheldItem(heldItem);
 
-        key.instance.KeyDoor();
-        key.instance.SetheldItem(heldItem);
-       
-        UpdateHeldItemDisplay();
+            UpdateHeldItemDisplay();
+        }
     }
+
+    //フレームにはめ込む
+    void FrameCheck()
+    {
+        if (heldItem == null || currentDisplayedItem == null)
+            return;
+        
+        Item.Type itemtype = currentDisplayedItem.type;
+
+        Frame targetframe = FindClosesFrame();
+
+        if (targetframe != null)
+        {
+            int index = System.Array.IndexOf(gimmick.frames, targetframe);
+            if (index >= 0)
+            {
+                gimmick.UseItemFrame(index, itemtype); //ここでUseItemFrameを呼ぶ！
+            }
+        }
+        
+    }
+
+    Frame FindClosesFrame()
+    {
+        Frame[] frames = FindObjectsOfType<Frame>();
+
+        Frame closestFrame = null;
+        float closestDistance = Mathf.Infinity;
+        Vector3 playerPos = transform.position;
+
+        foreach (var frame in frames)
+        {
+            float distance = Vector3.Distance(playerPos, frame.transform.position);
+            if (distance <= 3f && distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestFrame = frame;
+            }
+        }
+        return closestFrame;
+    }
+
+
 
     public void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -271,8 +331,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-
+   
     //軌道線
     void DrawTrajectoryPreview()
     {

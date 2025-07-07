@@ -3451,13 +3451,14 @@ MonoBehaviour:
   RanSpeed: 7
   Graviyty: -9.81
   JumpHeight: 2
+  Push: 2
   interactRange: 4
   itemLayer:
     serializedVersion: 2
     m_Bits: 8
   throwOrigin: {fileID: 8067698038382765534}
   throwForce: 10
-  trajectoryDrawer: {fileID: 0}
+  trajectoryDrawer: {fileID: 7790711681286374205, guid: 9d9a206801bc8714ea7cd2fb4f6aacbd, type: 3}
   HandHoldPoint: {fileID: 5803623689888069692}
 --- !u!143 &9027179818874033347
 CharacterController:

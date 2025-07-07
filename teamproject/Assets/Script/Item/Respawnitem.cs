@@ -28,10 +28,6 @@ public class Respawnitem : MonoBehaviour
             //item‚È‚¯‚ê‚ÎÄ“x¶¬
             CurrentItem = Instantiate(Item, SpawnPoint.position,SpawnPoint.rotation);
         }
-        else
-        {
-            Debug.Log("item‚ª‘¶İ‚µ‚Ä‚¢‚Ü‚·");
-        }
     }
 
 }
