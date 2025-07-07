@@ -20,11 +20,11 @@ public class Rotation_Door : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (switch_on_off==-1)//off
+        if (switch_flag==false/*switch_on_off==-1*/)//off
         {
             if (RotateDoor.transform.rotation.y<=first_rot)
             {
-                RotateDoor.transform.Rotate(0f, /*limit_rotate * Time.deltaTime*/0.1f, 0f);
+                RotateDoor.transform.Rotate(0f, /*limit_rotate * Time.deltaTime*/0.2f, 0f);
                 this.GetComponent<BoxCollider>().enabled = false;
                 this.GetComponent<Renderer>().material.color = Color.red;
                 //Debug.Log(RotateDoor.transform.rotation.y);
@@ -38,11 +38,11 @@ public class Rotation_Door : MonoBehaviour
                 this.GetComponent<Renderer>().material.color = Color.green;
             }
         }
-        else if (switch_on_off==1)//on
+        else if (switch_flag==true)//on
         {
             if (RotateDoor.transform.rotation.y >= -limit_rotate)
             {
-                RotateDoor.transform.Rotate(0f, /*-limit_rotate * Time.deltaTime*/-0.1f, 0f);
+                RotateDoor.transform.Rotate(0f, /*-limit_rotate * Time.deltaTime*/-0.2f, 0f);
                 this.GetComponent<BoxCollider>().enabled = false;
                 this.GetComponent<Renderer>().material.color = Color.red;
             }
@@ -68,11 +68,13 @@ public class Rotation_Door : MonoBehaviour
     {
                 if (switch_flag==true)
                 {
-                    switch_on_off = -1;
+            switch_flag = false;
+                    //switch_on_off = -1;
                 }
                 else
                 {
-                    switch_on_off = 1;
+            switch_flag = true;
+                    //switch_on_off = 1;
                 }
 
                

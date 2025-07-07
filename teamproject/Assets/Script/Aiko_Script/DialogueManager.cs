@@ -29,6 +29,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Text character_name;
     [SerializeField] private Text[] optin_text;
     public int last_talk_flag=0;
+    private Choice Ch;
     //[SerializeField] public EndText endText;
 
    // [SerializeField] public DialogText2 text2;
@@ -100,8 +101,8 @@ public class DialogueManager : MonoBehaviour
 
             sentences.Clear();
 
-            
 
+            IconClose();
 
                 foreach (DialogSentence sentence in dialogue_data.Paragraphs)
             {
@@ -166,8 +167,8 @@ public class DialogueManager : MonoBehaviour
     
     IEnumerator DisplayOption(DialogueOption[] options)
     {
-        
 
+        FirstButtonSelect();
 
         int j =0;
 
@@ -239,6 +240,7 @@ public class DialogueManager : MonoBehaviour
         dialogue_option_panel.SetActive(false);
         //talk_checker.talk_npc.dialogue_text=dialogText2.endText.End_Text;
         istalkable = true;
+        IconOpen();
     }
 
     public void LoopText(EndText end)
@@ -255,6 +257,24 @@ public class DialogueManager : MonoBehaviour
         EndText end= text2.Endtext;
 
         LoopText(end);
+    }
+
+    public void IconClose()
+    {
+        talk_checker = GameObject.FindGameObjectWithTag("Player").GetComponent<Talk_Checker>();
+        talk_checker.talk_npc.GetComponent<NPC>().talk_icon.SetActive(false);
+    }
+
+    public void IconOpen()
+    {
+        talk_checker = GameObject.FindGameObjectWithTag("Player").GetComponent<Talk_Checker>();
+        talk_checker.talk_npc.GetComponent<NPC>().talk_icon.SetActive(true);
+    }
+
+    public void FirstButtonSelect()
+    {
+        Ch = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Choice>();
+        Ch.buttons[0].GetComponent<Button>().Select();
     }
 
     //public void ChoiceOption(DialogueOption[] options)

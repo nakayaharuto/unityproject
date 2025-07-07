@@ -19,11 +19,22 @@ public class Operate_Clane_Button : MonoBehaviour
 
     public GameObject[] buttons;
 
+    public float[] start_pos;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         MC = Crane.GetComponent<Move_Clane>();
         this.GetComponent<Renderer>().material.color = Color.green;
+        
+        start_pos = new float[3];
+
+       
+            start_pos[0]=Crane.transform.position.x;
+        start_pos[1] = Crane.transform.position.y;
+        start_pos[2] = Crane.transform.position.z;
+
+
     }
 
 
@@ -36,7 +47,7 @@ public class Operate_Clane_Button : MonoBehaviour
             switch(dilection_num)
             {
                 case 0://‰E
-                    if (Crane.transform.position.x <= move_limit_x)
+                    if (Crane.transform.position.x <= start_pos[0] +move_limit_x)
                     {
                         Crane.transform.Translate(Time.deltaTime, 0, 0);
                         //Crane.transform.position = new Vector3(transform.position.x, transform.position.y, Mathf.Sin(Time.time) * 4);
@@ -44,12 +55,12 @@ public class Operate_Clane_Button : MonoBehaviour
                     else
                     {
                         this.button_flag = false;
-                        this.button_num = -1;
+                       // this.button_num = -1;
                         this.GetComponent<Renderer>().material.color = Color.green;
                     }
                     break;
                 case 1://¶
-                    if (Crane.transform.position.x >= move_limit_x)
+                    if (Crane.transform.position.x >= start_pos[0] -move_limit_x)
                     {
                         Crane.transform.Translate(-Time.deltaTime, 0, 0);
                         //Crane.transform.position = new Vector3(transform.position.x, transform.position.y, Mathf.Sin(Time.time) * 4);
@@ -57,12 +68,12 @@ public class Operate_Clane_Button : MonoBehaviour
                     else
                     {
                         this.button_flag = false;
-                        this.button_num = -1;
+                       // this.button_num = -1;
                         this.GetComponent<Renderer>().material.color = Color.green;
                     }
                     break;
                 case 2://‘O
-                    if (Crane.transform.position.z <= move_limit_z)
+                    if (Crane.transform.position.z <= start_pos[2] + move_limit_z)
                     {
                         Crane.transform.Translate(0, 0, Time.deltaTime);
                         //Crane.transform.position = new Vector3(transform.position.x, transform.position.y, Mathf.Sin(Time.time) * 4);
@@ -70,12 +81,12 @@ public class Operate_Clane_Button : MonoBehaviour
                     else
                     {
                         this.button_flag = false;
-                        this.button_num = -1;
+                       // this.button_num = -1;
                         this.GetComponent<Renderer>().material.color = Color.green;
                     }
                     break;
                 case 3://Œã‚ë
-                    if (Crane.transform.position.z >= move_limit_z)
+                    if (Crane.transform.position.z >= start_pos[2] - move_limit_z)
                     {
                         Crane.transform.Translate(0, 0, -Time.deltaTime);
                         //Crane.transform.position = new Vector3(transform.position.x, transform.position.y, Mathf.Sin(Time.time) * 4);
@@ -83,7 +94,7 @@ public class Operate_Clane_Button : MonoBehaviour
                     else
                     {
                         this.button_flag = false;
-                        this.button_num = -1;
+                        //this.button_num = -1;
                         this.GetComponent<Renderer>().material.color = Color.green;
                     }
                     break;
@@ -115,7 +126,7 @@ public class Operate_Clane_Button : MonoBehaviour
                         {
                             MC.hit = false;
                             this.button_flag = false;
-                            this.button_num = -1;
+                            //this.button_num = -1;
                             this.GetComponent<Renderer>().material.color = Color.green;
                             this.GetComponent<BoxCollider>().enabled = true;
                             for (int i = 0; i < 5; i++)
@@ -140,7 +151,7 @@ public class Operate_Clane_Button : MonoBehaviour
                     else
                     {
                         this.button_flag = false;
-                        this.button_num = -1;
+                       // this.button_num = -1;
                         this.GetComponent<Renderer>().material.color = Color.green;
                     }
 
@@ -189,20 +200,31 @@ public class Operate_Clane_Button : MonoBehaviour
            
         }
 
-        switch (button_num)
+        if (button_flag==false)
         {
-            case -1:
-                button_flag = true;
-                this.GetComponent<Renderer>().material.color = Color.red;
-                break;
-            case 1:
-                button_flag = false;
-                this.GetComponent<Renderer>().material.color = Color.green;
-                break;
+            button_flag = true;
+            this.GetComponent<Renderer>().material.color = Color.red;
         }
-        Debug.Log(button_flag);
-        button_num = -button_num;
-        Debug.Log(button_num);
+        else
+        {
+            button_flag = false;
+            this.GetComponent<Renderer>().material.color = Color.green;
+        }
+
+        //    switch (button_num)
+        //    {
+        //        case -1:
+        //            button_flag = true;
+        //            this.GetComponent<Renderer>().material.color = Color.red;
+        //            break;
+        //        case 1:
+        //            button_flag = false;
+        //            this.GetComponent<Renderer>().material.color = Color.green;
+        //            break;
+        //    }
+        //Debug.Log(button_flag);
+        //button_num = -button_num;
+        //Debug.Log(button_num);
     }
 
 }

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Choice : MonoBehaviour
 {
-    Button button;
+   public Button D_button;
     Text text;
 
     public int j = 0;
@@ -16,10 +16,10 @@ public class Choice : MonoBehaviour
 
     void Start()
     {
-        button = GameObject.Find("Bored2/Canvas/OptionPanel/dialogue_option1").GetComponent<Button>();
+        D_button = GameObject.Find("Bored2/Canvas/OptionPanel/dialogue_option1").GetComponent<Button>();
         text = GameObject.Find("Bored2/Canvas/OptionPanel/dialogue_option1").GetComponent<Text>();
         //É{É^ÉìÇ™ëIëÇ≥ÇÍÇΩèÛë‘Ç…Ç»ÇÈ
-        button.Select();
+        D_button.Select();
         text.color = Color.red;
     }
 
@@ -36,37 +36,40 @@ public class Choice : MonoBehaviour
     }
     private void Update()
     {
-        
+        if (buttons[0].activeSelf==true)
+        {
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                k = 0;
+                ConfirmButtons();
+                if (j < k - 1)
+                {
+                    j++;
+                }
+                else
+                {
+                    j = 0;
+                }
+                Choose();
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            k = 0;
-            ConfirmButtons();
-            if (j < k-1)
-            {
-                j++;
             }
-            else
+            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                j = 0;
+                k = 0;
+                ConfirmButtons();
+                if (j > 0)
+                {
+                    j--;
+                }
+                else
+                {
+                    j = k - 1;
+                }
+                Choose();
             }
-            Choose();
-            
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            k = 0;
-            ConfirmButtons();
-            if (j > 0)
-            {
-                j--;
-            }
-            else
-            {
-                j = k-1;
-            }
-            Choose();
-        }
+
+        
 
         }
 
