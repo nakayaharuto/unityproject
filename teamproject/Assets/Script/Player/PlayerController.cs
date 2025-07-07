@@ -25,11 +25,17 @@ public class PlayerController : MonoBehaviour
     private GameObject heldItem;
     private Item currentDisplayedItem = null;
 
-    [SerializeField] private SameObjGimmick gimmick;
-    [SerializeField] private key keyCardDoor;
+    [SerializeField] private SameObjGimmick gimmick;　//sameobjを参照
+    [SerializeField] private key keyCardDoor;         //keyスクリプトを参照    
     private CharacterController controller;
     private Vector3 velocity;
     private bool isGrounded;
+
+    //サウンドマネージャー
+    [SerializeField] private SoundManager soundManager;
+    [SerializeField] private AudioClip clip1; //音源データ1
+    [SerializeField] private AudioClip clip2; //音源データ1
+
 
     private Talk_Checker talk_checker;
 
@@ -119,7 +125,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             //フレームのチェック
-            if(this != null)
+            if(gimmick != null)
             {
                 FrameCheck();
             }
@@ -135,13 +141,12 @@ public class PlayerController : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             InteractWithItem();
-            
+            soundManager.Play(SoundManager.SoundType.LeftClick);
         }
 
         if (Input.GetMouseButtonDown(1)) // 右クリック
         {
             ThrowHeldItem();
-            
         }
         
         if(Input.GetKeyDown(KeyCode.G))
@@ -238,6 +243,7 @@ public class PlayerController : MonoBehaviour
         Destroy(heldItem);
         heldItem = null;
 
+        soundManager.Play(SoundManager.SoundType.RightClick); //サウンドマネージャーを使用して効果音再生
         UpdateHeldItemDisplay();
     }
 
