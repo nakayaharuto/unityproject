@@ -5,6 +5,9 @@ public class Frame : MonoBehaviour
     public Item.Type Itemtype;    //フレームにあうItemのtype
     private bool isFilled = false;
 
+    //サウンドマネージャー
+    [SerializeField] private SoundManager soundManager;
+
     public void TryInsertItem(Item.Type itemtype,ItemBox itemBox)
     {
         if (isFilled) return;
@@ -13,12 +16,11 @@ public class Frame : MonoBehaviour
         {
             isFilled = true;
             ItemBox.instance.UseSelectItem();
-
-            Debug.Log($"フレームにアイテム {Itemtype} をはめ込みました！");
+            soundManager.Play(SoundManager.SoundType.correctans); //サウンドマネージャーを使用して効果音再生
         }
         else
         {
-            Debug.Log("違うアイテムか選択されていません。");
+            soundManager.Play(SoundManager.SoundType.Incorrectans);
         }
     }
     public bool IsFilled()

@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     private Item currentDisplayedItem = null;
 
     [SerializeField] private SameObjGimmick gimmick;　//sameobjを参照
-    [SerializeField] private key keyCardDoor;         //keyスクリプトを参照    
+    [SerializeField] private KeyCardController keyCardDoor;         //keyスクリプトを参照    
     private CharacterController controller;
     private Vector3 velocity;
     private bool isGrounded;
@@ -35,7 +35,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SoundManager soundManager;
     [SerializeField] private AudioClip clip1; //音源データ1
     [SerializeField] private AudioClip clip2; //音源データ1
-
 
     private Talk_Checker talk_checker;
 
@@ -82,13 +81,14 @@ public class PlayerController : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        //移動処理
-        //controller.Move(move * WalkSpeed * Time.deltaTime);
+        bool isMove = move.magnitude > 0.1f;
+        bool isRun = Input.GetKey(KeyCode.LeftShift);
 
         //歩き
-        float dash = Input.GetKey(KeyCode.LeftShift) ? RanSpeed : WalkSpeed;
+        float dash = isRun ? RanSpeed : WalkSpeed;
         //ダッシュ
         controller.Move(move *  dash * Time.deltaTime);
+
         //ジャンプ
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
@@ -124,29 +124,26 @@ public class PlayerController : MonoBehaviour
         //Fキー入力
         if (Input.GetKeyDown(KeyCode.F))
         {
+            //カードキーかどうか
+            if (keyCardDoor != null)
+            {
+                KeyCardController.instance.KeyDoor();
+            }
             //フレームのチェック
-            if(gimmick != null)
+            if (gimmick != null)
             {
                 FrameCheck();
             }
-           
-            //カードキーかどうか
-            if(keyCardDoor != null)
-            {
-                KeyCardDoor();
-            }
-           
         }
 
         if(Input.GetMouseButtonDown(0))
         {
-            InteractWithItem();
-            soundManager.Play(SoundManager.SoundType.LeftClick);
+            InteractWithItem();//item入手
         }
 
         if (Input.GetMouseButtonDown(1)) // 右クリック
         {
-            ThrowHeldItem();
+            ThrowHeldItem();//投げる
         }
         
         if(Input.GetKeyDown(KeyCode.G))
@@ -206,17 +203,8 @@ public class PlayerController : MonoBehaviour
             if (pickup != null)
             {
                 pickup.OnClickObject();
+                soundManager.Play(SoundManager.SoundType.Pickup); //サウンドマネージャーを使用して効果音再生
                 Debug.Log("アイテム取得");
-            }
-        }
-        else if(Physics.Raycast(ray, out hit, interactRange, itemLayer))
-        {
-            Debug.Log("ヒットしたオブジェクト: {hit.collider.gameObject.name}");
-            SetObjj setobj = hit.collider.GetComponent<SetObjj>();
-            if (setobj != null)
-            {
-                setobj.OnClickThis();
-                Debug.Log("アイテム設置");
             }
         }
         else
@@ -243,7 +231,7 @@ public class PlayerController : MonoBehaviour
         Destroy(heldItem);
         heldItem = null;
 
-        soundManager.Play(SoundManager.SoundType.RightClick); //サウンドマネージャーを使用して効果音再生
+        soundManager.Play(SoundManager.SoundType.objthrow); //サウンドマネージャーを使用して効果音再生
         UpdateHeldItemDisplay();
     }
 
@@ -259,24 +247,8 @@ public class PlayerController : MonoBehaviour
         currentDisplayedItem = null;
         Destroy(heldItem);
         heldItem = null;
-
+        soundManager.Play(SoundManager.SoundType.Drop);
         UpdateHeldItemDisplay();
-    }
-
-    //cardでドアを開く
-    void KeyCardDoor()
-    {
-        if (heldItem == null || currentDisplayedItem == null)
-        {
-            return;
-        }
-        else 
-        {
-            key.instance.KeyDoor();
-            key.instance.SetheldItem(heldItem);
-
-            UpdateHeldItemDisplay();
-        }
     }
 
     //フレームにはめ込む
@@ -351,6 +323,5 @@ public class PlayerController : MonoBehaviour
         Vector3 velocity = Camera.main.transform.forward * throwForce;
         trajectoryDrawer.DrawTrajectory(throwOrigin.position, velocity);
     }
-
 
 }

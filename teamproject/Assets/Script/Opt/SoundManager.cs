@@ -7,18 +7,22 @@ public class SoundManager : MonoBehaviour
 {
     public enum SoundType
     {
-        FKey,
-        LeftClick,
-        RightClick,
-        GKey,
-
+        Open,//ドア開ける
+        objthrow,//投げる
+        Drop,//落とす
+        Walk,//歩く
+        Run,//走る
+        Pickup,//拾う
+        correctans,//正解
+        Incorrectans,//不正解
+        KeyOpen,//カードキーで開ける
     }
 
     [System.Serializable]
     public class SoundData
     {
         public SoundType soundtype; //名前
-        public float volume = 1.0f;//音量
+        public int volume = 100;//音量
         public AudioClip clip;//音源
     }
 
@@ -81,7 +85,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-
+    
 
 
 }

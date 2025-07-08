@@ -45,9 +45,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saunddata:
-  - soundtype: 2
+  - soundtype: 1
     volume: 100
     clip: {fileID: 8300000, guid: aaa3eeca717789e408a773fd5f36f905, type: 3}
+  - soundtype: 0
+    volume: 300
+    clip: {fileID: 8300000, guid: 283129418a1178c4a82b17ff9dfa470f, type: 3}
+  - soundtype: 4
+    volume: 100
+    clip: {fileID: 8300000, guid: 33857a85cadb75948b4ca8c47e94be6d, type: 3}
+  - soundtype: 3
+    volume: 100
+    clip: {fileID: 8300000, guid: 1d202c06abf85224d91084cbfbb2db56, type: 3}
+  - soundtype: 5
+    volume: 300
+    clip: {fileID: 8300000, guid: 76f044e5998be9b45abd271bfd349a5e, type: 3}
+  - soundtype: 6
+    volume: 300
+    clip: {fileID: 8300000, guid: fcee0b4b098d9fd418a7f4c1921cbe32, type: 3}
+  - soundtype: 7
+    volume: 300
+    clip: {fileID: 8300000, guid: 6c429c0f1251e364db88d6bedc11e3d5, type: 3}
   - soundtype: 2
-    volume: 0
-    clip: {fileID: 0}
+    volume: 300
+    clip: {fileID: 8300000, guid: 87fc7f175d680f34698432dc2cc91252, type: 3}
+  - soundtype: 8
+    volume: 300
+    clip: {fileID: 8300000, guid: 38853599799c3024d8b6ee1a0a8623ef, type: 3}

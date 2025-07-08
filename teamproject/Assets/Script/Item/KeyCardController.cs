@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class key : MonoBehaviour
+public class KeyCardController : MonoBehaviour
 {
-    public static key instance;
+    public static KeyCardController instance;
     public GameObject KeyCard;  //指定のキーカード
     private GameObject heldItem;
     private Item currentDisplayedItem = null;
-    private Animator animator;//ドアのアニメーター
+    public SwitchDoorScript SwitchDoorScript;
+
+    //サウンドマネージャー
+    [SerializeField] private SoundManager soundManager;
 
     private void Awake()
     {
@@ -42,7 +45,8 @@ public class key : MonoBehaviour
 
     void OpenDoor()
     {
-        Debug.Log("空きました");
+        SwitchDoorScript.isOpen = true;
+        soundManager.Play(SoundManager.SoundType.KeyOpen);
     }
 
 }

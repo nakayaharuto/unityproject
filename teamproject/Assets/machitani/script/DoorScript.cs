@@ -8,6 +8,10 @@ public class DoorScript : MonoBehaviour
     //ドアアニメーター
     private Animator animator;
 
+    //サウンドマネージャー
+    [SerializeField] private SoundManager soundManager;
+    [SerializeField] private AudioClip clip1; //音源データ1
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,7 +24,8 @@ public class DoorScript : MonoBehaviour
     {
         if(Input.GetKeyDown("f")&&isNear)
         {
-            animator.SetBool("open",!animator.GetBool("open")); 
+            animator.SetBool("open",!animator.GetBool("open"));
+            soundManager.Play(SoundManager.SoundType.Open); //サウンドマネージャーを使用して効果音再生
         }
     }
      void OnTriggerEnter(Collider col)
@@ -28,6 +33,7 @@ public class DoorScript : MonoBehaviour
        if(col.tag=="Player")
         {
             isNear=true;
+            
         }
     }
      void OnTriggerExit(Collider col)
