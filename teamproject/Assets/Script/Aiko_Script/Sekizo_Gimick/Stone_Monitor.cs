@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+[DefaultExecutionOrder(2)]
 public class Stone_Monitor : MonoBehaviour
 {
     public Text moni_text;

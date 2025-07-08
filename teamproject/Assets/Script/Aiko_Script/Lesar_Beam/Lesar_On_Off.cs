@@ -7,12 +7,14 @@ public class Lesar_On_Off : MonoBehaviour
     public GameObject first_lesar_machine;
    
     public Lesar_Script LS;
-
+    Renderer Ren;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         LS = first_lesar_machine.GetComponent<Lesar_Script>();
+        Ren = this.GetComponent<Renderer>();
+        Ren.material.color = Color.green;
     }
 
     // Update is called once per frame
@@ -27,6 +29,7 @@ public class Lesar_On_Off : MonoBehaviour
         {
             button_flag = true;
             LS.Fire_Flag=true;
+            Ren.material.color = Color.red;
         }
         else
         {
@@ -36,7 +39,7 @@ public class Lesar_On_Off : MonoBehaviour
                 LS.GetComponent<Lesar_Script>().Fire_Flag = false;
                 LS.GetComponent<Lesar_Script>().LFS.Lesar_Enable = false;
             }
-
+            Ren.material.color = Color.green;
             LS.Fire_Flag = false;
             LS.LFS.Lesar_Flag = true;
             button_flag =false;

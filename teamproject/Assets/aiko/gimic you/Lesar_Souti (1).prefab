@@ -158,6 +158,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Lesar_Flag: 1
   Lesar_Enable: 1
+  ColLesar: {fileID: 0}
+  lesar_pos: 0
+  lesar_pos2: 0
 --- !u!65 &6062184982973343509
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -330,6 +333,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Lesar_Flag: 0
   Lesar_Enable: 0
+  ColLesar: {fileID: 0}
+  lesar_pos: 0
+  lesar_pos2: 0
 --- !u!54 &6775826943322593561
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -425,7 +431,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 3199df5e9cc577248bc8c122f6b3c542, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -511,6 +517,8 @@ MonoBehaviour:
   Lesar_Distance: 0
   LFS: {fileID: 0}
   Fire_Flag: 0
+  rot_num: 0
+  direction_num: 0
 --- !u!1 &8045449092939542664
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,7 +585,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: d455fc1874287164aa0c55775dca7912, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-
+[DefaultExecutionOrder(5)]
 public class MonitorText : MonoBehaviour
 {
     //public GameObject Monitor;
@@ -15,7 +15,9 @@ public class MonitorText : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        NCA=GameObject.FindGameObjectWithTag("Respawn").GetComponent<NumCheckiAnswer>();
+       appear_num = new int[4];
+
+        NCA=GameObject.Find("Num_Check_Answer").GetComponent<NumCheckiAnswer>();
 
         for (int i = 0; i < 4; i++)
         {

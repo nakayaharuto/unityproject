@@ -14,12 +14,18 @@ public class Lesar_Script : MonoBehaviour
 
     private bool reversal_flag = false;
 
+    [SerializeField] private float[] start_rot;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        start_rot = new float[3];
        LFS=this.GetComponentInChildren<Lesar_Flag_Script>();
         LFS.GetComponent<Renderer>().material.color = Color.red;
         Debug.Log(LFS.Lesar_Flag);
+        start_rot[0] = this.transform.rotation.eulerAngles.x;
+        start_rot[1] = this.transform.rotation.eulerAngles.y;
+        start_rot[2] = this.transform.rotation.eulerAngles.z;
     }
 
     // Update is called once per frame
@@ -58,7 +64,7 @@ public class Lesar_Script : MonoBehaviour
                 {
                     rot_num = 0;
                 }
-                this.gameObject.transform.eulerAngles = new Vector3(0f, 90f * rot_num, 0f);
+                this.gameObject.transform.eulerAngles = new Vector3(start_rot[0], 90f * rot_num, start_rot[2]);
                 break;
             case 1://â∫
                 if (rot_num == 2)
@@ -79,7 +85,7 @@ public class Lesar_Script : MonoBehaviour
                     rot_num--;
                 }
 
-                this.gameObject.transform.eulerAngles = new Vector3(90f * -rot_num, 0f, 0f);
+                this.gameObject.transform.eulerAngles = new Vector3(90f * -rot_num, start_rot[1], start_rot[2]);
 
                 break;
             case 2://è„
@@ -101,7 +107,7 @@ public class Lesar_Script : MonoBehaviour
                     rot_num--;
                 }
 
-                this.gameObject.transform.eulerAngles = new Vector3(90f * rot_num, 0f, 0f);
+                this.gameObject.transform.eulerAngles = new Vector3(90f * rot_num, start_rot[1], start_rot[2]);
 
                 break;
 
