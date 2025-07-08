@@ -26,7 +26,7 @@ public class numbergimmick : MonoBehaviour
     private void Start()
     {
         SpawnCount = Random.Range(1, SpawnCount);   //èoåªÇ≥ÇÍÇÈç≈è¨Ç∆ç≈ëÂ
-        CorrectNumber = SpawnCount;
+        //CorrectNumber = SpawnCount;
         for (int i = 0; i < SpawnCount; i++)
         {
             SpawnObjects();

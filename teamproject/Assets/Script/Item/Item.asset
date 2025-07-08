@@ -79,3 +79,12 @@ MonoBehaviour:
   - type: 21
     sprite: {fileID: -1147857579, guid: 2b1f0d5675ecab24ab48edcac3eb37e4, type: 3}
     throwprefab: {fileID: 8443913451444257316, guid: 03c2445035c610b448e42d9cbdbfe892, type: 3}
+  - type: 22
+    sprite: {fileID: -1683949104, guid: bd547aec49b6e914398dcf659710d1e4, type: 3}
+    throwprefab: {fileID: 8421844059560170159, guid: 9e86bfe9cfd14a44e8b9a6f0a74b2600, type: 3}
+  - type: 23
+    sprite: {fileID: 921065222, guid: 4a0bff596d686fe40a5d295f52c5cdc1, type: 3}
+    throwprefab: {fileID: 1965607463045100635, guid: 20179f11ee670c548a4bde96668c0159, type: 3}
+  - type: 25
+    sprite: {fileID: -1941692700, guid: cd16bc840148f8b46ae013ba8ea44d82, type: 3}
+    throwprefab: {fileID: 7090181872020789208, guid: 686ed41d50ea15f439273448d0033364, type: 3}

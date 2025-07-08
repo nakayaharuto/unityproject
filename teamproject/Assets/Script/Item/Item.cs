@@ -37,6 +37,11 @@ public class Item
         bule_vitro,
         yellow_vitro,
         green_vitro,
+        blue,
+        red,
+        yellow,
+        green,
+
     }
     //アイテムのタイプ
     public Type type;
