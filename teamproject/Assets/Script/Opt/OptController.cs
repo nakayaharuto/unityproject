@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using NUnit.Framework.Constraints;
 
 public class OptController : MonoBehaviour
 {
@@ -10,18 +11,20 @@ public class OptController : MonoBehaviour
     [SerializeField] GameObject panel;
     [SerializeField] GameObject Backpanel;
 
-
+    [SerializeField] private Slider slider;
     public string Scene; //ÉèÅ[ÉãÉhà⁄ìÆ
-    private Slider slider;
+    private SoundManager soundManager;
     public Animator animator;
 
     void Start()
     {
-        
+
         MainCanvas.gameObject.SetActive(false);
         volumepanel.SetActive(true);
         panel.SetActive(false);
         Backpanel.SetActive(false);
+
+        slider.value = SoundManager.Instance.GetMasterVolume() * 100f;
        
     }
 
@@ -50,7 +53,11 @@ public class OptController : MonoBehaviour
     {
         animator.SetTrigger("Down");
         panel.SetActive(true);
-        slider.value = 100;
+    }
+
+    public void OnVolumeChanged(float volume)
+    {
+        SoundManager.Instance.SetMasterVolume(volume / 100f);
     }
 
     public void BackScene()

@@ -1,10 +1,13 @@
+using Mono.Cecil.Cil;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Hierarchy;
 using UnityEngine;
 using static SoundManager;
 
 public class SoundManager : MonoBehaviour
 {
+    public static SoundManager Instance;
     public enum SoundType
     {
         Open,//ドア開ける
@@ -16,6 +19,7 @@ public class SoundManager : MonoBehaviour
         correctans,//正解
         Incorrectans,//不正解
         KeyOpen,//カードキーで開ける
+        choice,//オプションの選択
     }
 
     [System.Serializable]
@@ -32,10 +36,15 @@ public class SoundManager : MonoBehaviour
     private AudioSource[] audioSourcesList = new AudioSource[20];
     //別名(name)をキーとした管理用Dictionary
     private Dictionary<SoundType, SoundData> soundDictionary = new Dictionary<SoundType, SoundData>();
+
+    private float masterVolume = 1f;//0.0-1.0fの間で扱う
     private void Awake()
     {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+
         //配列の数だけAudioSourceを自分自身に生成して配列に格納
-        for(var i = 0; i < audioSourcesList.Length; i++)
+        for (var i = 0; i < audioSourcesList.Length; i++)
         {
             audioSourcesList[i] = gameObject.AddComponent<AudioSource>();
         }
@@ -50,9 +59,9 @@ public class SoundManager : MonoBehaviour
     //未使用のAudioSourceの取得 全て使用中の場合はnullを返却
     private AudioSource GetUnusedAudioSource()
     {
-        for (var i = 0; i < audioSourcesList.Length; ++i)
+        foreach (var source in audioSourcesList)
         {
-            if (audioSourcesList[i].isPlaying == false) return audioSourcesList[i];
+            if (!source.isPlaying) return source;
         }
 
         return null; //未使用のAudioSourceは見つかりませんでした
@@ -64,6 +73,7 @@ public class SoundManager : MonoBehaviour
         var audioSource = GetUnusedAudioSource();
         if (audioSource == null) return; //再生できませんでした
         audioSource.clip = clip;
+        audioSource.volume = masterVolume; 
         audioSource.Play();
     }
 
@@ -76,7 +86,7 @@ public class SoundManager : MonoBehaviour
             if (audioSource == null) return;
 
             audioSource.clip = soundData.clip;
-            audioSource.volume = soundData.volume; //音量を反映！
+            audioSource.volume = (soundData.volume / 100f) * masterVolume; //音量を反映！
             audioSource.Play();
         }
         else
@@ -85,7 +95,15 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    
+    public void SetMasterVolume(float volume)
+    {
+        masterVolume = Mathf.Clamp01(volume);
+    }
+
+    public float GetMasterVolume()
+    {
+        return masterVolume;
+    }
 
 
 }
