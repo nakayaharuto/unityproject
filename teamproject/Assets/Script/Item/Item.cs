@@ -41,7 +41,7 @@ public class Item
         red,
         yellow,
         green,
-
+        kyecade_black,
     }
     //アイテムのタイプ
     public Type type;

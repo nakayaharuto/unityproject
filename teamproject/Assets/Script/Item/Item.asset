@@ -18,10 +18,10 @@ MonoBehaviour:
     throwprefab: {fileID: 1572312753013444182, guid: d039a91729a05c949be150f1e28862ca, type: 3}
   - type: 1
     sprite: {fileID: 21300000, guid: dae2b16df388c2647801ea7334b766b7, type: 3}
-    throwprefab: {fileID: 0}
+    throwprefab: {fileID: 7100713361084347171, guid: 72189243dade2d448a60cb5802d06ddb, type: 3}
   - type: 2
     sprite: {fileID: 21300000, guid: 3ecf563d7dfc35647bf05fe4633a0062, type: 3}
-    throwprefab: {fileID: 0}
+    throwprefab: {fileID: 5558055463718332925, guid: 36e30b50d1a1ee6488d023fe9050b740, type: 3}
   - type: 3
     sprite: {fileID: 21300000, guid: 524abead945be10469a76ee8d6d239f6, type: 3}
     throwprefab: {fileID: 8204998090822507661, guid: 65434a8b8902ad24da6d63996f13fed9, type: 3}
@@ -88,3 +88,6 @@ MonoBehaviour:
   - type: 25
     sprite: {fileID: -1941692700, guid: cd16bc840148f8b46ae013ba8ea44d82, type: 3}
     throwprefab: {fileID: 7090181872020789208, guid: 686ed41d50ea15f439273448d0033364, type: 3}
+  - type: 25
+    sprite: {fileID: 63820335, guid: c22b61e8c64ace14996d8ca013711bf6, type: 3}
+    throwprefab: {fileID: 2788221042146626430, guid: 8579f6d798466e04cb4468ba79d211ec, type: 3}

@@ -10,7 +10,6 @@ public class DoorScript : MonoBehaviour
 
     //サウンドマネージャー
     [SerializeField] private SoundManager soundManager;
-    [SerializeField] private AudioClip clip1; //音源データ1
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

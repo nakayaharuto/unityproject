@@ -66,7 +66,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8593d36613665da4bbc7a930c62072af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayText: {fileID: 8963480418916686819, guid: 079403c16f5a979429276f57788f107d, type: 3}
+  soundManager: {fileID: 336864790309872597, guid: 1c54409da58b1174a9f32858dad28044, type: 3}
+  clip1: {fileID: 0}
 --- !u!1 &6405237797308216845
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,7 +225,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -269,8 +270,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.008600008, y: 0.21909472, z: 0.125198}
-  m_Center: {x: -0.000000097788885, y: -0.0000000037252903, z: -0.000000055879354}
+  m_Size: {x: 0.011743732, y: 0.21909474, z: 0.125198}
+  m_Center: {x: -0.0000068511818, y: 0, z: -0.000000053644182}
 --- !u!4 &1529419444982155906 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8875449794350432198, guid: b581fdbd127292d44ab21c4b16d91d05, type: 3}

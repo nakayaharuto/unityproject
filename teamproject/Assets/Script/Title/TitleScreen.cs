@@ -11,15 +11,12 @@ public class TitleScreen : MonoBehaviour
     public Canvas OptionCanvas;
     public Canvas mainCanvas;
 
+    //フェードコントローラー
+    [SerializeField] private FadeController fadeController;
     //サウンドマネージャー
     [SerializeField] private SoundManager soundManager;
 
-    private void Start()
-    {
-        OptionCanvas.gameObject.SetActive(false);
-        mainCanvas.gameObject.SetActive(true);
-    }
-
+    [SerializeField] private Button continebutton;//参照を追加
 
     public void OnNewGame()
     {
@@ -28,15 +25,15 @@ public class TitleScreen : MonoBehaviour
         PlayerPrefs.DeleteKey("PositionY");
         PlayerPrefs.DeleteKey("PositionZ");
 
-        SceneManager.LoadScene(Scene);
+        StartCoroutine(LoadSceneWithFade());
     }
 
     public void OnContine()
     {
         soundManager.Play(SoundManager.SoundType.choice);
         //続きから
-        SceneManager.LoadScene(Scene);
-       
+        StartCoroutine(LoadSceneWithFade());
+
     }
 
     public void OnOption()
@@ -44,6 +41,40 @@ public class TitleScreen : MonoBehaviour
         OptionCanvas.gameObject.SetActive(true);
         mainCanvas.gameObject.SetActive(false);
 
+    }
+
+    private void OnEnable()
+    {
+        OptionCanvas.gameObject.SetActive(false);
+        mainCanvas.gameObject.SetActive(true);
+
+        //セーブデータがあるかtyっく
+        if (PlayerPrefs.HasKey("PositionX") &&
+            PlayerPrefs.HasKey("PositionY") &&
+            PlayerPrefs.HasKey("PositionZ"))
+        {
+            continebutton.interactable = true;//有効
+        }
+        else
+        {
+            continebutton.interactable = false;//無効
+        }
+
+    }
+    private IEnumerator LoadSceneWithFade()
+    {
+        if (FadeController.Instance != null)
+        {
+            // フェードアウト（画面を暗く）
+            yield return FadeController.Instance.FadeOut();
+        }
+        else
+        {
+            Debug.Log("nullになってるよ");
+        }
+
+       // シーンを非同期ロード
+        SceneManager.LoadScene(Scene);
     }
 
 }

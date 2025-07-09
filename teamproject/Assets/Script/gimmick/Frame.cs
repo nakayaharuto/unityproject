@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class Frame : MonoBehaviour
 {
@@ -12,11 +13,14 @@ public class Frame : MonoBehaviour
 
     public void TryInsertItem(Item.Type itemtype,ItemBox itemBox)
     {
-        if (isFilled) return;
+        if (isFilled)
+        {
+            RemoveItem(itemBox);
+        }
+        isFilled = true;
         Item currentitem = itemBox.GetSelectedItem();
         if (currentitem != null && currentitem.type == Itemtype)
         {
-            isFilled = true;
             itemBox.UseSelectItem();
             if(currentitem.throwprefab != null)
             {
@@ -30,9 +34,49 @@ public class Frame : MonoBehaviour
             soundManager.Play(SoundManager.SoundType.Incorrectans);
         }
     }
+
+    public void RemoveItem(ItemBox itembox)
+    {
+        if (!isFilled || displayobject == null) return;
+
+        //プレイヤーのインベントリに戻す
+        Item item = displayobject.GetComponent<Item>();
+        if (item != null)
+        {
+            // ItemBox に空きがあれば戻す
+            bool added = itembox.SetItem(item);
+            if (!added)
+            {
+                Debug.LogWarning("ItemBox is full! 取り外せません");
+                return;
+            }
+        }
+
+        Destroy(displayobject);
+        displayobject = null;
+        isFilled = false;
+    }
+
     public bool IsFilled()
     {
         return isFilled;
+    }
+
+    // 例：クリックで取り外せるようにする
+    private void OnMouseDown()
+    {
+        // 取り外し
+        if (Input.GetMouseButtonDown(0))
+        {
+            if(isFilled)
+            {
+                RemoveItem(ItemBox.instance); // static インスタンスから参照
+            }
+            else
+            {
+                TryInsertItem(ItemBox.instance.GetSelectedItem().type, ItemBox.instance);
+            }
+        }
     }
 
 }

@@ -42,6 +42,15 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         itemLayer = LayerMask.GetMask("item");//itemレイヤーをとる
+        if (SaveSystem.HasSaveData())
+        {
+            controller.enabled = false; // 一時的に無効化
+            //保存した位置を復元
+            Vector3 savedPosition = SaveSystem.LoadPlayerPosition();
+            transform.position = savedPosition;
+            Debug.Log("Position restored to: " + savedPosition);
+            controller.enabled = true; // 有効化
+        }
         //マウスポインタを表示
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = true;
@@ -53,15 +62,7 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();//キャラクタコントローラを取得
 
-        if (SaveSystem.HasSaveData())
-        {
-            controller.enabled = false; // 一時的に無効化
-            //保存した位置を復元
-            Vector3 savedPosition = SaveSystem.LoadPlayerPosition();
-            transform.position = savedPosition;
-            Debug.Log("Position restored to: " + savedPosition);
-            controller.enabled = true; // 有効化
-        }
+        
 
     }
 
@@ -121,24 +122,19 @@ public class PlayerController : MonoBehaviour
         
          UpdateHeldItemDisplay();
 
-        //Fキー入力
-        if (Input.GetKeyDown(KeyCode.F))
+        if(Input.GetMouseButtonDown(0))
         {
-            //カードキーかどうか
-            if (keyCardDoor != null)
-            {
-                KeyCardController.instance.KeyDoor();
-            }
+            InteractWithItem();//item入手
             //フレームのチェック
             if (gimmick != null)
             {
                 FrameCheck();
             }
-        }
-
-        if(Input.GetMouseButtonDown(0))
-        {
-            InteractWithItem();//item入手
+            //カードキーかどうか
+            if (keyCardDoor != null)
+            {
+                KeyCardController.instance.KeyDoor();
+            }
         }
 
         if (Input.GetMouseButtonDown(1)) // 右クリック

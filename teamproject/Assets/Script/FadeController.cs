@@ -3,16 +3,41 @@ using UnityEngine;
 using UnityEngine.UI;
 public class FadeController : MonoBehaviour
 {
+    public static FadeController Instance { get; private set; }
     public Image FadeImage;
     public float FadeDuration = 1.0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
-        if(FadeImage == null)
+        // シングルトン＆永続化
+        if (Instance == null)
         {
-            Debug.Log("設定されてません");
-            this.enabled = false;
+            Instance = this;
+
+            transform.SetParent(null);//ルート外に一時的に除外
+            DontDestroyOnLoad(gameObject);//シーンまたいでも消さないようするらしい
+            
+        }
+
+        if (FadeImage != null)
+        {
+            // 最初に透明にする
+            Color c = FadeImage.color;
+            c.a = 0;
+            FadeImage.color = c;
+        }
+    }
+    private void OnEnable()
+    {
+        if (FadeImage == null)
+        {
+            // フェードImageが失われていたら再検索
+            FadeImage = GetComponentInChildren<Image>(true); // 非アクティブでも探す
+            if (FadeImage == null)
+            {
+                Debug.LogError("FadeImage が再取得できません！");
+            }
         }
     }
 
