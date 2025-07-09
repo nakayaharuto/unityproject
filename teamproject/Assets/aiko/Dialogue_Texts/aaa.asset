@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paragraphs:
   - TalkerName: aa
-    Content: aaa
+    Content: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     Options: []
   endtext:
     End_Text: {fileID: 11400000, guid: 57534b81349554341a8ac359c6fb042b, type: 2}
