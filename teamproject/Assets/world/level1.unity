@@ -912,6 +912,7 @@ GameObject:
   - component: {fileID: 198762535}
   - component: {fileID: 198762537}
   - component: {fileID: 198762536}
+  - component: {fileID: 198762538}
   m_Layer: 0
   m_Name: SeachArea
   m_TagString: Untagged
@@ -968,6 +969,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.056286, y: 1.8749504, z: 52.838192}
   m_Center: {x: 0.0025745046, y: -0.43747553, z: -25.91911}
+--- !u!114 &198762538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198762534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b50d14fc9f477124db32dc26e6a9c339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DesplayText: {fileID: 1659630265}
 --- !u!1 &199735126 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8935790949739315069, guid: 9c552c69b5d844776b91bc232be9a2c4, type: 3}
