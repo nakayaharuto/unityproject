@@ -115,7 +115,7 @@ public class Operate_Clane_Button : MonoBehaviour
                     }
                     else
                     {
-                        if (Crane.transform.position.y <= move_limit_y)
+                        if (Crane.transform.position.y <= start_pos[1])
                         {
                             Crane.transform.Translate(0, Time.deltaTime, 0);
                             this.GetComponent<BoxCollider>().enabled = false;
