@@ -63,6 +63,8 @@ public class OptController : MonoBehaviour
     public void BackScene()
     {
         SceneManager.LoadScene(Scene);
+        // ŠÔ‚ğ–ß‚µ‚ÄƒQ[ƒ€ÄŠJ
+        Time.timeScale = 1f;
     }
 
     public void ScaleBack()

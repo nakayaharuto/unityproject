@@ -14,10 +14,12 @@ public class FadeController : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-
-            transform.SetParent(null);//ルート外に一時的に除外
             DontDestroyOnLoad(gameObject);//シーンまたいでも消さないようするらしい
             
+        }
+        else
+        {
+            Destroy(gameObject); // 重複防止
         }
 
         if (FadeImage != null)
@@ -38,6 +40,10 @@ public class FadeController : MonoBehaviour
             {
                 Debug.LogError("FadeImage が再取得できません！");
             }
+            else
+            {
+                FadeImage.transform.SetParent(this.transform, false); // 念のため親に再設定
+            }
         }
     }
 
@@ -45,9 +51,10 @@ public class FadeController : MonoBehaviour
     {
         float timer = 0f;
         Color color = FadeImage.color;
-        while(timer < FadeDuration)
+        while (timer < FadeDuration)
         {
-            timer += Time.deltaTime;
+            float delta = Time.deltaTime;
+            timer += delta;
             color.a = Mathf.Lerp(0f,1f, timer / FadeDuration);
             FadeImage.color = color;
             yield return null;

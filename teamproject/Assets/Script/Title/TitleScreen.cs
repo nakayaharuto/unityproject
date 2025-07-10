@@ -20,12 +20,13 @@ public class TitleScreen : MonoBehaviour
 
     public void OnNewGame()
     {
-        soundManager.Play(SoundManager.SoundType.choice);
+        
         PlayerPrefs.DeleteKey("PositionX");
         PlayerPrefs.DeleteKey("PositionY");
         PlayerPrefs.DeleteKey("PositionZ");
 
         StartCoroutine(LoadSceneWithFade());
+ 
     }
 
     public void OnContine()
@@ -63,17 +64,21 @@ public class TitleScreen : MonoBehaviour
     }
     private IEnumerator LoadSceneWithFade()
     {
+        Debug.Log("コルーチン開始");
+        soundManager.Play(SoundManager.SoundType.choice);
         if (FadeController.Instance != null)
         {
             // フェードアウト（画面を暗く）
+            Debug.Log("フェードアウト開始");
             yield return FadeController.Instance.FadeOut();
+            Debug.Log("フェードアウト完了");
         }
         else
         {
-            Debug.Log("nullになってるよ");
+            Debug.LogWarning("FadeController.Instance が null！");
         }
-
-       // シーンを非同期ロード
+        // シーンを非同期ロード
+        Debug.Log("シーン遷移開始");
         SceneManager.LoadScene(Scene);
     }
 
