@@ -1,14 +1,18 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveSystem : MonoBehaviour
 {
     //セーブ用のキー
-    private const string PositionXKey = "PositionX";
-    private const string PositionYKey = "PositionY";
-    private const string PositionZKey = "PositionZ";
+    private const string PositionXKey = "playerPosX";
+    private const string PositionYKey = "playerPosY";
+    private const string PositionZKey = "playerPosZ";
+    private const string SceneKey = "SaveScene";
 
     public static void SavePlayerPosition(Transform playerTransform)
     {
+        string currentScene = SceneManager.GetActiveScene().name;
+        PlayerPrefs.SetString(SceneKey, currentScene);
         //プレイヤーの位置保存
         PlayerPrefs.SetFloat(PositionXKey,playerTransform.position.x);
         PlayerPrefs.SetFloat(PositionYKey,playerTransform.position.y);

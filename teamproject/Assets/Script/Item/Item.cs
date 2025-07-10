@@ -42,6 +42,7 @@ public class Item
         yellow,
         green,
         kyecade_black,
+        purple_cube,
     }
     //アイテムのタイプ
     public Type type;

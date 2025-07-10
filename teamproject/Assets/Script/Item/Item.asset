@@ -88,6 +88,9 @@ MonoBehaviour:
   - type: 25
     sprite: {fileID: -1941692700, guid: cd16bc840148f8b46ae013ba8ea44d82, type: 3}
     throwprefab: {fileID: 7090181872020789208, guid: 686ed41d50ea15f439273448d0033364, type: 3}
-  - type: 25
+  - type: 26
     sprite: {fileID: 63820335, guid: c22b61e8c64ace14996d8ca013711bf6, type: 3}
     throwprefab: {fileID: 2788221042146626430, guid: 8579f6d798466e04cb4468ba79d211ec, type: 3}
+  - type: 27
+    sprite: {fileID: 1703983283, guid: a211a454bb94bb24ab9988395023c44c, type: 3}
+    throwprefab: {fileID: 6098305039022037859, guid: bab5914c639e0274c815f668fbdaa7a2, type: 3}
