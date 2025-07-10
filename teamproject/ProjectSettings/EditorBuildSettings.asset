@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/world/level2.unity
     guid: b325810f0cd30364e93bf6bdc0771f1a
   - enabled: 1
+    path: Assets/world/EndTitle.unity
+    guid: 66c24f5e8b528284fb3373df185a463a
+  - enabled: 0
     path: Assets/world/level3.unity
     guid: 9bbb099f47faa0b45a1ef602ba530ece
   - enabled: 0

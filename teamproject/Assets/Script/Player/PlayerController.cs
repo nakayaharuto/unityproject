@@ -118,7 +118,6 @@ public class PlayerController : MonoBehaviour
             }
 
         }
-
         
          UpdateHeldItemDisplay();
 
