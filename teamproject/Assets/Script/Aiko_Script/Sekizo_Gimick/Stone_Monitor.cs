@@ -20,13 +20,13 @@ public class Stone_Monitor : MonoBehaviour
                 moni_text.text = stone_text.text + "は決して振り返らない。";
                 break;
             case 1:
-                moni_text.text = stone_text.text + "は夜明けが好き。";
-                break;
-            case 2:
                 moni_text.text = stone_text.text + "は夕焼けをよく見ている。";
                 break;
-            case 3:
+            case 2:
                 moni_text.text = stone_text.text + "は過去に囚われている。";
+                break;
+            case 3:
+                moni_text.text = stone_text.text + "は夜明けが好き。";
                 break;
         }
 

@@ -29,4 +29,4 @@ MonoBehaviour:
     Content: "\u305D\u308C\u3058\u3083\u3042\u306D\u3002"
     Options: []
   endtext:
-    End_Text: {fileID: 0}
+    End_Text: {fileID: 11400000, guid: 2b7a74042870b844cb4270f85aa462aa, type: 2}

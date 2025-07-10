@@ -7,6 +7,8 @@ public class Answer_Stone_Gimick : MonoBehaviour
     [SerializeField] private int stone_clear_count=0;
     [SerializeField] private Stone_Rotatiton[] SR;
     private Renderer Ren;
+    public GameObject open_doors;
+    public Animator animator;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -45,6 +47,8 @@ public class Answer_Stone_Gimick : MonoBehaviour
             Debug.Log("HellGuast");
             stone_clear_count = 0;
            Ren.material.color = Color.green;
+            animator = open_doors.GetComponentInChildren<Animator>();
+            animator.SetBool("open", false);
         }
         else
         {

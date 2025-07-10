@@ -17,6 +17,9 @@ public class AnswerButton : MonoBehaviour
     [SerializeField] private int answer_count=0;
     public bool[] push_flag;
 
+    public GameObject open_doors;
+    public Animator animator;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -80,7 +83,8 @@ public class AnswerButton : MonoBehaviour
                 CP[i].GetComponent<Renderer>().material.color = Color.green;
                 
             }
-
+            animator = open_doors.GetComponentInChildren<Animator>();
+            animator.SetBool("open", false);
             Debug.Log("yes");
         }
         else

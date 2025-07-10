@@ -7,7 +7,8 @@ public class NumCheckiAnswer : MonoBehaviour
     public int true_flag=0;
     [SerializeField] private GameObject open_the_door;
     private bool CorrectFlag = false;
-
+    public GameObject open_doors;
+    public Animator animator;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -51,7 +52,11 @@ public class NumCheckiAnswer : MonoBehaviour
 
                 }
                 this.GetComponent<BoxCollider>().enabled = false;
-                open_the_door.SetActive(false);
+                //open_the_door.SetActive(false);
+
+                animator = open_doors.GetComponentInChildren<Animator>();
+                animator.SetBool("open", false);
+
                 Debug.Log("Yes!");
             }
             else

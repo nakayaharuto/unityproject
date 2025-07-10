@@ -16,8 +16,8 @@ public class Choice : MonoBehaviour
 
     void Start()
     {
-        D_button = GameObject.Find("Bored2/Canvas/OptionPanel/dialogue_option1").GetComponent<Button>();
-        text = GameObject.Find("Bored2/Canvas/OptionPanel/dialogue_option1").GetComponent<Text>();
+        D_button = GameObject.Find("Bored 1/Canvas/OptionPanel/dialogue_option1").GetComponent<Button>();
+        text = GameObject.Find("Bored 1/Canvas/OptionPanel/dialogue_option1").GetComponent<Text>();
         //É{É^ÉìÇ™ëIëÇ≥ÇÍÇΩèÛë‘Ç…Ç»ÇÈ
         D_button.Select();
         text.color = Color.red;

@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paragraphs:
   - TalkerName: "\u30CE\u30FC\u30DE\u30F3"
+    Content: "\u50D5\u306F\u541B\u3092\u5FDC\u63F4\u3057\u3066\u3044\u308B\u304B\u3089\u306D!"
+    Options: []
+  - TalkerName: "\u30CE\u30FC\u30DE\u30F3"
     Content: "\u3084\u308B\u4E8B\u306F\u3055\u3063\u304D\u3068\u5909\u308F\u3089\u306A\u3044\u3088\u3002"
     Options: []
   - TalkerName: "\u30CE\u30FC\u30DE\u30F3"
