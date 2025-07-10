@@ -41,7 +41,16 @@ public class NumCheckiAnswer : MonoBehaviour
 
             if (true_flag == 4)
             {
-                
+                for (int i = 0; i < rotate_objects.Length; i++)
+                {
+                    SR = rotate_objects[i].GetComponent<ShapeRotate>();
+
+                    SR.GetComponent<Renderer>().material.color = Color.green;
+                    SR.GetComponent<BoxCollider>().enabled = false;
+                    
+
+                }
+                this.GetComponent<BoxCollider>().enabled = false;
                 open_the_door.SetActive(false);
                 Debug.Log("Yes!");
             }

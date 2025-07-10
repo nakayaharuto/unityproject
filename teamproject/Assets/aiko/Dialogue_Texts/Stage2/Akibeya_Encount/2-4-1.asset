@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6517f3e03e708b4da9f91f94f9dd0a8, type: 3}
+  m_Name: 2-4-1
+  m_EditorClassIdentifier: 
+  paragraphs:
+  - TalkerName: "\u30CE\u30FC\u30DE\u30F3"
+    Content: "\u5206\u304B\u3063\u3066\u304F\u308C\u3066\u5B09\u3057\u3044\u3088\u3002"
+    Options: []
+  - TalkerName: "\u30CE\u30FC\u30DE\u30F3"
+    Content: "\u4ED6\u306B\u805E\u304D\u305F\u3044\u4E8B\u306F\u3042\u308B\u304B\u3044?"
+    Options: []
+  - TalkerName: "\u9078\u629E\u80A25"
+    Content: 
+    Options:
+    - optionText: "\u30EC\u30FC\u30B6\u30FC\u306E\u8B0E\u89E3\u304D\u306E\u30D2\u30F3\u30C8\u304C\u805E\u304D\u305F\u3044\u3002"
+      Next_Dialogue: {fileID: 11400000, guid: 65d5193b6b769c946b4caf16f9ea039e, type: 2}
+    - optionText: "\u592A\u967D\u3084\u6708\u306E\u30DE\u30FC\u30AF\u7B49\u304C\u63CF\u304B\u308C\u305F\u8B0E\u89E3\u304D\u306E\u30D2\u30F3\u30C8\u304C\u805E\u304D\u305F\u3044\u3002"
+      Next_Dialogue: {fileID: 11400000, guid: 4ee8c1d406ada3045b1041bbe15ba6f3, type: 2}
+    - optionText: "\u8D64\u3001\u9752\u3001\u9EC4\u306E\u30D6\u30ED\u30C3\u30AF\u304C\u591A\u304F\u4E26\u3093\u3060\u8B0E\u89E3\u304D\u306E\u30D2\u30F3\u30C8\u304C\u805E\u304D\u305F\u3044\u3002"
+      Next_Dialogue: {fileID: 11400000, guid: 2d1e580001765e445ab5e7c12668978f, type: 2}
+    - optionText: "\u30D6\u30ED\u30C3\u30AF\u3092\u306F\u3081\u8FBC\u3080\u8B0E\u89E3\u304D\u306E\u30D2\u30F3\u30C8\u304C\u805E\u304D\u305F\u3044\u3002"
+      Next_Dialogue: {fileID: 11400000, guid: ae0d2c60306ed5341b290de31678f19e, type: 2}
+    - optionText: "\u7279\u306B\u306A\u3044\u306A\u3002"
+      Next_Dialogue: {fileID: 11400000, guid: 415f93aaa09a0a64e9b7997de0bcdf5f, type: 2}
+  endtext:
+    End_Text: {fileID: 0}

@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6517f3e03e708b4da9f91f94f9dd0a8, type: 3}
+  m_Name: 1-1
+  m_EditorClassIdentifier: 
+  paragraphs:
+  - TalkerName: "\u30CE\u30FC\u30DE\u30F3"
+    Content: "\u3084\u3041\u3001\u3053\u306E\u90E8\u5C4B\u306B\u306F\u4F55\u3082\u306A\u3044\u3088\u3002"
+    Options: []
+  - TalkerName: "\u30CE\u30FC\u30DE\u30F3"
+    Content: "\u30B9\u30DA\u30FC\u30B9\u304C\u306A\u3055\u3059\u304E\u308B\u3093\u3060\u3002"
+    Options: []
+  - TalkerName: "\u30CE\u30FC\u30DE\u30F3"
+    Content: "\u305D\u3046\u3044\u3046\u308F\u3051\u3060\u304B\u3089\u3001\u65E9\u304F\u3053\u3053\u304B\u3089\u51FA\u3066\u8B0E\u3092\u89E3\u3044\u3066\u304F\u308B\u3093\u3060\u3088\u3002"
+    Options: []
+  - TalkerName: "\u30CE\u30FC\u30DE\u30F3"
+    Content: "\u5206\u304B\u3063\u305F\u304B\u3044?"
+    Options: []
+  - TalkerName: "\u30CE\u30FC\u30DE\u30F3"
+    Content: "\u305D\u308C\u3058\u3083\u3042\u306D\u3002"
+    Options: []
+  endtext:
+    End_Text: {fileID: 0}

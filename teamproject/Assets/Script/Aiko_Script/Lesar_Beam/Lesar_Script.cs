@@ -26,6 +26,12 @@ public class Lesar_Script : MonoBehaviour
         start_rot[0] = this.transform.rotation.eulerAngles.x;
         start_rot[1] = this.transform.rotation.eulerAngles.y;
         start_rot[2] = this.transform.rotation.eulerAngles.z;
+
+        if (direction_num==0)
+        {
+            this.gameObject.transform.eulerAngles = new Vector3(start_rot[0], 90f * rot_num, start_rot[2]);
+        }
+
     }
 
     // Update is called once per frame
