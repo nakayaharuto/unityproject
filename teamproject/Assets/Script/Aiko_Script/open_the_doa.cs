@@ -20,5 +20,6 @@ public class open_the_doa : MonoBehaviour
     {
         animator = open_doors.GetComponentInChildren<Animator>();
         animator.SetBool("open", false);
+        this.GetComponent<Renderer>().material.color = Color.green;
     }
 }
