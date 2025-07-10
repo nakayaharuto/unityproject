@@ -61,7 +61,9 @@ public class Lesar_Flag_Script : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("gimick_button"))
         {
+            other.GetComponent<Lesar_Clear>().lesar_clear = true;
             other.GetComponent<Lesar_Clear>().Clear();
+            
             Lesar_Flag = false;
         }
         else
@@ -109,8 +111,16 @@ public class Lesar_Flag_Script : MonoBehaviour
             
             //this.GetComponentInParent<Lesar_Script>().Lesar_Distance = lesar_pos;
         }
+        else if (other.gameObject.CompareTag("gimick_button"))
+        {
+            other.GetComponent<Lesar_Clear>().Clear();
+            
+            Lesar_Flag = true;
+        }
         else if (other.gameObject.CompareTag("Player"))
         {
+            this.GetComponentInParent<Lesar_Script>().Lesar_Distance = 0.0f;
+
             Lesar_Flag = true;
             Lesar_Enable = true;
         }
