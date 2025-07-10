@@ -3003,6 +3003,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fade
       objectReference: {fileID: 0}
+    - target: {fileID: 7348203378035234760, guid: 4246c70ff1af5e14f843feda7f174d1d, type: 3}
+      propertyPath: m_TagString
+      value: FadeImage
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
