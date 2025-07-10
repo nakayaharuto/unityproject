@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class FadeController : MonoBehaviour
 {
@@ -21,34 +22,57 @@ public class FadeController : MonoBehaviour
         {
             Destroy(gameObject); // 重複防止
         }
+        InitializeFadeImage();
 
-        if (FadeImage != null)
-        {
-            // 最初に透明にする
-            Color c = FadeImage.color;
-            c.a = 0;
-            FadeImage.color = c;
-        }
     }
     private void OnEnable()
     {
-        if (FadeImage == null)
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        InitializeFadeImage(); // シーンが変わるたびに再設定
+    }
+    private void InitializeFadeImage()
+    {
+            // "FadeImage"タグを使って再検索する
+            GameObject found = GameObject.FindWithTag("FadeImage");
+        if (found != null)
         {
             // フェードImageが失われていたら再検索
-            FadeImage = GetComponentInChildren<Image>(true); // 非アクティブでも探す
-            if (FadeImage == null)
+            FadeImage = GetComponentInChildren<Image>(); // 非アクティブでも探す
+            if (FadeImage != null)
             {
-                Debug.LogError("FadeImage が再取得できません！");
+                // 最初に透明にする
+                Color c = FadeImage.color;
+                c.a = 0;
+                FadeImage.color = c;
             }
             else
             {
                 FadeImage.transform.SetParent(this.transform, false); // 念のため親に再設定
             }
         }
+        else
+        {
+            Debug.LogWarning("FadeImage が見つかりません");
+        }
     }
 
     public IEnumerator FadeOut()
     {
+        if (FadeImage == null)
+        {
+            Debug.LogWarning("FadeImage が設定されていません");
+            yield break;
+        }
+
         float timer = 0f;
         Color color = FadeImage.color;
         while (timer < FadeDuration)
@@ -65,6 +89,12 @@ public class FadeController : MonoBehaviour
 
     public IEnumerator FadeIn()
     {
+        if (FadeImage == null)
+        {
+            Debug.LogWarning("FadeImage が設定されていません");
+            yield break;
+        }
+
         float timer = 0f;
         Color color = FadeImage.color;
         while (timer < FadeDuration)

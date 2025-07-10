@@ -16,6 +16,7 @@ TagManager:
   - Crane
   - Card Key
   - gimick_button
+  - FadeImage
   layers:
   - Default
   - TransparentFX
