@@ -21,6 +21,8 @@ public class Operate_Clane_Button : MonoBehaviour
 
     public float[] start_pos;
 
+    [SerializeField] private SoundManager SM;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,7 +36,7 @@ public class Operate_Clane_Button : MonoBehaviour
         start_pos[1] = Crane.transform.position.y;
         start_pos[2] = Crane.transform.position.z;
 
-
+        SM = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
 
 
@@ -225,6 +227,7 @@ public class Operate_Clane_Button : MonoBehaviour
         //Debug.Log(button_flag);
         //button_num = -button_num;
         //Debug.Log(button_num);
+        SM.Play(SoundManager.SoundType.choice); //サウンドマネージャーを使用して効果音再生
     }
 
 }

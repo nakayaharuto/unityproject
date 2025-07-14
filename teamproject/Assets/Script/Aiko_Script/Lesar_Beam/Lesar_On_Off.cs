@@ -8,10 +8,11 @@ public class Lesar_On_Off : MonoBehaviour
    
     public Lesar_Script LS;
     Renderer Ren;
-
+    [SerializeField] private SoundManager SM;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        SM = GameObject.Find("SoundManager").GetComponent<SoundManager>();
         LS = first_lesar_machine.GetComponent<Lesar_Script>();
         Ren = this.GetComponent<Renderer>();
         Ren.material.color = Color.green;
@@ -44,7 +45,7 @@ public class Lesar_On_Off : MonoBehaviour
             LS.LFS.Lesar_Flag = true;
             button_flag =false;
         }
-
+        SM.Play(SoundManager.SoundType.KeyOpen); //サウンドマネージャーを使用して効果音再生
     }
 
 }

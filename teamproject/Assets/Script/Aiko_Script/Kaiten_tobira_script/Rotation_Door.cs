@@ -7,7 +7,7 @@ public class Rotation_Door : MonoBehaviour
     private int switch_on_off=0;
     public float limit_rotate;
     private float first_rot;
-
+    [SerializeField] private SoundManager SM;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -15,6 +15,7 @@ public class Rotation_Door : MonoBehaviour
     {
         this.GetComponent<Renderer>().material.color = Color.green;
         first_rot = RotateDoor.transform.rotation.y;
+        SM = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
 
     // Update is called once per frame
@@ -77,12 +78,12 @@ public class Rotation_Door : MonoBehaviour
                     //switch_on_off = 1;
                 }
 
-               
-        
+        SM.Play(SoundManager.SoundType.choice); //サウンドマネージャーを使用して効果音再生
 
-        
 
-       
+
+
+
 
     }
 

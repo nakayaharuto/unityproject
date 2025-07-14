@@ -10,8 +10,8 @@ public class Cbutton_push : MonoBehaviour
     AnswerButton AB;
     
     [SerializeField] public int pm2=0;
-    
-    
+
+    [SerializeField] private SoundManager SM;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,7 +33,7 @@ public class Cbutton_push : MonoBehaviour
                 break;
         }
         AB = GameObject.Find("AnswerButton_v1").GetComponent<AnswerButton>();
-
+        SM = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
 
     // Update is called once per frame
@@ -79,5 +79,6 @@ public class Cbutton_push : MonoBehaviour
         //}
         push_num++;
         push_text.text = "" + push_num;
+        SM.Play(SoundManager.SoundType.choice); //サウンドマネージャーを使用して効果音再生
     }
 }

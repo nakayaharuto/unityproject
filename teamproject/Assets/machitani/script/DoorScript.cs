@@ -16,6 +16,7 @@ public class DoorScript : MonoBehaviour
     {
         isNear = false;
         animator=transform.parent.GetComponent<Animator>();
+        soundManager=GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
 
     // Update is called once per frame

@@ -5,13 +5,13 @@ public class Lesar_Clear : MonoBehaviour
     public bool lesar_clear=false;
     public GameObject[] open_doors;
     public Animator[] animator;
-
+    [SerializeField] private SoundManager SM;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         this.GetComponent<Renderer>().material.color = Color.red;
         animator = new Animator[open_doors.Length];
-
+        SM = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
 
     // Update is called once per frame
@@ -34,6 +34,7 @@ public class Lesar_Clear : MonoBehaviour
             }
 
             lesar_clear = false;
+            SM.Play(SoundManager.SoundType.correctans); //サウンドマネージャーを使用して効果音再生
         }
         else 
         {

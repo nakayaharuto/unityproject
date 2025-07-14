@@ -16,9 +16,12 @@ public class Lesar_Script : MonoBehaviour
 
     [SerializeField] private float[] start_rot;
 
+    [SerializeField] private SoundManager SM;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        SM=GameObject.Find("SoundManager").GetComponent<SoundManager>();
         start_rot = new float[3];
        LFS=this.GetComponentInChildren<Lesar_Flag_Script>();
         LFS.GetComponent<Renderer>().material.color = Color.red;
@@ -137,6 +140,8 @@ public class Lesar_Script : MonoBehaviour
         
 
         Debug.Log(Fire_Flag);
+
+        SM.Play(SoundManager.SoundType.choice); //サウンドマネージャーを使用して効果音再生
 
     }
 

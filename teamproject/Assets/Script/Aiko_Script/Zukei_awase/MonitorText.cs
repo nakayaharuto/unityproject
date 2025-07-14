@@ -11,6 +11,7 @@ public class MonitorText : MonoBehaviour
     NumCheckiAnswer NCA;
     public GameObject[] rl_buttons;
     [SerializeField]private int button_num=0;
+    [SerializeField] private SoundManager SM;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,7 +34,7 @@ public class MonitorText : MonoBehaviour
 
         }
 
-
+        SM = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
 
     private void OnMouseDown()
@@ -59,8 +60,8 @@ public class MonitorText : MonoBehaviour
                     {
                         button_num--;
                     }
-                    
 
+                    SM.Play(SoundManager.SoundType.choice); //サウンドマネージャーを使用して効果音再生
                     Debug.Log("left");
                 }
                 else if (hit.collider.gameObject == rl_buttons[1])
@@ -70,6 +71,7 @@ public class MonitorText : MonoBehaviour
                     {
                         button_num++;
                     }
+                    SM.Play(SoundManager.SoundType.choice); //サウンドマネージャーを使用して効果音再生
                     Debug.Log("right");
                 }
                 TextAppear();

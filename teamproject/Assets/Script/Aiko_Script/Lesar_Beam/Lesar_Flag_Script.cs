@@ -7,11 +7,11 @@ public class Lesar_Flag_Script : MonoBehaviour
     public GameObject ColLesar;
     [SerializeField] float lesar_pos;
     [SerializeField] float lesar_pos2;
-
+    [SerializeField] private SoundManager SM;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        SM = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
 
     // Update is called once per frame
@@ -54,6 +54,7 @@ public class Lesar_Flag_Script : MonoBehaviour
         {
             Lesar_Flag = false;
             Lesar_Enable = false;
+            SM.Play(SoundManager.SoundType.Incorrectans); //サウンドマネージャーを使用して効果音再生
             //this.GetComponentInParent<Lesar_Script>().Lesar_Distance = 0f;
             //lesar_pos = this.GetComponentInParent<Lesar_Script>().Lesar_Distance;
            

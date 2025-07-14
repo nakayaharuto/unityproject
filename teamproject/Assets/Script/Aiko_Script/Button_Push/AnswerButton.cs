@@ -19,6 +19,7 @@ public class AnswerButton : MonoBehaviour
 
     public GameObject open_doors;
     public Animator animator;
+    [SerializeField] private SoundManager SM;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,7 +35,9 @@ public class AnswerButton : MonoBehaviour
         //}
 
         Debug.Log("asdfg"+HM.gameObject.name);
-       
+
+        SM = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+
         test();
 
         
@@ -85,10 +88,12 @@ public class AnswerButton : MonoBehaviour
             }
             animator = open_doors.GetComponentInChildren<Animator>();
             animator.SetBool("open", false);
+            SM.Play(SoundManager.SoundType.correctans); //サウンドマネージャーを使用して効果音再生
             Debug.Log("yes");
         }
         else
         {
+            SM.Play(SoundManager.SoundType.Incorrectans); //サウンドマネージャーを使用して効果音再生
             Debug.Log ("no");
         }
 

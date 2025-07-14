@@ -7,10 +7,12 @@ public class Move_Clane : MonoBehaviour
     [SerializeField] public bool item_hit = false;
     [SerializeField] public GameObject get_item;
     Vector3 StartPos;
+    [SerializeField] private SoundManager SM;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //StartPos = transform.position;
+        SM = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
 
     // Update is called once per frame
@@ -42,6 +44,8 @@ public class Move_Clane : MonoBehaviour
             other.GetComponent<Collider>().enabled = false;
             other.GetComponent<Rigidbody>().useGravity = false;
             hit = true;
+
+            SM.Play(SoundManager.SoundType.choice); //サウンドマネージャーを使用して効果音再生
 
             Debug.Log(this.transform.position.y);
             Debug.Log("abcdefg");

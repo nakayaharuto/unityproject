@@ -9,6 +9,7 @@ public class Answer_Stone_Gimick : MonoBehaviour
     private Renderer Ren;
     public GameObject open_doors;
     public Animator animator;
+    [SerializeField] private SoundManager SM;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,7 +22,7 @@ public class Answer_Stone_Gimick : MonoBehaviour
             SR[i] = stones[i].GetComponent<Stone_Rotatiton>();
         }
         Ren.material.color = Color.red;
-
+        SM = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
 
     // Update is called once per frame
@@ -49,10 +50,12 @@ public class Answer_Stone_Gimick : MonoBehaviour
            Ren.material.color = Color.green;
             animator = open_doors.GetComponentInChildren<Animator>();
             animator.SetBool("open", false);
+            SM.Play(SoundManager.SoundType.correctans); //サウンドマネージャーを使用して効果音再生
         }
         else
         {
             stone_clear_count = 0;
+            SM.Play(SoundManager.SoundType.Incorrectans); //サウンドマネージャーを使用して効果音再生
             Debug.Log("fffffffalse");
         }
 
