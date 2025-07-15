@@ -12,6 +12,7 @@ public class Lesar_Flag_Script : MonoBehaviour
     void Start()
     {
         SM = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        ColLesar = GameObject.Find("Col_Migawari");
     }
 
     // Update is called once per frame
