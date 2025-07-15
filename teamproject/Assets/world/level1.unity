@@ -3217,6 +3217,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Ground
       objectReference: {fileID: 0}
+    - target: {fileID: 1165081120987911742, guid: 44db3442b975e4903a341e94633313fc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1972827015468797060, guid: 44db3442b975e4903a341e94633313fc, type: 3}
       propertyPath: m_LocalScale.x
       value: 16.392
@@ -5250,7 +5254,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1915754090263648400, guid: 8854d8dc4f767a54a85873c1e601dfd1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -120.000015
+      value: -120
       objectReference: {fileID: 0}
     - target: {fileID: 4287258992787453959, guid: 8854d8dc4f767a54a85873c1e601dfd1, type: 3}
       propertyPath: m_Pivot.x
@@ -5338,7 +5342,7 @@ PrefabInstance:
       objectReference: {fileID: 1334612756}
     - target: {fileID: 5114807657962923628, guid: 8854d8dc4f767a54a85873c1e601dfd1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -120.000015
+      value: -120
       objectReference: {fileID: 0}
     - target: {fileID: 7940862806974891067, guid: 8854d8dc4f767a54a85873c1e601dfd1, type: 3}
       propertyPath: m_Name
