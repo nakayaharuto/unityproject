@@ -55,5 +55,7 @@ public class PasswordDoorScript : MonoBehaviour
     {
         isNear=false;
         fieldObject.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }
