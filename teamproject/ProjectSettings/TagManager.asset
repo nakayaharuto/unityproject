@@ -17,6 +17,10 @@ TagManager:
   - Card Key
   - gimick_button
   - FadeImage
+  - Wall
+  - DeathZone
+  - EscortTarget
+  - SummonMachine
   layers:
   - Default
   - TransparentFX
