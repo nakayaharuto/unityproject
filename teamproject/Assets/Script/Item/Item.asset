@@ -94,3 +94,6 @@ MonoBehaviour:
   - type: 27
     sprite: {fileID: 1703983283, guid: a211a454bb94bb24ab9988395023c44c, type: 3}
     throwprefab: {fileID: 6098305039022037859, guid: bab5914c639e0274c815f668fbdaa7a2, type: 3}
+  - type: 28
+    sprite: {fileID: -159715194, guid: b68498bfc590e4f4e97939d6afeb74cd, type: 3}
+    throwprefab: {fileID: 6644594868719793182, guid: f2f920e91c17700418111f3948fc7beb, type: 3}
