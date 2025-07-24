@@ -21,15 +21,17 @@ public class Rotaring_Fan : MonoBehaviour
     {
         if (on_off_flag==true)
         {
-            rotation_fan.transform.Rotate(Time.deltaTime*1000, 0.0f, 0.0f);
+            start_rot_x = 0.0f;
+            rotation_fan.transform.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+            
             rotation_limit--;
         }
 
         if (rotation_limit == 0)
         {
             on_off_flag = false;
-            start_rot_x = 0.0f;
-            rotation_fan.transform.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+            rotation_fan.transform.Rotate(Time.deltaTime * 1000, 0.0f, 0.0f);
+
         }
             
     }
@@ -39,7 +41,7 @@ public class Rotaring_Fan : MonoBehaviour
         if (on_off_flag==false)
         {
             on_off_flag = true;
-            rotation_limit = 10000;
+            rotation_limit = 1000;
         }
        
 
