@@ -6,12 +6,14 @@ public class PosterScript : MonoBehaviour
 {
     private bool isNear;
     public GameObject text;
+    private int i;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-     text.SetActive(false);
+        text.SetActive(false);
         isNear = false;
+         i = 0;
     }
 
     // Update is called once per frame
@@ -20,6 +22,10 @@ public class PosterScript : MonoBehaviour
         if(Input.GetKeyDown("f")&&isNear)
         {
             text.SetActive(true);
+        }
+        else if (Input.GetKeyDown("w")|| Input.GetKeyDown("s")|| Input.GetKeyDown("d")|| Input.GetKeyDown("a"))
+        {
+            text.SetActive(false);
         }
     }
     void OnTriggerEnter(Collider col)

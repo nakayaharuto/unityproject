@@ -16,7 +16,9 @@ public class PasswordDoorScript : MonoBehaviour
        //text.SetActive(false);
         fieldObject.SetActive(false);
         isNear = false;
-        animator=transform.parent.GetComponent<Animator>(); 
+        animator=transform.parent.GetComponent<Animator>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -28,6 +30,10 @@ public class PasswordDoorScript : MonoBehaviour
             //マウスポインタを表示
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+        }
+       else if(Input.GetKeyDown("w")||Input.GetKeyDown("s")||Input.GetKeyDown("a")||Input.GetKeyDown("d"))
+        {
+            fieldObject.SetActive(false);       
         }
     }
 
