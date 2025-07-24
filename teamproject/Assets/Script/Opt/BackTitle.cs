@@ -7,7 +7,9 @@ public class BackTitle : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        //マウスポインタを表示
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     public void BackScene()
     {
