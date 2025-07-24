@@ -12733,7 +12733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade87a89d6b2c254190fdfa1b620a5fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: Level3
+  nextSceneName: EndTitle
   fadecontroller: {fileID: 617936914}
 --- !u!1001 &1412250087
 PrefabInstance:
