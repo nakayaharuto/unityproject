@@ -211,13 +211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2ae89968fff6f54f84baf44f1d60699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: 77ed0e25a34d40a4d8f6369c6869a361, type: 2}
-  SESlider: {fileID: 884898894}
-  BGMSlider: {fileID: 0}
-  BGMSource: {fileID: 2061793535}
-  SESource: {fileID: 0}
-  SeClick: {fileID: 0}
-  SeFKey: {fileID: 0}
 --- !u!1001 &46070691
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5087,7 +5080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextSceneName: Level2
-  fadecontroller: {fileID: 1496845211}
+  FadeImage: {fileID: 0}
 --- !u!1001 &1550585163
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10678,6 +10671,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4637095846846461861, guid: 3f44a36fdc6b58a4d802de437d9ed9c8, type: 3}
+      propertyPath: Priority
+      value: 79
+      objectReference: {fileID: 0}
     - target: {fileID: 5413568787921779796, guid: 3f44a36fdc6b58a4d802de437d9ed9c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.821815
@@ -12287,8 +12284,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8953103048169486947, guid: 77ed0e25a34d40a4d8f6369c6869a361, type: 2}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: f845d555f6b37384a8a93b67283df244, type: 3}
+  m_audioClip: {fileID: 8300000, guid: deb20efa0f874914cb432b397663de10, type: 3}
+  m_Resource: {fileID: 8300000, guid: deb20efa0f874914cb432b397663de10, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -12296,7 +12293,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 79
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
