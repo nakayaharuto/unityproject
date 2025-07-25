@@ -16,18 +16,28 @@ public class Bullet_Vanishment : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("EscortTarget"))
+        {
+            Destroy(collision.gameObject);
+            
+        }
+
         this.GetComponent<ParticleSystem>().Play();
-        Destroy(this);
+       
+        Destroy(this.gameObject);
 
         if (collision.gameObject.CompareTag("EscortTarget"))
         {
             Destroy(collision.gameObject);
         }
 
+        Debug.Log("hit+" + collision.gameObject.name);
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        Destroy(this.gameObject);
         if (other.gameObject.CompareTag("EscortTarget"))
         {
             Destroy(other.gameObject);

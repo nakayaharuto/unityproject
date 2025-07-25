@@ -30,7 +30,7 @@ public class Move_Insect : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Wall"))
         {
-            Debug.Log("qwsdcdcfvggbhh");
+            
             if (rot_num < 3)
             {
                 rot_num++;
@@ -46,7 +46,7 @@ public class Move_Insect : MonoBehaviour
            
         }
 
-        if (other.gameObject.CompareTag("DeathZone"))
+        if (other.gameObject.CompareTag("DeathZone")|| other.gameObject.CompareTag("Bullet"))
         {
             GameObject.FindGameObjectWithTag("SummonMachine").GetComponentInChildren<Summon_Insect>().spawn_count--;
             Destroy(this.gameObject);

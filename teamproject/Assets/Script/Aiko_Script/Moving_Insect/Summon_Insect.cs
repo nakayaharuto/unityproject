@@ -6,6 +6,7 @@ public class Summon_Insect : MonoBehaviour
     public GameObject spawn_pos;
     [SerializeField,Header("0:x,1:y,2:z")] float[] pos_xyz;
     [SerializeField] public int spawn_count;
+    [SerializeField] public int spawn_limit;
     [SerializeField] int spawn_cooltime;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,12 +32,12 @@ public class Summon_Insect : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (spawn_count<5&&spawn_cooltime<0)
+        if (spawn_count<spawn_limit&&spawn_cooltime<0)
         {
             Instantiate(summon, new Vector3(spawn_pos.transform.position.x + pos_xyz[0], spawn_pos.transform.position.y + pos_xyz[1], spawn_pos.transform.position.z + pos_xyz[2]), Quaternion.identity) /*as GameObject*/;
             summon.GetComponent<Rigidbody>().useGravity = true;
             spawn_count++;
-            spawn_cooltime = 50;
+            spawn_cooltime = 10;
         }
         
     }

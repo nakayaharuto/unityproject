@@ -21,6 +21,9 @@ TagManager:
   - DeathZone
   - EscortTarget
   - SummonMachine
+  - Bullet
+  - SentryGun
+  - LesarSight
   layers:
   - Default
   - TransparentFX
