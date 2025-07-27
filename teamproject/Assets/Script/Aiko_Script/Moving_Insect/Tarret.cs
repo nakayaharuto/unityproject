@@ -12,18 +12,20 @@ public class Tarret : MonoBehaviour
     public GameObject BulletPrefab;
     public float bulletSpeed=500f;
     public int span = 1;
-    private int timeCount = 0;
+    public int timeCount = 0;
 
     public GameObject nearObj;         //最も近いオブジェクト
     private float searchTime = 0;    //経過時間
 
     private float rot;
-    private bool tarret_switch_on = false;
+   [SerializeField] public bool tarret_switch_on = false;
     [SerializeField] private GameObject killzone;
     [SerializeField] private GameObject tarret_muzzle;
     public Vector3 hit_pos;
     [SerializeField] public LesarSight LS;
     [SerializeField] private GameObject bullet;
+    [SerializeField] public GameObject kill_target;
+    //[SerializeField] private int in_collider_num=0;
     // Use this for initialization
     void Start()
     {
@@ -32,6 +34,7 @@ public class Tarret : MonoBehaviour
         nearObj = serchTag(gameObject, "EscortTarget");
         tarret_muzzle=transform.GetChild(0).gameObject;
         LS=this.gameObject.GetComponentInChildren<LesarSight>();
+        
 
     }
 
@@ -41,12 +44,14 @@ public class Tarret : MonoBehaviour
         if (tarret_switch_on)
         {
             TarretLockOn();
+            timeCount--;
         }
 
         if (nearObj == null)
         {
             this.transform.rotation = Quaternion.Euler(new Vector3(0f, Quaternion.identity.y, 0f));   //敵がいない場合は回転をリセット
-            LS.lesar_fire_flag = false;
+           LS.lesar_fire_flag = false;
+            tarret_switch_on=false;
         }
 
 
@@ -62,6 +67,9 @@ public class Tarret : MonoBehaviour
         //タグ指定されたオブジェクトを配列で取得する
         foreach (GameObject obs in GameObject.FindGameObjectsWithTag(tagName))
         {
+           
+            //Debug.Log("obj+"+obs.name);
+
             //自身と取得したオブジェクトの距離を取得
             tmpDis = Vector3.Distance(obs.transform.position, nowObj.transform.position);
 
@@ -78,11 +86,22 @@ public class Tarret : MonoBehaviour
         return targetObj;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("EscortTarget"))
+        {
+            //in_collider_num++;
+           
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("EscortTarget"))
         {
-            nearObj = serchTag(other.gameObject, "EscortTarget");
+            
+            kill_target = other.gameObject;
+            nearObj = serchTag(/*kill_target*/other.gameObject, "EscortTarget");
             tarret_switch_on = true;
         }
         
@@ -94,8 +113,11 @@ public class Tarret : MonoBehaviour
     {
         if (other.gameObject.CompareTag("EscortTarget"))
         {
+            //in_collider_num--;
+            nearObj = serchTag(/*kill_target*/other.gameObject, "EscortTarget");
             tarret_switch_on = false;
             this.transform.rotation = Quaternion.Euler(new Vector3(0f, Quaternion.identity.y, 0f));   //敵がいない場合は回転をリセット
+            
         }
     }
 
@@ -107,11 +129,13 @@ public class Tarret : MonoBehaviour
         if (searchTime >= 0.1f)
         {
             //最も近かったオブジェクトを取得
-           
+            //nearObj = serchTag(gameObject, "EscortTarget");
 
             //経過時間を初期化
             searchTime = 0;
         }
+
+       
 
         if (nearObj == null)
         {
@@ -131,7 +155,7 @@ public class Tarret : MonoBehaviour
 
             //bullet.GetComponent<BoxCollider>().enabled = false;
 
-                timeCount--;
+                
 
             if (timeCount < 0)
             {
@@ -201,5 +225,6 @@ public class Tarret : MonoBehaviour
        
     }
     
+
 
 }
