@@ -8,6 +8,10 @@ public class sacene : MonoBehaviour
     {
         if (other.CompareTag("Player")) // ƒvƒŒƒCƒ„[‚ÆÕ“Ë‚µ‚½‚Æ‚«
         {
+            if (FadeController.Instance != null)
+            {
+                StartCoroutine(FadeController.Instance.FadeOut());
+            }
             SceneManager.LoadScene(nextSceneName);
         }
     }

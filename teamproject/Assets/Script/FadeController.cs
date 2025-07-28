@@ -15,7 +15,7 @@ public class FadeController : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);//シーンまたいでも消さないようするらしい
+            DontDestroyOnLoad(gameObject);//シーンまたいでも消さない
             
         }
         else
@@ -46,7 +46,7 @@ public class FadeController : MonoBehaviour
         if (found != null)
         {
             // フェードImageが失われていたら再検索
-            FadeImage = GetComponentInChildren<Image>(); // 非アクティブでも探す
+            FadeImage = found.GetComponentInChildren<Image>(); // 非アクティブでも探す
             if (FadeImage != null)
             {
                 // 最初に透明にする
