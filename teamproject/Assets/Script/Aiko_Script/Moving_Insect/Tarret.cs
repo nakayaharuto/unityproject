@@ -43,6 +43,7 @@ public class Tarret : MonoBehaviour
     {
         if (tarret_switch_on)
         {
+            serchTag(gameObject, "EscortTarget");
             TarretLockOn();
             timeCount--;
         }
@@ -77,8 +78,25 @@ public class Tarret : MonoBehaviour
             //ˆêŽž•Ï”‚É‹——£‚ðŠi”[
             if (nearDis == 0 || nearDis > tmpDis)
             {
-                nearDis = tmpDis;
-                targetObj = obs;
+                //nearDis = tmpDis;
+                //targetObj = obs;
+
+                if (nowObj.GetComponent<Move_Insect>())
+                {
+                    nowObj.GetComponent<Move_Insect>();
+
+                    if ( nowObj.GetComponent<Move_Insect>().invation_flag == true)
+                    {
+                        nearDis = tmpDis;
+                        targetObj = obs;
+                    }
+
+                }
+
+                
+
+                
+               
             }
 
         }
@@ -190,7 +208,7 @@ public class Tarret : MonoBehaviour
                         Destroy(hit.collider.gameObject);
                         Debug.Log(hit.point);
 
-                        
+                       
 
                     }
                     LS.lesar_fire_flag = true;
@@ -222,7 +240,7 @@ public class Tarret : MonoBehaviour
         {
             hit_pos = hit2.point;
         }
-       
+        Debug.DrawLine(muzzle_pos2, /*ray.direction*/hit_pos, UnityEngine.Color.red);
     }
     
 

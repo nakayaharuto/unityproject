@@ -32,7 +32,7 @@ public class Judge_KillZone : MonoBehaviour
             TR.kill_target = other.gameObject;
             TR.nearObj = TR.serchTag(/*TR.kill_target*/other.gameObject, "EscortTarget");
             TR.tarret_switch_on = true;
-            TR.TarretLockOn();
+            //TR.TarretLockOn();
             LS.lesar_fire_flag = true;
 
             //if (TR.timeCount<0)
@@ -53,7 +53,9 @@ public class Judge_KillZone : MonoBehaviour
         if (other.gameObject.CompareTag("EscortTarget"))
         {
             TR.nearObj = TR.serchTag(/*kill_target*/other.gameObject, "EscortTarget");
-            
+            TR.nearObj = null;
+
+
             Tarret.transform.rotation = Quaternion.Euler(new Vector3(0f, Quaternion.identity.y, 0f)); ;   //“G‚ª‚¢‚È‚¢ê‡‚Í‰ñ“]‚ðƒŠƒZƒbƒg
             LS.lesar_fire_flag=false;
             
@@ -63,6 +65,7 @@ public class Judge_KillZone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         //TR.timeCount--;
     }
 }

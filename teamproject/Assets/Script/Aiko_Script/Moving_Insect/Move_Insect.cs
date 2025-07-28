@@ -6,6 +6,7 @@ public class Move_Insect : MonoBehaviour
     public float pos_x;
     public bool move_flag = true;
     [SerializeField] Rigidbody rb;
+    public bool invation_flag;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -67,5 +68,22 @@ public class Move_Insect : MonoBehaviour
         
 
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("KillZone"))
+        {
+            invation_flag = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("KillZone"))
+        {
+            invation_flag = false;
+        }
+    }
+
+
 
 }

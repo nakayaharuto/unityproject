@@ -10,10 +10,15 @@ public class Rotaring_Fan : MonoBehaviour
 
     [SerializeField] private float start_rot_x;
 
+    [SerializeField] private Renderer RS;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        start_rot_x=rotation_fan.transform.rotation.x;
+        RS=this.GetComponent<Renderer>();
+        RS.material.color = this.GetComponent<Renderer>().material.color;
+        start_rot_x =rotation_fan.transform.rotation.x;
+        rotation_fan.GetComponentInChildren<Renderer>().material.color=this.GetComponent<Renderer>().material.color;
     }
 
     // Update is called once per frame
@@ -22,8 +27,8 @@ public class Rotaring_Fan : MonoBehaviour
         if (on_off_flag==true)
         {
             start_rot_x = 0.0f;
-            rotation_fan.transform.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
-            
+            rotation_fan.transform.localEulerAngles = new Vector3(180.0f, 0.0f, 0.0f);
+            this.GetComponent<Renderer>().material.color = Color.red;
             rotation_limit--;
         }
 
@@ -31,6 +36,7 @@ public class Rotaring_Fan : MonoBehaviour
         {
             on_off_flag = false;
             rotation_fan.transform.Rotate(Time.deltaTime * 1000, 0.0f, 0.0f);
+            this.GetComponent<Renderer>().material.color = rotation_fan.GetComponentInChildren<Renderer>().material.color;
 
         }
             
