@@ -12639,11 +12639,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1406225973}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade87a89d6b2c254190fdfa1b620a5fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 5bbd4a31dac822a43850d098aa343eff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nextSceneName: EndTitle
-  fadecontroller: {fileID: 617936914}
 --- !u!1001 &1412250087
 PrefabInstance:
   m_ObjectHideFlags: 0
