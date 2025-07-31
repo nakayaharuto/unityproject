@@ -25,6 +25,7 @@ public class Tarret : MonoBehaviour
     [SerializeField] public LesarSight LS;
     [SerializeField] private GameObject bullet;
     [SerializeField] public GameObject kill_target;
+    [SerializeField] private float start_rot_y;
     //[SerializeField] private int in_collider_num=0;
     // Use this for initialization
     void Start()
@@ -34,7 +35,8 @@ public class Tarret : MonoBehaviour
         nearObj = serchTag(gameObject, "EscortTarget");
         tarret_muzzle=transform.GetChild(0).gameObject;
         LS=this.gameObject.GetComponentInChildren<LesarSight>();
-        
+        //tarret_muzzle.GetComponent<ParticleSystem>().Stop();
+        start_rot_y=this.transform.eulerAngles.y;
 
     }
 
@@ -46,13 +48,15 @@ public class Tarret : MonoBehaviour
             serchTag(gameObject, "EscortTarget");
             TarretLockOn();
             timeCount--;
+           // tarret_muzzle.GetComponent<ParticleSystem>().Play();
         }
 
         if (nearObj == null)
         {
-            this.transform.rotation = Quaternion.Euler(new Vector3(0f, Quaternion.identity.y, 0f));   //“G‚ª‚¢‚È‚¢ê‡‚Í‰ñ“]‚ğƒŠƒZƒbƒg
+            this.transform.rotation = Quaternion.Euler(new Vector3(0f, start_rot_y, 0f));   //“G‚ª‚¢‚È‚¢ê‡‚Í‰ñ“]‚ğƒŠƒZƒbƒg
            LS.lesar_fire_flag = false;
             tarret_switch_on=false;
+            //tarret_muzzle.GetComponent<ParticleSystem>().Stop();
         }
 
 
@@ -134,7 +138,7 @@ public class Tarret : MonoBehaviour
             //in_collider_num--;
             nearObj = serchTag(/*kill_target*/other.gameObject, "EscortTarget");
             tarret_switch_on = false;
-            this.transform.rotation = Quaternion.Euler(new Vector3(0f, Quaternion.identity.y, 0f));   //“G‚ª‚¢‚È‚¢ê‡‚Í‰ñ“]‚ğƒŠƒZƒbƒg
+            this.transform.rotation = Quaternion.Euler(new Vector3(0f, start_rot_y, 0f));   //“G‚ª‚¢‚È‚¢ê‡‚Í‰ñ“]‚ğƒŠƒZƒbƒg
             
         }
     }
@@ -157,7 +161,7 @@ public class Tarret : MonoBehaviour
 
         if (nearObj == null)
         {
-            this.transform.rotation = Quaternion.Euler(new Vector3(0f, Quaternion.identity.y, 0f));   //“G‚ª‚¢‚È‚¢ê‡‚Í‰ñ“]‚ğƒŠƒZƒbƒg
+            this.transform.rotation = Quaternion.Euler(new Vector3(0f, start_rot_y, 0f));   //“G‚ª‚¢‚È‚¢ê‡‚Í‰ñ“]‚ğƒŠƒZƒbƒg
         }
         else
         {

@@ -69,12 +69,26 @@ public class Move_Insect : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("DeathZone"))
+        {
+            Destroy(this);
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("KillZone"))
         {
             invation_flag = true;
         }
+
+        if (other.CompareTag("DeathZone"))
+        {
+            Destroy(this);
+        }
+
     }
     private void OnTriggerExit(Collider other)
     {

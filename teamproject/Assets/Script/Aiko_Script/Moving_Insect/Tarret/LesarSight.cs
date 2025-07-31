@@ -12,14 +12,18 @@ public class LesarSight : MonoBehaviour
     void Start()
     {
         TR=this.gameObject.GetComponentInParent<Tarret>();
+         //this.GetComponent<ParticleSystem>().Stop();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (lesar_fire_flag == true)
+       // this.GetComponent<ParticleSystem>().Play();
+        if (/*lesar_fire_flag*/TR.tarret_switch_on == true)
         {
             this.gameObject.transform.position = TR.hit_pos;
+            //transform.position = TR.transform.position; //new Vector3(0f, 0f, 0f);
+           
 
             //transform.position = Vector3.MoveTowards(this.transform.position, TR.hit_pos, 10.0f);
 
@@ -70,7 +74,8 @@ public class LesarSight : MonoBehaviour
         }
         else
         {
-            transform.position = new Vector3(0f,0f,0f);
+            transform.position = /*TR.transform.position;*/ new Vector3(0f,0f,0f);
+            //this.GetComponent<ParticleSystem>().Stop();
         }
     }
 

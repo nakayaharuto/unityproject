@@ -175,3 +175,4 @@ MonoBehaviour:
   pos_x: 0
   move_flag: 1
   rb: {fileID: 0}
+  invation_flag: 0
