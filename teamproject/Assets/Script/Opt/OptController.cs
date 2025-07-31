@@ -7,7 +7,6 @@ public class OptController : MonoBehaviour
 {
     [SerializeField] Canvas ItemuCanvas;
     [SerializeField] Canvas MainCanvas;
-    [SerializeField] GameObject volumepanel;
     [SerializeField] GameObject panel;
     [SerializeField] GameObject Backpanel;
 
@@ -20,7 +19,6 @@ public class OptController : MonoBehaviour
     {
 
         MainCanvas.gameObject.SetActive(false);
-        volumepanel.SetActive(true);
         panel.SetActive(false);
         Backpanel.SetActive(false);
 

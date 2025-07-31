@@ -1917,11 +1917,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ff3090bfd282ee4199d870ef9a94736, type: 3}
---- !u!1 &163295334 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4744631184494331196, guid: 33fb08fa1f25aa747bdbbabf661825a7, type: 3}
-  m_PrefabInstance: {fileID: 1997673306}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &176495052 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6405237797308216845, guid: 6fbfb90b61182604d8bdd6b52566725f, type: 3}
@@ -12782,6 +12777,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 336864790309872597, guid: 1c54409da58b1174a9f32858dad28044, type: 3}
+      propertyPath: audioMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: 2a239293984f5af4a8edf81369dbf11d, type: 2}
+    - target: {fileID: 336864790309872597, guid: 1c54409da58b1174a9f32858dad28044, type: 3}
       propertyPath: saunddata.Array.size
       value: 10
       objectReference: {fileID: 0}
@@ -15909,7 +15908,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemuCanvas: {fileID: 455782985}
   MainCanvas: {fileID: 956576488}
-  volumepanel: {fileID: 163295334}
   panel: {fileID: 1269082554}
   Backpanel: {fileID: 1768480639}
   slider: {fileID: 1993246151}
@@ -17117,6 +17115,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 570256296484793389, guid: 33fb08fa1f25aa747bdbbabf661825a7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1130002919279709483, guid: 33fb08fa1f25aa747bdbbabf661825a7, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1130002919279709483, guid: 33fb08fa1f25aa747bdbbabf661825a7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1130002919279709483, guid: 33fb08fa1f25aa747bdbbabf661825a7, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2316425219738203423, guid: 33fb08fa1f25aa747bdbbabf661825a7, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2316425219738203423, guid: 33fb08fa1f25aa747bdbbabf661825a7, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3765243299322871267, guid: 33fb08fa1f25aa747bdbbabf661825a7, type: 3}

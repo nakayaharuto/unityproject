@@ -1,11 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static SoundManager;
+using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
+
+    [SerializeField] AudioMixer audioMixer;
+
     public enum SoundType
     {
         Open,//ドア開ける
@@ -41,10 +43,23 @@ public class SoundManager : MonoBehaviour
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
+        //"SE"のグループを取得する
+        AudioMixerGroup[] groups = audioMixer.FindMatchingGroups("Master/SE");
+
+        AudioMixerGroup SEgroup = null;
+        if(groups.Length > 0)
+        {
+            SEgroup = groups[0];
+        }
+
         //配列の数だけAudioSourceを自分自身に生成して配列に格納
         for (var i = 0; i < audioSourcesList.Length; i++)
         {
             audioSourcesList[i] = gameObject.AddComponent<AudioSource>();
+            if(SEgroup != null)
+            {
+                audioSourcesList[i].outputAudioMixerGroup = SEgroup;
+            }
         }
 
         //soundDictionaryにセット
