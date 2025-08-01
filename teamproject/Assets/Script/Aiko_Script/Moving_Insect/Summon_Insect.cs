@@ -9,12 +9,14 @@ public class Summon_Insect : MonoBehaviour
     [SerializeField] public int spawn_limit;
     [SerializeField] int spawn_cooltime;
     private GameObject summon_insect;
+    [SerializeField] private SoundManager SM;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         pos_xyz = new float[3];
-        
+        SM = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+
     }
 
     // Update is called once per frame
@@ -42,6 +44,6 @@ public class Summon_Insect : MonoBehaviour
             spawn_count++;
             spawn_cooltime = 10;
         }
-        
+        SM.Play(SoundManager.SoundType.Pickup);
     }
 }

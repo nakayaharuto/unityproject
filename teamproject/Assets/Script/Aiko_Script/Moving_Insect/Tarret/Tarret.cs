@@ -26,6 +26,7 @@ public class Tarret : MonoBehaviour
     [SerializeField] private GameObject bullet;
     [SerializeField] public GameObject kill_target;
     [SerializeField] private float start_rot_y;
+    [SerializeField] private SoundManager SM;
     //[SerializeField] private int in_collider_num=0;
     // Use this for initialization
     void Start()
@@ -37,6 +38,7 @@ public class Tarret : MonoBehaviour
         LS=this.gameObject.GetComponentInChildren<LesarSight>();
         //tarret_muzzle.GetComponent<ParticleSystem>().Stop();
         start_rot_y=this.transform.eulerAngles.y;
+        SM = GameObject.Find("SoundManager").GetComponent<SoundManager>();
 
     }
 
@@ -212,7 +214,7 @@ public class Tarret : MonoBehaviour
                         Destroy(hit.collider.gameObject);
                         Debug.Log(hit.point);
 
-                       
+                        SM.Play(SoundManager.SoundType.Incorrectans);
 
                     }
                     LS.lesar_fire_flag = true;

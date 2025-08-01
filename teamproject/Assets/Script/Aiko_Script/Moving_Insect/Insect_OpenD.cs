@@ -7,6 +7,7 @@ public class Insect_OpenD : MonoBehaviour
     [SerializeField] private GameObject right_door;
     [SerializeField] private int door_time;
     private Rigidbody rb;
+    [SerializeField] private SoundManager SM;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -14,6 +15,7 @@ public class Insect_OpenD : MonoBehaviour
         rb = this.GetComponent<Rigidbody>();
         open_door = false;
         //this.GetComponent<Rigidbody>().useGravity = false;
+        SM = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
 
     // Update is called once per frame
@@ -64,6 +66,7 @@ public class Insect_OpenD : MonoBehaviour
         if (other.gameObject.CompareTag("EscortTarget"))
         {
             open_door = true;
+            SM.Play(SoundManager.SoundType.Open);
         }
     }
 
