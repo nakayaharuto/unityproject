@@ -25,6 +25,7 @@ TagManager:
   - SentryGun
   - LesarSight
   - KillZone
+  - test
   layers:
   - Default
   - TransparentFX

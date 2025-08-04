@@ -21,7 +21,7 @@ public class Teleport_Insect : MonoBehaviour
             other.GetComponent<Move_Insect>().rot_num = escort_rot;
             other.transform.position = exit.transform.position;
             other.transform.localEulerAngles = new Vector3(0, 90f * escort_rot, 0);
-            SM.Play(SoundManager.SoundType.Drop);
+            SM.Play(SoundManager.SoundType.correctans);
         }
     }
 

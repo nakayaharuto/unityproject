@@ -8,10 +8,14 @@ public class Insect_OpenD : MonoBehaviour
     [SerializeField] private int door_time;
     private Rigidbody rb;
     [SerializeField] private SoundManager SM;
+    [SerializeField] private Move_Insect MI;
+    [SerializeField] private int rot_insect;
+    [SerializeField] private int test;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        test = 200;
         rb = this.GetComponent<Rigidbody>();
         open_door = false;
         //this.GetComponent<Rigidbody>().useGravity = false;
@@ -33,6 +37,16 @@ public class Insect_OpenD : MonoBehaviour
             }
             
         }
+
+        if (this.GetComponent<BoxCollider>().enabled==false)
+        {
+            test--;
+        }
+        if (test<0)
+        {
+            this.GetComponent<BoxCollider>().enabled = true;
+        }
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -67,7 +81,21 @@ public class Insect_OpenD : MonoBehaviour
         {
             open_door = true;
             SM.Play(SoundManager.SoundType.Open);
+            MI = other.GetComponent<Move_Insect>();
+            this.GetComponent<BoxCollider>().enabled = false;
+            other.transform.position= this.transform.position;
+            other.transform.localEulerAngles= new Vector3(0f, 90f * rot_insect * MI.rot_plus_mainas, 0f);
+            test = 200;
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("EscortTarget"))
+        {
+            this.GetComponent<BoxCollider>().enabled = true;
+        }
+
     }
 
 }

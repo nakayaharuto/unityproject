@@ -7,31 +7,42 @@ public class Move_Insect : MonoBehaviour
     public bool move_flag = true;
     [SerializeField] Rigidbody rb;
     public bool invation_flag;
+    public int rot_plus_mainas;
+    [SerializeField] private float start_rot;
+    [SerializeField] private bool test;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rot_num=this.transform.localEulerAngles.y/90;
+        start_rot = this.transform.localEulerAngles.y;
+        //this.transform.localEulerAngles = new Vector3(0f,start_rot,0f);
+        //rot_num=this.transform.localEulerAngles.y/90;
         pos_x = this.transform.position.x;
         rb = this.GetComponent<Rigidbody>();
+        rot_plus_mainas = -1;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+
         if (move_flag==true)
         {
             this.transform.Translate(Time.deltaTime, 0, 0);
         }
 
-       
-        
+        if (rot_num<-3)
+        {
+            rot_num = 0;
+        }
+
     }
 
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Wall"))
         {
-            
+           
             if (rot_num < 3)
             {
                 rot_num++;
@@ -41,7 +52,7 @@ public class Move_Insect : MonoBehaviour
                 rot_num = 0;
             }
             move_flag = false;
-            this.transform.localEulerAngles = new Vector3(0, 90f*rot_num, 0);
+            this.transform.localEulerAngles = new Vector3(0, /*start_rot+*/90f*rot_num*rot_plus_mainas, 0);
            
             this.transform.Translate(-0.1f, 0, 0);
            
@@ -54,7 +65,13 @@ public class Move_Insect : MonoBehaviour
             
         }
 
-        rb.useGravity = false;
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            rb.useGravity = false;
+            test = true;
+        }
+
+        
     }
 
     private void OnCollisionExit(Collision other)
@@ -65,7 +82,15 @@ public class Move_Insect : MonoBehaviour
             move_flag = true;
         }
 
-        
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            rb.useGravity = true;
+        }
+
+        if (other.gameObject.CompareTag("test"))
+        {
+            this.transform.localEulerAngles = new Vector3(0f,start_rot,0f);
+        }
 
     }
 
