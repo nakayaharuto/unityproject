@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
             if (talk_checker.talk_npc != null)
             {
                 //マウスポインタを表示
-                Cursor.lockState = CursorLockMode.None;
+                Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = true;
                 
 

@@ -11471,7 +11471,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 476342107920362999, guid: c060744ce47da5844aae4e2cbecdfb0a, type: 3}
       propertyPath: spawn_limit
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 476342107920362999, guid: c060744ce47da5844aae4e2cbecdfb0a, type: 3}
       propertyPath: 'pos_xyz.Array.data[0]'
