@@ -6,7 +6,7 @@ public class Rot_F_2 : MonoBehaviour
     [SerializeField] private Move_Insect MI;
     [SerializeField] private bool plus_mainas;
     [SerializeField] private Renderer RS;
-    [SerializeField] private bool invation_flag = false;
+    
     [SerializeField] private int test;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -74,14 +74,6 @@ public class Rot_F_2 : MonoBehaviour
                 RS.material.color = Color.red;
             }
 
-            //if (plus_mainas == true)
-            //{
-            //    plus_mainas = false;
-            //}
-            //else
-            //{
-            //    plus_mainas = true;
-            //}
         }
     }
 
@@ -90,7 +82,7 @@ public class Rot_F_2 : MonoBehaviour
         if (other.CompareTag("EscortTarget"))
         {
 
-            invation_flag = false;
+            
             this.GetComponent<BoxCollider>().enabled = true;
         }
     }

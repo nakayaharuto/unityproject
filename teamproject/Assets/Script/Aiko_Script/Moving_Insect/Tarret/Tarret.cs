@@ -23,7 +23,7 @@ public class Tarret : MonoBehaviour
     [SerializeField] private GameObject tarret_muzzle;
     public Vector3 hit_pos;
     [SerializeField] public LesarSight LS;
-    [SerializeField] private GameObject bullet;
+    //[SerializeField] private GameObject bullet;
     [SerializeField] public GameObject kill_target;
     [SerializeField] private float start_rot_y;
     [SerializeField] private SoundManager SM;
@@ -31,7 +31,7 @@ public class Tarret : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-         bullet = transform.GetChild(1).gameObject;
+        // bullet = transform.GetChild(1).gameObject;
         //最も近かったオブジェクトを取得
         nearObj = serchTag(gameObject, "EscortTarget");
         tarret_muzzle=transform.GetChild(0).gameObject;

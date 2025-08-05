@@ -62,20 +62,20 @@ public class Frame : MonoBehaviour
     }
 
     // 例：クリックで取り外せるようにする
-    private void OnMouseDown()
-    {
-        // 取り外し
-        if (Input.GetMouseButtonDown(0))
-        {
-            if(isFilled)
-            {
-                RemoveItem(ItemBox.instance); // static インスタンスから参照
-            }
-            else
-            {
-                TryInsertItem(ItemBox.instance.GetSelectedItem().type, ItemBox.instance);
-            }
-        }
-    }
+    //private void OnMouseDown()
+    //{
+    //    // 取り外し
+    //    if (Input.GetMouseButtonDown(0))
+    //    {
+    //        if(isFilled)
+    //        {
+    //            RemoveItem(ItemBox.instance); // static インスタンスから参照
+    //        }
+    //        else
+    //        {
+    //            TryInsertItem(ItemBox.instance.GetSelectedItem().type, ItemBox.instance);
+    //        }
+    //    }
+    //}
 
 }

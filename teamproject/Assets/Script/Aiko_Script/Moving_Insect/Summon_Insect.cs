@@ -28,8 +28,7 @@ public class Summon_Insect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach (GameObject t in GameObject.FindGameObjectsWithTag("EscortTarget"))
-        {
+        
             if (spawn_count>0)
             {
                 txt.text = "Œ»Ý‚Ì’ãŽ@‹@‚Ì”" + spawn_count + "‘Ì";
@@ -41,7 +40,7 @@ public class Summon_Insect : MonoBehaviour
 
 
 
-        }
+        
 
         if (spawn_cooltime>=0)
         {

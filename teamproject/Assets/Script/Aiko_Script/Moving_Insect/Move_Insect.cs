@@ -9,7 +9,7 @@ public class Move_Insect : MonoBehaviour
     public bool invation_flag;
     public int rot_plus_mainas;
     [SerializeField] private float start_rot;
-    [SerializeField] private bool test;
+   
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -68,7 +68,7 @@ public class Move_Insect : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             rb.useGravity = false;
-            test = true;
+           
         }
 
         

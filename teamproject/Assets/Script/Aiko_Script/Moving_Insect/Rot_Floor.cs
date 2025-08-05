@@ -5,7 +5,7 @@ public class Rot_Floor : MonoBehaviour
     [SerializeField] private Move_Insect MI;
     [SerializeField] private bool plus_mainas;
     [SerializeField] private Renderer RS;
-    [SerializeField] private bool invation_flag=false;
+   
     [SerializeField] private int test;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -73,7 +73,7 @@ public class Rot_Floor : MonoBehaviour
         if (other.CompareTag("EscortTarget"))
         {
 
-            invation_flag=false;
+          
             this.GetComponent<BoxCollider>().enabled = true;
         }
     }
