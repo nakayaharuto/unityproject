@@ -22,6 +22,7 @@ public class Summon_Insect : MonoBehaviour
         pos_xyz = new float[3];
         SM = GameObject.Find("SoundManager").GetComponent<SoundManager>();
         txt = monitor.GetComponentInChildren<Text>();
+        txt.text = "Ç±ÇÃãﬂï”Ç…í„é@ã@ÇÕÇ¢Ç‹ÇπÇÒÅB";
     }
 
     // Update is called once per frame
