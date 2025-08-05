@@ -1359,6 +1359,10 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2750505926391344174, guid: 2694261dc76743f4c82a62b712f2e882, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750505926391344174, guid: 2694261dc76743f4c82a62b712f2e882, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
@@ -1367,7 +1371,15 @@ PrefabInstance:
       value: Panel
       objectReference: {fileID: 0}
     - target: {fileID: 6632062150487624501, guid: 2694261dc76743f4c82a62b712f2e882, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632062150487624501, guid: 2694261dc76743f4c82a62b712f2e882, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632062150487624501, guid: 2694261dc76743f4c82a62b712f2e882, type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7509779786021550402, guid: 2694261dc76743f4c82a62b712f2e882, type: 3}
