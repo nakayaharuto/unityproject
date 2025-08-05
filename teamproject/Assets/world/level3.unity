@@ -1691,15 +1691,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 495834435358362007, guid: 33fb08fa1f25aa747bdbbabf661825a7, type: 3}
       propertyPath: m_Value
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 495834435358362007, guid: 33fb08fa1f25aa747bdbbabf661825a7, type: 3}
       propertyPath: m_MaxValue
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 495834435358362007, guid: 33fb08fa1f25aa747bdbbabf661825a7, type: 3}
       propertyPath: m_MinValue
-      value: -80
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 495834435358362007, guid: 33fb08fa1f25aa747bdbbabf661825a7, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
@@ -1827,7 +1827,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2480516076318340782, guid: 33fb08fa1f25aa747bdbbabf661825a7, type: 3}
       propertyPath: m_Value
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2480516076318340782, guid: 33fb08fa1f25aa747bdbbabf661825a7, type: 3}
       propertyPath: m_MaxValue
@@ -1835,7 +1835,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2480516076318340782, guid: 33fb08fa1f25aa747bdbbabf661825a7, type: 3}
       propertyPath: m_MinValue
-      value: -40
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 2480516076318340782, guid: 33fb08fa1f25aa747bdbbabf661825a7, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
